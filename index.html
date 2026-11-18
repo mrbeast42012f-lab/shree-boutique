@@ -118,11 +118,16 @@ footer a{display:block}
 .admin-head h2{font:normal 27px Georgia;color:var(--gold)}
 .admin-close{background:none;color:white;border:0;font-size:28px}
 .admin-brand{font-size:10px;letter-spacing:2px;color:var(--muted);margin-top:5px}
-.admin-login{max-width:430px;margin:35px auto;text-align:center;background:#102342;border:1px solid #345275;padding:28px}
+.admin-login{max-width:470px;margin:35px auto;text-align:center;background:#102342;border:1px solid #345275;padding:28px}
 .admin-login h2{font:30px Georgia;color:var(--gold);margin-bottom:12px}
 .admin-login input{margin:8px 0}
 .admin-login button{width:100%;margin-top:10px}
 .admin-login .login-mark{font-size:32px;color:var(--gold);margin-bottom:10px}
+.admin-login .auth-section{border-top:1px solid #345275;margin-top:22px;padding-top:18px;text-align:left}
+.auth-section h3{font:normal 19px Georgia;color:var(--gold);margin-bottom:8px}
+.auth-section p{font-size:11px;color:var(--muted);line-height:1.7}
+.auth-section button{width:100%;margin-top:8px}
+.auth-section input{margin:6px 0}
 .admin-layout{display:none}
 .admin-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;border-bottom:1px solid #345275;padding-bottom:15px}
 .admin-tab{padding:11px 15px;background:#102b50;border:1px solid #345275;color:white;font-size:11px}
@@ -213,10 +218,10 @@ form{grid-template-columns:1fr}textarea,form button{grid-column:1}
 <section class="section" id="collections">
 <div class="section-title"><small>DISCOVER SHREE BOUTIQUE</small><h2>Explore Our Collections</h2><p>Beautiful fashion for every special occasion.</p></div>
 <div class="categories">
-<a class="category" href="#designs" onclick="selectCategory('Blouse')"><img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=700&q=80"><div class="category-info"><h3>Blouse Designs</h3><small>EXPLORE COLLECTION ↗</small></div></a>
+<a class="category" href="#designs" onclick="selectCategory('Designer Blouse')"><img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=700&q=80"><div class="category-info"><h3>Blouse Designs</h3><small>EXPLORE COLLECTION ↗</small></div></a>
 <a class="category" href="#designs" onclick="selectCategory('Saree Fall & Pico')"><img src="https://images.unsplash.com/photo-1583391733956-6c78276477e3?auto=format&fit=crop&w=700&q=80"><div class="category-info"><h3>Saree Fall & Pico</h3><small>OUR SERVICES ↗</small></div></a>
 <a class="category" href="#designs" onclick="selectCategory('Lehenga')"><img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=700&q=80"><div class="category-info"><h3>Lehenga</h3><small>EXPLORE COLLECTION ↗</small></div></a>
-<a class="category" href="#designs" onclick="selectCategory('Gown')"><img src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=700&q=80"><div class="category-info"><h3>Designer Gown</h3><small>EXPLORE COLLECTION ↗</small></div></a>
+<a class="category" href="#designs" onclick="selectCategory('Designer Gown')"><img src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=700&q=80"><div class="category-info"><h3>Designer Gown</h3><small>EXPLORE COLLECTION ↗</small></div></a>
 </div>
 </section>
 <section class="section" id="designs">
@@ -280,13 +285,31 @@ form{grid-template-columns:1fr}textarea,form button{grid-column:1}
 <div class="admin-login" id="adminLogin">
 <div class="login-mark">✦</div>
 <h2>Admin Login</h2>
-<p style="color:var(--muted);font-size:12px;line-height:1.8;margin-bottom:18px">Sign in using the email and password registered in Supabase Authentication.</p>
+<p style="color:var(--muted);font-size:12px;line-height:1.8;margin-bottom:18px">Sign in using your registered admin email and password.</p>
+
 <div id="loginFields">
 <input id="adminEmail" type="email" placeholder="Admin Email Address" autocomplete="username">
 <input id="adminPassword" type="password" placeholder="Password" autocomplete="current-password">
 <button class="admin-btn" onclick="loginAdmin()">LOGIN TO DASHBOARD</button>
 </div>
-<p class="password-hint">Admin accounts are managed through Supabase Authentication. No password is stored in this website.</p>
+
+<div class="auth-section">
+<h3>First-Time Admin Setup</h3>
+<p>Create your own Admin Email and Password. Enter the one-time setup code configured in your Supabase SQL setup.</p>
+<input id="signupEmail" type="email" placeholder="Your Email Address" autocomplete="email">
+<input id="signupPassword" type="password" placeholder="Create Password (minimum 6 characters)" autocomplete="new-password">
+<input id="signupConfirm" type="password" placeholder="Confirm Password" autocomplete="new-password">
+<input id="signupSetupCode" type="password" placeholder="One-Time Admin Setup Code">
+<button class="admin-btn" onclick="createAdminAccount()">CREATE MY ADMIN ACCOUNT</button>
+</div>
+
+<div class="auth-section">
+<h3>Activate Admin Access</h3>
+<p>If email verification was required during signup, verify your email, log in above, then enter your setup code here to activate your Admin account.</p>
+<input id="activateSetupCode" type="password" placeholder="One-Time Admin Setup Code">
+<button class="admin-btn secondary" onclick="activateAdminAccount()">ACTIVATE ADMIN ACCESS</button>
+</div>
+<p class="password-hint">Your password is handled by Supabase Authentication. It is never stored in this website.</p>
 </div>
 
 <div class="admin-layout" id="adminLayout">
@@ -347,7 +370,16 @@ form{grid-template-columns:1fr}textarea,form button{grid-column:1}
 <textarea id="settingDescription" placeholder="Boutique description"></textarea>
 <button class="admin-btn" onclick="saveSettings()">SAVE WEBSITE SETTINGS</button>
 </div></div>
-<div class="admin-card"><h3>Admin Account</h3><p class="admin-note">Change your admin email or password through Supabase Authentication → Users. The website does not store or manage passwords locally.</p></div>
+
+<div class="admin-card">
+<h3>Change Admin Password</h3>
+<p class="admin-note">Enter a new password and confirm it. Your password will be updated securely through Supabase Authentication.</p>
+<div class="admin-form">
+<input id="newAdminPassword" type="password" placeholder="New Password (minimum 6 characters)" autocomplete="new-password">
+<input id="confirmAdminPassword" type="password" placeholder="Confirm New Password" autocomplete="new-password">
+<button class="admin-btn" onclick="changeAdminPassword()">UPDATE ADMIN PASSWORD</button>
+</div>
+</div>
 </div>
 
 <div class="admin-page" id="page-backup">
@@ -375,20 +407,37 @@ const sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY,{
 
 const KEY="shree_boutique_master_v1";
 
+/* All Categories is a filter option, not a database category. */
 const DEFAULT_CATEGORIES=[
-"Blouse","Saree","Saree Fall & Pico","Lehenga","Salwar Suit","Kurti",
-"Gown","Party Wear Dress","Wedding Dress","Anarkali","Nighty","Petticoat",
-"Skirt","Top","Palazzo","Ladies Fashion","Blouse Cutting","Lehenga Cutting",
-"Gown Stitching","Custom Design","Other"
+"Bridal Blouse",
+"Designer Blouse",
+"Party Wear Blouse",
+"Cotton Blouse",
+"Saree Fall & Pico",
+"Saree Stitching",
+"Lehenga",
+"Bridal Lehenga",
+"Designer Lehenga",
+"Anarkali Gown",
+"Party Wear Gown",
+"Designer Gown",
+"Kurti",
+"Salwar Suit",
+"Palazzo Suit",
+"Blouse Cutting",
+"Lehenga Cutting",
+"Dress Stitching",
+"Alteration",
+"Custom Design"
 ];
 
 const DEFAULT_PRODUCTS=[
-{id:"1",code:"BL-001",name:"Classic Bridal Blouse",price:650,category:"Blouse",image:"https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=700&q=80",tag:"BESTSELLER",description:"Classic bridal blouse design."},
-{id:"2",code:"BL-002",name:"Designer Party Blouse",price:450,category:"Blouse",image:"https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=700&q=80",tag:"",description:"Designer party blouse."},
+{id:"1",code:"BL-001",name:"Classic Bridal Blouse",price:650,category:"Bridal Blouse",image:"https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=700&q=80",tag:"BESTSELLER",description:"Classic bridal blouse design."},
+{id:"2",code:"BL-002",name:"Designer Party Blouse",price:450,category:"Party Wear Blouse",image:"https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=700&q=80",tag:"",description:"Designer party blouse."},
 {id:"3",code:"SF-001",name:"Saree Fall & Pico",price:150,category:"Saree Fall & Pico",image:"https://images.unsplash.com/photo-1583391733956-6c78276477e3?auto=format&fit=crop&w=700&q=80",tag:"POPULAR",description:"Professional fall and pico."},
 {id:"4",code:"LH-001",name:"Royal Lehenga",price:1200,category:"Lehenga",image:"https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=700&q=80",tag:"",description:"Royal lehenga design."},
-{id:"5",code:"GW-001",name:"Anarkali Designer Gown",price:850,category:"Gown",image:"https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=700&q=80",tag:"",description:"Anarkali designer gown."},
-{id:"6",code:"GW-002",name:"Party Wear Gown",price:1000,category:"Gown",image:"https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=700&q=80",tag:"",description:"Party wear gown."},
+{id:"5",code:"GW-001",name:"Anarkali Designer Gown",price:850,category:"Anarkali Gown",image:"https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=700&q=80",tag:"",description:"Anarkali designer gown."},
+{id:"6",code:"GW-002",name:"Party Wear Gown",price:1000,category:"Party Wear Gown",image:"https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=700&q=80",tag:"",description:"Party wear gown."},
 {id:"7",code:"BC-001",name:"Blouse Cutting",price:200,category:"Blouse Cutting",image:"https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=700&q=80",tag:"",description:"Blouse cutting service."},
 {id:"8",code:"LC-001",name:"Lehenga Cutting",price:500,category:"Lehenga Cutting",image:"https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=700&q=80",tag:"",description:"Lehenga cutting service."}
 ];
@@ -474,22 +523,18 @@ async function loadAdminData(){
 
 /* =========================================
    INITIAL CLOUD SEEDING
-   Adds the demo catalogue only if cloud tables
-   are empty. Existing cloud data is preserved.
+   Adds required categories without deleting
+   any existing categories or products.
 ========================================= */
 async function seedDefaultsIfEmpty(){
- const {count:catCount,error:catErr}=await sb.from("categories").select("*",{count:"exact",head:true});
- if(catErr)throw catErr;
+ const categoryRows=DEFAULT_CATEGORIES.map((name,i)=>({
+  name,slug:slugify(name),is_active:true,sort_order:i+1
+ }));
+ const {error:categorySeedError}=await sb.from("categories").upsert(categoryRows,{onConflict:"name"});
+ if(categorySeedError)throw categorySeedError;
+
  const {count:prodCount,error:prodErr}=await sb.from("products").select("*",{count:"exact",head:true});
  if(prodErr)throw prodErr;
-
- if((catCount||0)===0){
-  const categoryRows=DEFAULT_CATEGORIES.map((name,i)=>({
-   name,slug:slugify(name),is_active:true,sort_order:i+1
-  }));
-  const {error}=await sb.from("categories").upsert(categoryRows,{onConflict:"name"});
-  if(error)throw error;
- }
 
  const {data:cats,error:readErr}=await sb.from("categories").select("id,name");
  if(readErr)throw readErr;
@@ -645,6 +690,81 @@ function showLogin(){
  document.getElementById("adminLogin").style.display="block";
  document.getElementById("adminLayout").style.display="none";
 }
+
+async function createAdminAccount(){
+ const email=document.getElementById("signupEmail").value.trim();
+ const password=document.getElementById("signupPassword").value;
+ const confirmPassword=document.getElementById("signupConfirm").value;
+ const setupCode=document.getElementById("signupSetupCode").value;
+
+ if(!email||!password||!confirmPassword||!setupCode){
+  alert("Please fill in all Admin Setup fields.");return;
+ }
+ if(password.length<6){
+  alert("Password must contain at least 6 characters.");return;
+ }
+ if(password!==confirmPassword){
+  alert("Passwords do not match.");return;
+ }
+
+ const button=document.querySelector(".auth-section button");
+ button.disabled=true;button.textContent="CREATING ACCOUNT...";
+ try{
+  const {data,error}=await sb.auth.signUp({
+   email,password,
+   options:{emailRedirectTo:window.location.href.split("#")[0]}
+  });
+  if(error)throw error;
+
+  if(data.session&&data.user){
+   const {data:activated,error:activationError}=await sb.rpc(
+    "setup_admin_account",{p_setup_code:setupCode}
+   );
+   if(activationError)throw activationError;
+   if(activated!==true)throw new Error("Admin activation was not confirmed.");
+   document.getElementById("signupPassword").value="";
+   document.getElementById("signupConfirm").value="";
+   document.getElementById("signupSetupCode").value="";
+   await enterAdmin(data.user);
+   showToast("Your Admin account is ready.");
+  }else{
+   document.getElementById("activateSetupCode").value=setupCode;
+   alert("Account created. Supabase requires email verification. Verify your email, then log in with your new email and password. After login, use ACTIVATE ADMIN ACCESS with your setup code.");
+   document.getElementById("adminEmail").value=email;
+   document.getElementById("adminPassword").value="";
+  }
+ }catch(err){
+  console.error("Admin signup error:",err);
+  alert("Admin account creation failed: "+(err.message||"Please check your details and setup code."));
+ }finally{
+  button.disabled=false;button.textContent="CREATE MY ADMIN ACCOUNT";
+ }
+}
+
+async function activateAdminAccount(){
+ try{
+  const {data:{user},error:userError}=await sb.auth.getUser();
+  if(userError||!user)throw new Error("Please log in first, then activate Admin access.");
+  const setupCode=document.getElementById("activateSetupCode").value.trim();
+  if(!setupCode)return alert("Enter your one-time setup code.");
+
+  const button=document.querySelectorAll(".auth-section button")[1];
+  button.disabled=true;button.textContent="ACTIVATING...";
+  const {data,error}=await sb.rpc("setup_admin_account",{p_setup_code:setupCode});
+  if(error)throw error;
+  if(data!==true)throw new Error("Admin activation could not be confirmed.");
+  document.getElementById("activateSetupCode").value="";
+  await enterAdmin(user);
+  showToast("Admin access activated successfully.");
+ }catch(err){
+  console.error(err);
+  alert("Admin activation failed: "+(err.message||"Please check your setup code."));
+ }finally{
+  const button=document.querySelectorAll(".auth-section button")[1];
+  if(button){button.disabled=false;button.textContent="ACTIVATE ADMIN ACCESS"}
+ }
+}
+
 async function loginAdmin(){
  const email=document.getElementById("adminEmail").value.trim();
  const password=document.getElementById("adminPassword").value;
@@ -664,12 +784,13 @@ async function loginAdmin(){
   button.disabled=false;button.textContent="LOGIN TO DASHBOARD";
  }
 }
+
 async function enterAdmin(user){
  const {data:profile,error}=await sb.from("profiles").select("role").eq("id",user.id).maybeSingle();
  if(error)throw error;
  if(!profile||profile.role!=="admin"){
   await sb.auth.signOut();
-  throw new Error("This account does not have admin permission. Check the profiles table.");
+  throw new Error("This account does not have admin permission. If this is your first account, log in and use Activate Admin Access.");
  }
  adminSession=true;
  document.getElementById("adminLogin").style.display="none";
@@ -865,7 +986,7 @@ async function deleteOrder(id){
 }
 
 /* =========================================
-   WEBSITE SETTINGS
+   WEBSITE SETTINGS + PASSWORD CHANGE
 ========================================= */
 function loadSettings(){
  const s=db.settings||{};
@@ -888,6 +1009,32 @@ async function saveSettings(){
   db.settings={name:settings.boutique_name,phone:settings.phone,address:settings.address,description:settings.description};
   applySettings();showToast("Website settings saved online.");
  }catch(err){console.error(err);alert("Settings could not be saved: "+err.message)}
+}
+
+async function changeAdminPassword(){
+ try{
+  requireAdmin();
+  const password=document.getElementById("newAdminPassword").value;
+  const confirmPassword=document.getElementById("confirmAdminPassword").value;
+  if(!password||!confirmPassword)return alert("Enter and confirm your new password.");
+  if(password.length<6)return alert("Password must contain at least 6 characters.");
+  if(password!==confirmPassword)return alert("Passwords do not match.");
+
+  const button=document.querySelector("#page-settings .admin-card:nth-child(2) button");
+  button.disabled=true;button.textContent="UPDATING PASSWORD...";
+  const {error}=await sb.auth.updateUser({password});
+  if(error)throw error;
+  document.getElementById("newAdminPassword").value="";
+  document.getElementById("confirmAdminPassword").value="";
+  showToast("Admin password updated successfully.");
+  alert("Your Admin password has been changed successfully.");
+ }catch(err){
+  console.error(err);
+  alert("Password change failed: "+(err.message||"Please try again."));
+ }finally{
+  const button=document.querySelector("#page-settings .admin-card:nth-child(2) button");
+  if(button){button.disabled=false;button.textContent="UPDATE ADMIN PASSWORD"}
+ }
 }
 function applySettings(){
  const s=db.settings||{};
@@ -975,6 +1122,7 @@ initialize();
 </script>
 </body>
 </html>
+
 
 
 
