@@ -21,593 +21,291 @@
 
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{
-  background:var(--dark);
-  color:white;
-  font-family:Arial,Helvetica,sans-serif;
-}
+body{background:var(--dark);color:white;font-family:Arial,Helvetica,sans-serif}
 a{text-decoration:none;color:inherit}
 button{cursor:pointer;font-family:inherit}
 
 .topbar{
-  background:#030c1c;
-  color:var(--gold);
-  text-align:center;
-  padding:10px;
-  font-size:11px;
-  letter-spacing:2px;
+  background:#030c1c;color:var(--gold);text-align:center;
+  padding:10px;font-size:11px;letter-spacing:2px;
 }
 
 header{
-  background:#091a35;
-  border-bottom:1px solid #25436a;
-  position:sticky;
-  top:0;
-  z-index:100;
+  background:#091a35;border-bottom:1px solid #25436a;
+  position:sticky;top:0;z-index:100;
 }
 
 .nav{
-  max-width:1250px;
-  margin:auto;
-  padding:17px 22px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+  max-width:1250px;margin:auto;padding:17px 22px;
+  display:flex;justify-content:space-between;align-items:center;
 }
 
 .logo{
-  font-family:Georgia,serif;
-  font-size:25px;
-  font-weight:bold;
-  letter-spacing:3px;
-  color:white;
+  font-family:Georgia,serif;font-size:25px;font-weight:bold;
+  letter-spacing:3px;color:white;
 }
-
 .logo span{color:var(--gold)}
 .logo small{
-  display:block;
-  text-align:center;
-  font-size:9px;
-  letter-spacing:4px;
-  color:var(--gold);
-  margin-top:5px;
+  display:block;text-align:center;font-size:9px;
+  letter-spacing:4px;color:var(--gold);margin-top:5px;
 }
 
-.navlinks{
-  display:flex;
-  gap:25px;
-  align-items:center;
-}
-
+.navlinks{display:flex;gap:25px;align-items:center}
 .navlinks a{
-  font-size:11px;
-  letter-spacing:1px;
-  color:#d9e5f7;
-  text-transform:uppercase;
+  font-size:11px;letter-spacing:1px;color:#d9e5f7;text-transform:uppercase;
 }
-
 .navlinks a:hover{color:var(--gold)}
 
 .menu-btn{
-  display:none;
-  background:none;
-  border:0;
-  color:white;
-  font-size:25px;
+  display:none;background:none;border:0;color:white;font-size:25px;
 }
 
 .hero{
-  min-height:570px;
-  display:grid;
-  grid-template-columns:1fr 1fr;
+  min-height:570px;display:grid;grid-template-columns:1fr 1fr;
   background:linear-gradient(120deg,#07152e,#10386d);
 }
-
 .hero-content{
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  padding:65px 9%;
+  display:flex;flex-direction:column;justify-content:center;padding:65px 9%;
 }
-
 .eyebrow{
-  color:var(--gold);
-  font-size:11px;
-  letter-spacing:4px;
-  text-transform:uppercase;
+  color:var(--gold);font-size:11px;letter-spacing:4px;text-transform:uppercase;
 }
-
 .hero h1{
-  font-family:Georgia,serif;
-  font-size:clamp(43px,5.5vw,76px);
-  line-height:1.1;
-  margin:25px 0;
+  font-family:Georgia,serif;font-size:clamp(43px,5.5vw,76px);
+  line-height:1.1;margin:25px 0;
 }
-
-.hero h1 span{
-  color:var(--gold);
-  font-style:italic;
-}
-
+.hero h1 span{color:var(--gold);font-style:italic}
 .hero p{
-  color:#bdcce1;
-  font-size:14px;
-  line-height:1.9;
-  max-width:450px;
+  color:#bdcce1;font-size:14px;line-height:1.9;max-width:450px;
 }
-
-.buttons{
-  display:flex;
-  gap:13px;
-  flex-wrap:wrap;
-  margin-top:30px;
-}
-
+.buttons{display:flex;gap:13px;flex-wrap:wrap;margin-top:30px}
 .btn{
-  border:1px solid var(--gold);
-  background:var(--gold);
-  color:#07152e;
-  padding:15px 23px;
-  font-size:11px;
-  font-weight:bold;
-  letter-spacing:1px;
-  text-transform:uppercase;
-  display:inline-block;
-  transition:.3s;
+  border:1px solid var(--gold);background:var(--gold);color:#07152e;
+  padding:15px 23px;font-size:11px;font-weight:bold;
+  letter-spacing:1px;text-transform:uppercase;display:inline-block;transition:.3s;
 }
-
-.btn:hover{
-  background:transparent;
-  color:var(--gold);
-}
-
-.btn-outline{
-  background:transparent;
-  color:white;
-  border-color:#829dc3;
-}
-
-.btn-outline:hover{
-  background:var(--blue);
-  color:white;
-}
+.btn:hover{background:transparent;color:var(--gold)}
+.btn-outline{background:transparent;color:white;border-color:#829dc3}
+.btn-outline:hover{background:var(--blue);color:white}
 
 .hero-image{
   min-height:570px;
-  background:
-  linear-gradient(#07152e22,#07152e55),
-  url("https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1400&q=85")
-  center/cover;
+  background:linear-gradient(#07152e22,#07152e55),
+  url("https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1400&q=85") center/cover;
 }
 
 .features{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  background:#0c2244;
-  border-top:1px solid #29466c;
-  border-bottom:1px solid #29466c;
-  padding:25px 15px;
+  display:grid;grid-template-columns:repeat(4,1fr);background:#0c2244;
+  border-top:1px solid #29466c;border-bottom:1px solid #29466c;padding:25px 15px;
 }
-
-.feature{
-  text-align:center;
-  color:#dce7f6;
-  font-size:11px;
-  letter-spacing:1px;
-}
-
+.feature{text-align:center;color:#dce7f6;font-size:11px;letter-spacing:1px}
 .feature strong{
-  display:block;
-  font-family:Georgia,serif;
-  color:var(--gold);
-  font-size:23px;
-  margin-bottom:7px;
+  display:block;font-family:Georgia,serif;color:var(--gold);
+  font-size:23px;margin-bottom:7px;
 }
 
-.section{
-  max-width:1250px;
-  margin:auto;
-  padding:85px 22px;
-}
-
-.section-title{
-  text-align:center;
-  margin-bottom:45px;
-}
-
-.section-title small{
-  color:var(--gold);
-  letter-spacing:4px;
-  font-size:10px;
-}
-
+.section{max-width:1250px;margin:auto;padding:85px 22px}
+.section-title{text-align:center;margin-bottom:45px}
+.section-title small{color:var(--gold);letter-spacing:4px;font-size:10px}
 .section-title h2{
-  font-family:Georgia,serif;
-  font-size:clamp(30px,4vw,46px);
-  font-weight:normal;
-  margin:15px 0;
+  font-family:Georgia,serif;font-size:clamp(30px,4vw,46px);
+  font-weight:normal;margin:15px 0;
 }
+.section-title p{color:var(--muted);font-size:13px;line-height:1.8}
 
-.section-title p{
-  color:var(--muted);
-  font-size:13px;
-  line-height:1.8;
-}
-
-.categories{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:18px;
-}
-
-.category{
-  position:relative;
-  height:330px;
-  overflow:hidden;
-  border:1px solid #28466f;
-}
-
-.category img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  transition:.5s;
-}
-
+.categories{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.category{position:relative;height:330px;overflow:hidden;border:1px solid #28466f}
+.category img{width:100%;height:100%;object-fit:cover;transition:.5s}
 .category:hover img{transform:scale(1.08)}
-
 .category:after{
-  content:"";
-  position:absolute;
-  inset:30% 0 0;
+  content:"";position:absolute;inset:30% 0 0;
   background:linear-gradient(transparent,#06142e);
 }
-
-.category-info{
-  position:absolute;
-  bottom:20px;
-  left:18px;
-  z-index:2;
-}
-
-.category-info h3{
-  font-family:Georgia,serif;
-  font-size:23px;
-  font-weight:normal;
-}
-
+.category-info{position:absolute;bottom:20px;left:18px;z-index:2}
+.category-info h3{font-family:Georgia,serif;font-size:23px;font-weight:normal}
 .category-info small{
-  display:block;
-  color:var(--gold);
-  font-size:9px;
-  letter-spacing:2px;
-  margin-top:8px;
+  display:block;color:var(--gold);font-size:9px;
+  letter-spacing:2px;margin-top:8px;
 }
 
-.products{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:20px;
+/* NEW CATEGORY MENU AND SEARCH */
+.catalog-tools{
+  background:#0c2040;border:1px solid #29466c;
+  padding:22px;margin-bottom:28px;
+}
+.catalog-tools h3{
+  font-family:Georgia,serif;font-size:22px;font-weight:normal;
+  color:var(--gold);margin-bottom:15px;
+}
+.search-row{
+  display:grid;grid-template-columns:1fr auto;gap:10px;
+}
+.search-box{position:relative}
+.search-box input{
+  width:100%;height:48px;background:#07152e;
+  border:1px solid #345275;color:white;padding:0 15px;
+  font-size:13px;outline:none;
+}
+.search-box input:focus{border-color:var(--gold)}
+.category-toggle{
+  height:48px;padding:0 20px;background:var(--gold);
+  color:#07152e;border:1px solid var(--gold);
+  font-size:11px;font-weight:bold;letter-spacing:1px;
+}
+.category-toggle:hover{background:var(--royal);color:white;border-color:var(--royal)}
+
+.category-panel{
+  display:none;margin-top:18px;padding-top:18px;
+  border-top:1px solid #29466c;
+}
+.category-panel.open{display:block}
+.category-list{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:9px;
+}
+.category-option{
+  background:#102b50;color:#dce7f6;border:1px solid #345275;
+  padding:12px 10px;text-align:left;font-size:11px;
+  transition:.2s;
+}
+.category-option:hover,.category-option.active{
+  background:var(--gold);color:#07152e;border-color:var(--gold);
+}
+.category-option.active{font-weight:bold}
+.catalog-status{
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:10px;margin-top:17px;
+  color:var(--muted);font-size:11px;
+}
+.clear-filter{
+  border:0;background:transparent;color:var(--gold);
+  text-decoration:underline;font-size:11px;
+}
+.no-results{
+  display:none;text-align:center;padding:45px 15px;
+  border:1px dashed #526b8d;color:var(--muted);
+  grid-column:1/-1;
+}
+.no-results strong{
+  display:block;font-family:Georgia,serif;
+  color:var(--gold);font-size:24px;margin-bottom:10px;
 }
 
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
 .product{
-  background:#0c2040;
-  border:1px solid #263f64;
-  transition:.3s;
-  overflow:hidden;
+  background:#0c2040;border:1px solid #263f64;
+  transition:.3s;overflow:hidden;
 }
-
-.product:hover{
-  border-color:var(--gold);
-  transform:translateY(-5px);
-}
-
-.product-image{
-  height:300px;
-  position:relative;
-  overflow:hidden;
-}
-
-.product-image img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  transition:.5s;
-}
-
-.product:hover .product-image img{
-  transform:scale(1.06);
-}
-
+.product:hover{border-color:var(--gold);transform:translateY(-5px)}
+.product-image{height:300px;position:relative;overflow:hidden}
+.product-image img{width:100%;height:100%;object-fit:cover;transition:.5s}
+.product:hover .product-image img{transform:scale(1.06)}
 .tag{
-  position:absolute;
-  top:12px;
-  left:12px;
-  background:var(--gold);
-  color:#07152e;
-  padding:7px 11px;
-  font-size:9px;
-  font-weight:bold;
-  letter-spacing:1px;
+  position:absolute;top:12px;left:12px;background:var(--gold);
+  color:#07152e;padding:7px 11px;font-size:9px;font-weight:bold;letter-spacing:1px;
 }
-
 .product-info{padding:17px}
-
-.product-code{
-  color:var(--gold);
-  font-size:10px;
-  letter-spacing:2px;
-}
-
+.product-code{color:var(--gold);font-size:10px;letter-spacing:2px}
 .product-info h3{
-  font-family:Georgia,serif;
-  font-size:18px;
-  font-weight:normal;
-  margin:10px 0;
+  font-family:Georgia,serif;font-size:18px;font-weight:normal;margin:10px 0;
 }
-
-.price{
-  color:#d7e5fa;
-  font-size:13px;
-}
-
-.price strong{
-  color:var(--gold);
-  font-size:19px;
-}
-
-.product-buttons{
-  display:flex;
-  gap:8px;
-  margin-top:17px;
-}
-
+.price{color:#d7e5fa;font-size:13px}
+.price strong{color:var(--gold);font-size:19px}
+.product-buttons{display:flex;gap:8px;margin-top:17px}
 .product-buttons button{
-  flex:1;
-  padding:11px 5px;
-  font-size:9px;
-  letter-spacing:1px;
-  text-transform:uppercase;
-  background:var(--gold);
-  color:#07152e;
-  border:1px solid var(--gold);
-  font-weight:bold;
+  flex:1;padding:11px 5px;font-size:9px;letter-spacing:1px;
+  text-transform:uppercase;background:var(--gold);color:#07152e;
+  border:1px solid var(--gold);font-weight:bold;
 }
-
-.product-buttons button:last-child{
-  background:transparent;
-  color:var(--gold);
-}
-
+.product-buttons button:last-child{background:transparent;color:var(--gold)}
 .product-buttons button:hover{
-  background:var(--royal);
-  color:white;
-  border-color:var(--royal);
+  background:var(--royal);color:white;border-color:var(--royal);
 }
 
 .custom-banner{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  background:#0c2346;
-  border-top:1px solid #29466c;
-  border-bottom:1px solid #29466c;
+  display:grid;grid-template-columns:1fr 1fr;background:#0c2346;
+  border-top:1px solid #29466c;border-bottom:1px solid #29466c;
 }
-
 .banner-image{
   min-height:370px;
   background:url("https://images.unsplash.com/photo-1583391733956-6c78276477e3?auto=format&fit=crop&w=1100&q=85") center/cover;
 }
-
 .banner-content{
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  padding:50px 10%;
+  display:flex;flex-direction:column;justify-content:center;padding:50px 10%;
 }
-
 .banner-content h2{
-  font-family:Georgia,serif;
-  font-size:42px;
-  font-weight:normal;
-  margin:20px 0;
+  font-family:Georgia,serif;font-size:42px;font-weight:normal;margin:20px 0;
 }
-
 .banner-content p{
-  color:var(--muted);
-  line-height:1.9;
-  font-size:13px;
-  margin-bottom:25px;
+  color:var(--muted);line-height:1.9;font-size:13px;margin-bottom:25px;
 }
 
-.services{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px;
-}
-
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .service{
-  padding:35px 22px;
-  background:#0d2140;
-  border:1px solid #29466c;
-  text-align:center;
+  padding:35px 22px;background:#0d2140;border:1px solid #29466c;text-align:center;
 }
-
-.service .number{
-  color:var(--gold);
-  font-size:12px;
-  letter-spacing:3px;
-}
-
+.service .number{color:var(--gold);font-size:12px;letter-spacing:3px}
 .service h3{
-  font-family:Georgia,serif;
-  font-size:22px;
-  font-weight:normal;
-  margin:17px 0;
+  font-family:Georgia,serif;font-size:22px;font-weight:normal;margin:17px 0;
 }
-
-.service p{
-  color:var(--muted);
-  font-size:12px;
-  line-height:1.9;
-}
+.service p{color:var(--muted);font-size:12px;line-height:1.9}
 
 .booking{
-  background:#0c2040;
-  border-top:1px solid #29466c;
-  padding:75px 20px;
+  background:#0c2040;border-top:1px solid #29466c;padding:75px 20px;
 }
-
-.booking-inner{
-  max-width:800px;
-  margin:auto;
-  text-align:center;
-}
-
+.booking-inner{max-width:800px;margin:auto;text-align:center}
 .booking h2{
-  font-family:Georgia,serif;
-  font-size:40px;
-  font-weight:normal;
-  margin:15px 0;
+  font-family:Georgia,serif;font-size:40px;font-weight:normal;margin:15px 0;
 }
-
-.booking p{
-  color:var(--muted);
-  font-size:13px;
-  line-height:1.8;
-}
-
+.booking p{color:var(--muted);font-size:13px;line-height:1.8}
 form{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:13px;
-  margin-top:30px;
+  display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-top:30px;
 }
-
 input,select,textarea{
-  background:#07152e;
-  border:1px solid #345275;
-  color:white;
-  padding:15px;
-  width:100%;
-  outline:none;
-  font-size:12px;
+  background:#07152e;border:1px solid #345275;color:white;
+  padding:15px;width:100%;outline:none;font-size:12px;
 }
-
-input:focus,select:focus,textarea:focus{
-  border-color:var(--gold);
-}
-
+input:focus,select:focus,textarea:focus{border-color:var(--gold)}
 select option{background:#07152e}
-textarea{
-  grid-column:1/-1;
-  min-height:100px;
-  resize:vertical;
-}
-
-form button{
-  grid-column:1/-1;
-  justify-self:center;
-  min-width:220px;
-}
+textarea{grid-column:1/-1;min-height:100px;resize:vertical}
+form button{grid-column:1/-1;justify-self:center;min-width:220px}
 
 footer{
-  background:#030b19;
-  padding:55px 22px 22px;
-  border-top:1px solid #29466c;
+  background:#030b19;padding:55px 22px 22px;border-top:1px solid #29466c;
 }
-
 .footer-inner{
-  max-width:1200px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:2fr 1fr 1fr;
-  gap:35px;
+  max-width:1200px;margin:auto;display:grid;
+  grid-template-columns:2fr 1fr 1fr;gap:35px;
 }
-
-footer h4{
-  color:var(--gold);
-  letter-spacing:2px;
-  font-size:11px;
-  margin-bottom:18px;
-}
-
-footer p,footer a{
-  color:#9fb1cb;
-  font-size:12px;
-  line-height:2;
-}
-
+footer h4{color:var(--gold);letter-spacing:2px;font-size:11px;margin-bottom:18px}
+footer p,footer a{color:#9fb1cb;font-size:12px;line-height:2}
 footer a{display:block}
-
 .copyright{
-  max-width:1200px;
-  margin:35px auto 0;
-  border-top:1px solid #263c5a;
-  padding-top:20px;
-  text-align:center;
-  color:#7185a2;
-  font-size:10px;
-  letter-spacing:1px;
+  max-width:1200px;margin:35px auto 0;border-top:1px solid #263c5a;
+  padding-top:20px;text-align:center;color:#7185a2;font-size:10px;letter-spacing:1px;
 }
 
 .modal{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:#000b;
-  z-index:500;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
+  display:none;position:fixed;inset:0;background:#000b;z-index:500;
+  align-items:center;justify-content:center;padding:20px;
 }
-
 .modal.active{display:flex}
-
 .modal-content{
-  background:#0c2040;
-  border:1px solid var(--gold);
-  padding:30px;
-  width:100%;
-  max-width:430px;
-  position:relative;
+  background:#0c2040;border:1px solid var(--gold);padding:30px;
+  width:100%;max-width:430px;position:relative;
 }
-
-.modal-content h2{
-  font-family:Georgia,serif;
-  font-weight:normal;
-  margin:15px 0;
-}
-
-.modal-content p{
-  color:var(--muted);
-  font-size:13px;
-  line-height:1.8;
-}
-
+.modal-content h2{font-family:Georgia,serif;font-weight:normal;margin:15px 0}
+.modal-content p{color:var(--muted);font-size:13px;line-height:1.8}
 .close{
-  position:absolute;
-  right:15px;
-  top:10px;
-  background:none;
-  border:0;
-  color:white;
-  font-size:25px;
+  position:absolute;right:15px;top:10px;background:none;
+  border:0;color:white;font-size:25px;
 }
-
 .modal-content .btn{margin-top:20px;width:100%}
 
 @media(max-width:900px){
   .navlinks{
-    display:none;
-    position:absolute;
-    top:70px;
-    left:0;
-    right:0;
-    background:#091a35;
-    padding:25px;
-    flex-direction:column;
+    display:none;position:absolute;top:70px;left:0;right:0;
+    background:#091a35;padding:25px;flex-direction:column;
   }
-
   .navlinks.show{display:flex}
   .menu-btn{display:block}
   .hero{grid-template-columns:1fr}
@@ -615,6 +313,7 @@ footer a{display:block}
   .categories,.products{grid-template-columns:repeat(2,1fr)}
   .custom-banner{grid-template-columns:1fr}
   .banner-image{min-height:300px}
+  .category-list{grid-template-columns:repeat(3,1fr)}
 }
 
 @media(max-width:550px){
@@ -638,6 +337,10 @@ footer a{display:block}
   form{grid-template-columns:1fr}
   textarea,form button{grid-column:1}
   .footer-inner{grid-template-columns:1fr}
+  .search-row{grid-template-columns:1fr}
+  .category-toggle{width:100%}
+  .category-list{grid-template-columns:repeat(2,1fr)}
+  .catalog-tools{padding:15px}
 }
 </style>
 </head>
@@ -650,7 +353,6 @@ footer a{display:block}
 
 <header>
 <nav class="nav">
-
 <button class="menu-btn" onclick="toggleMenu()">☰</button>
 
 <a href="#" class="logo">
@@ -665,50 +367,35 @@ SHREE <span>BOUTIQUE</span>
 <a href="#services">Services</a>
 <a href="#booking">Order Now</a>
 </div>
-
 </nav>
 </header>
 
 <main>
 
 <section class="hero" id="home">
-
 <div class="hero-content">
-
 <div class="eyebrow">Luxury Fashion · Custom Tailoring</div>
-
-<h1>
-Your Style.<br>
-Your <span>Elegance.</span>
-</h1>
-
+<h1>Your Style.<br>Your <span>Elegance.</span></h1>
 <p>
 Discover beautiful designer blouse, saree, lehenga and gown collections.
 We bring your dream fashion designs to life with beautiful finishing and custom stitching.
 </p>
-
 <div class="buttons">
 <a class="btn" href="#designs">Explore Collection ↗</a>
 <a class="btn btn-outline" href="#booking">Book Your Design</a>
 </div>
-
 </div>
-
 <div class="hero-image"></div>
-
 </section>
 
 <section class="features">
-
 <div class="feature"><strong>✦</strong>Premium Designs</div>
 <div class="feature"><strong>♧</strong>Custom Stitching</div>
 <div class="feature"><strong>♡</strong>Perfect Fitting</div>
 <div class="feature"><strong>✧</strong>Elegant Finishing</div>
-
 </section>
 
 <section class="section" id="collections">
-
 <div class="section-title">
 <small>DISCOVER SHREE BOUTIQUE</small>
 <h2>Explore Our Collections</h2>
@@ -716,39 +403,25 @@ We bring your dream fashion designs to life with beautiful finishing and custom 
 </div>
 
 <div class="categories">
-
-<a class="category" href="#designs">
+<a class="category" href="#designs" onclick="selectCategory('Blouse')">
 <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=700&q=80" alt="Blouse">
-<div class="category-info">
-<h3>Blouse Designs</h3>
-<small>EXPLORE COLLECTION ↗</small>
-</div>
+<div class="category-info"><h3>Blouse Designs</h3><small>EXPLORE COLLECTION ↗</small></div>
 </a>
 
-<a class="category" href="#services">
+<a class="category" href="#designs" onclick="selectCategory('Saree Fall & Pico')">
 <img src="https://images.unsplash.com/photo-1583391733956-6c78276477e3?auto=format&fit=crop&w=700&q=80" alt="Saree">
-<div class="category-info">
-<h3>Saree Fall & Pico</h3>
-<small>OUR SERVICES ↗</small>
-</div>
+<div class="category-info"><h3>Saree Fall & Pico</h3><small>OUR SERVICES ↗</small></div>
 </a>
 
-<a class="category" href="#designs">
+<a class="category" href="#designs" onclick="selectCategory('Lehenga')">
 <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=700&q=80" alt="Lehenga">
-<div class="category-info">
-<h3>Lehenga</h3>
-<small>EXPLORE COLLECTION ↗</small>
-</div>
+<div class="category-info"><h3>Lehenga</h3><small>EXPLORE COLLECTION ↗</small></div>
 </a>
 
-<a class="category" href="#designs">
+<a class="category" href="#designs" onclick="selectCategory('Gown')">
 <img src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=700&q=80" alt="Gown">
-<div class="category-info">
-<h3>Designer Gown</h3>
-<small>EXPLORE COLLECTION ↗</small>
-</div>
+<div class="category-info"><h3>Designer Gown</h3><small>EXPLORE COLLECTION ↗</small></div>
 </a>
-
 </div>
 </section>
 
@@ -760,10 +433,66 @@ We bring your dream fashion designs to life with beautiful finishing and custom 
 <p>Choose your favourite design and book your order.</p>
 </div>
 
-<div class="products">
+<!-- NEW SEARCH AND CATEGORY MENU -->
+<div class="catalog-tools">
+
+<h3>Find Your Favourite Design</h3>
+
+<div class="search-row">
+<div class="search-box">
+<input
+type="search"
+id="designSearch"
+placeholder="Search blouse, saree, lehenga, gown, design number..."
+oninput="filterProducts()"
+aria-label="Search designs">
+</div>
+
+<button class="category-toggle" type="button" onclick="toggleCategories()">
+☰ ALL CATEGORIES
+</button>
+</div>
+
+<div class="category-panel" id="categoryPanel">
+<div class="category-list" id="categoryList">
+
+<button class="category-option active" onclick="selectCategory('All')">✦ All Categories</button>
+<button class="category-option" onclick="selectCategory('Blouse')">Blouse</button>
+<button class="category-option" onclick="selectCategory('Saree')">Saree</button>
+<button class="category-option" onclick="selectCategory('Saree Fall & Pico')">Saree Fall & Pico</button>
+<button class="category-option" onclick="selectCategory('Lehenga')">Lehenga</button>
+<button class="category-option" onclick="selectCategory('Salwar Suit')">Salwar Suit</button>
+<button class="category-option" onclick="selectCategory('Kurti')">Kurti</button>
+<button class="category-option" onclick="selectCategory('Gown')">Gown</button>
+<button class="category-option" onclick="selectCategory('Party Wear Dress')">Party Wear Dress</button>
+<button class="category-option" onclick="selectCategory('Wedding Dress')">Wedding Dress</button>
+<button class="category-option" onclick="selectCategory('Anarkali')">Anarkali</button>
+<button class="category-option" onclick="selectCategory('Nighty')">Nighty</button>
+<button class="category-option" onclick="selectCategory('Petticoat')">Petticoat</button>
+<button class="category-option" onclick="selectCategory('Skirt')">Skirt</button>
+<button class="category-option" onclick="selectCategory('Top')">Top</button>
+<button class="category-option" onclick="selectCategory('Palazzo')">Palazzo</button>
+<button class="category-option" onclick="selectCategory('Ladies Fashion')">Ladies Fashion</button>
+<button class="category-option" onclick="selectCategory('Blouse Cutting')">Blouse Cutting</button>
+<button class="category-option" onclick="selectCategory('Lehenga Cutting')">Lehenga Cutting</button>
+<button class="category-option" onclick="selectCategory('Gown Stitching')">Gown Stitching</button>
+<button class="category-option" onclick="selectCategory('Custom Design')">Custom Design</button>
+<button class="category-option" onclick="selectCategory('Other')">Other</button>
+
+</div>
+</div>
+
+<div class="catalog-status">
+<span id="resultCount">Showing all designs</span>
+<button class="clear-filter" type="button" onclick="resetFilters()">Clear Search & Filter ×</button>
+</div>
+
+</div>
+
+<div class="products" id="productGrid">
 
 <!-- PRODUCT 1 -->
-<div class="product">
+<div class="product" data-category="Blouse Wedding Dress Ladies Fashion">
 <div class="product-image">
 <span class="tag">BESTSELLER</span>
 <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=700&q=80" alt="Blouse Design">
@@ -780,7 +509,7 @@ We bring your dream fashion designs to life with beautiful finishing and custom 
 </div>
 
 <!-- PRODUCT 2 -->
-<div class="product">
+<div class="product" data-category="Blouse Party Wear Dress Ladies Fashion">
 <div class="product-image">
 <img src="https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=700&q=80" alt="Designer Blouse">
 </div>
@@ -796,7 +525,7 @@ We bring your dream fashion designs to life with beautiful finishing and custom 
 </div>
 
 <!-- PRODUCT 3 -->
-<div class="product">
+<div class="product" data-category="Saree Saree Fall & Pico">
 <div class="product-image">
 <span class="tag">POPULAR</span>
 <img src="https://images.unsplash.com/photo-1583391733956-6c78276477e3?auto=format&fit=crop&w=700&q=80" alt="Saree">
@@ -813,7 +542,7 @@ We bring your dream fashion designs to life with beautiful finishing and custom 
 </div>
 
 <!-- PRODUCT 4 -->
-<div class="product">
+<div class="product" data-category="Lehenga Wedding Dress Ladies Fashion">
 <div class="product-image">
 <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=700&q=80" alt="Lehenga">
 </div>
@@ -829,7 +558,7 @@ We bring your dream fashion designs to life with beautiful finishing and custom 
 </div>
 
 <!-- PRODUCT 5 -->
-<div class="product">
+<div class="product" data-category="Gown Anarkali Wedding Dress Ladies Fashion">
 <div class="product-image">
 <img src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=700&q=80" alt="Gown">
 </div>
@@ -845,7 +574,7 @@ We bring your dream fashion designs to life with beautiful finishing and custom 
 </div>
 
 <!-- PRODUCT 6 -->
-<div class="product">
+<div class="product" data-category="Gown Party Wear Dress Ladies Fashion">
 <div class="product-image">
 <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=700&q=80" alt="Party Gown">
 </div>
@@ -861,7 +590,7 @@ We bring your dream fashion designs to life with beautiful finishing and custom 
 </div>
 
 <!-- PRODUCT 7 -->
-<div class="product">
+<div class="product" data-category="Blouse Blouse Cutting">
 <div class="product-image">
 <img src="https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=700&q=80" alt="Blouse Cutting">
 </div>
@@ -877,7 +606,7 @@ We bring your dream fashion designs to life with beautiful finishing and custom 
 </div>
 
 <!-- PRODUCT 8 -->
-<div class="product">
+<div class="product" data-category="Lehenga Lehenga Cutting">
 <div class="product-image">
 <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=700&q=80" alt="Lehenga Cutting">
 </div>
@@ -892,6 +621,11 @@ We bring your dream fashion designs to life with beautiful finishing and custom 
 </div>
 </div>
 
+<div class="no-results" id="noResults">
+<strong>No Designs Found</strong>
+Try another design name or choose a different category.
+</div>
+
 </div>
 
 <p style="text-align:center;color:#9fb1cb;font-size:11px;margin-top:25px">
@@ -901,9 +635,7 @@ We bring your dream fashion designs to life with beautiful finishing and custom 
 </section>
 
 <section class="custom-banner">
-
 <div class="banner-image"></div>
-
 <div class="banner-content">
 <div class="eyebrow">YOUR DREAM · OUR CRAFT</div>
 <h2>Create Your Own<br><span style="color:#d8b66a">Signature Style</span></h2>
@@ -911,15 +643,11 @@ We bring your dream fashion designs to life with beautiful finishing and custom 
 Have a special design in mind?
 Share your favourite reference image and get your own custom blouse, lehenga or gown stitched.
 </p>
-<a href="#booking" class="btn" style="align-self:flex-start">
-CUSTOM ORDER ↗
-</a>
+<a href="#booking" class="btn" style="align-self:flex-start">CUSTOM ORDER ↗</a>
 </div>
-
 </section>
 
 <section class="section" id="services">
-
 <div class="section-title">
 <small>WHAT WE OFFER</small>
 <h2>Our Boutique Services</h2>
@@ -927,7 +655,6 @@ CUSTOM ORDER ↗
 </div>
 
 <div class="services">
-
 <div class="service">
 <div class="number">01 / BLOUSE</div>
 <h3>Blouse Cutting & Stitching</h3>
@@ -945,27 +672,17 @@ CUSTOM ORDER ↗
 <h3>Lehenga & Gown</h3>
 <p>Custom lehenga, gown cutting, stitching and occasion wear.</p>
 </div>
-
 </div>
-
 </section>
 
 <section class="booking" id="booking">
-
 <div class="booking-inner">
-
 <div class="eyebrow">LET'S MAKE SOMETHING BEAUTIFUL</div>
-
 <h2>Book Your Order</h2>
-
-<p>
-Select your service and send your order enquiry to SHREE BOUTIQUE.
-</p>
+<p>Select your service and send your order enquiry to SHREE BOUTIQUE.</p>
 
 <form id="orderForm">
-
 <input type="text" id="customerName" placeholder="Your Full Name" required>
-
 <input type="tel" id="customerPhone" placeholder="Mobile Number" required>
 
 <select id="customerService" required>
@@ -979,26 +696,20 @@ Select your service and send your order enquiry to SHREE BOUTIQUE.
 </select>
 
 <input type="text" id="designNumber" placeholder="Design Number">
-
 <textarea id="customerMessage" placeholder="Measurements, fabric details or special requirements"></textarea>
-
 <button type="submit" class="btn">Submit Order Request ↗</button>
-
 </form>
 
 <p style="font-size:10px;margin-top:15px">
 Demo form: connect your real WhatsApp number or backend before publishing.
 </p>
-
 </div>
 </section>
 
 </main>
 
 <footer>
-
 <div class="footer-inner">
-
 <div>
 <div class="logo">SHREE <span>BOUTIQUE</span></div>
 <p style="margin-top:20px">
@@ -1021,44 +732,32 @@ Making every occasion more beautiful with elegant designs and perfect finishing.
 <p>Phone: Add your number</p>
 <p>Address: Add your shop address</p>
 </div>
-
 </div>
 
 <div class="copyright">
 © 2026 SHREE BOUTIQUE. ALL RIGHTS RESERVED.
 </div>
-
 </footer>
 
 <!-- DESIGN DETAILS POPUP -->
 <div class="modal" id="detailModal">
-
 <div class="modal-content">
-
 <button class="close" onclick="closeModal()">×</button>
-
 <div class="eyebrow">SHREE BOUTIQUE</div>
-
 <h2 id="modalName"></h2>
-
 <p id="modalCode"></p>
-
 <p id="modalPrice" style="color:#d8b66a;font-size:19px;margin-top:15px"></p>
-
 <p style="margin-top:15px">
 Custom measurements and additional work may change the final price.
 Contact us to confirm your order.
 </p>
-
 <button class="btn" onclick="modalOrder()">ORDER THIS DESIGN</button>
-
 </div>
-
 </div>
 
 <script>
-
 let currentDesign = {};
+let selectedCategory = "All";
 
 function toggleMenu(){
   document.getElementById("navlinks").classList.toggle("show");
@@ -1070,8 +769,77 @@ document.querySelectorAll(".navlinks a").forEach(link=>{
   });
 });
 
-function order(code,name,price){
+/* CATEGORY DROPDOWN */
+function toggleCategories(){
+  document.getElementById("categoryPanel").classList.toggle("open");
+}
 
+/* CATEGORY SELECTION */
+function selectCategory(category){
+  selectedCategory = category;
+
+  document.querySelectorAll(".category-option").forEach(button=>{
+    button.classList.toggle(
+      "active",
+      button.textContent.trim().toLowerCase() === category.toLowerCase() ||
+      (category === "All" && button.textContent.includes("All Categories"))
+    );
+  });
+
+  filterProducts();
+
+  document.getElementById("categoryPanel").classList.remove("open");
+}
+
+/* SEARCH + CATEGORY FILTER */
+function filterProducts(){
+  const search = document.getElementById("designSearch").value
+    .trim().toLowerCase();
+
+  const products = document.querySelectorAll(".product");
+  let visibleCount = 0;
+
+  products.forEach(product=>{
+    const category = (product.dataset.category || "").toLowerCase();
+    const text = product.innerText.toLowerCase();
+
+    const categoryMatch =
+      selectedCategory === "All" ||
+      category.includes(selectedCategory.toLowerCase());
+
+    const searchMatch =
+      search === "" || text.includes(search) || category.includes(search);
+
+    const show = categoryMatch && searchMatch;
+
+    product.style.display = show ? "" : "none";
+
+    if(show) visibleCount++;
+  });
+
+  document.getElementById("noResults").style.display =
+    visibleCount === 0 ? "block" : "none";
+
+  document.getElementById("resultCount").textContent =
+    "Showing " + visibleCount + " of " + products.length + " designs";
+}
+
+/* CLEAR FILTERS */
+function resetFilters(){
+  selectedCategory = "All";
+  document.getElementById("designSearch").value = "";
+
+  document.querySelectorAll(".category-option").forEach(button=>{
+    button.classList.remove("active");
+  });
+
+  document.querySelector(".category-option").classList.add("active");
+
+  filterProducts();
+}
+
+/* ORDER FUNCTION */
+function order(code,name,price){
   currentDesign={code,name,price};
 
   document.getElementById("designNumber").value=code;
@@ -1097,8 +865,8 @@ function order(code,name,price){
   });
 }
 
+/* DESIGN DETAILS */
 function details(name,code,price){
-
   currentDesign={name,code,price};
 
   document.getElementById("modalName").textContent=name;
@@ -1113,7 +881,6 @@ function closeModal(){
 }
 
 function modalOrder(){
-
   closeModal();
 
   order(
@@ -1123,8 +890,13 @@ function modalOrder(){
   );
 }
 
-document.getElementById("orderForm").addEventListener("submit",function(e){
+/* CLOSE POPUP WHEN BACKGROUND IS CLICKED */
+document.getElementById("detailModal").addEventListener("click",function(e){
+  if(e.target === this) closeModal();
+});
 
+/* ORDER FORM */
+document.getElementById("orderForm").addEventListener("submit",function(e){
   e.preventDefault();
 
   const name=document.getElementById("customerName").value.trim();
@@ -1147,17 +919,19 @@ Service: ${service}
 Design Number: ${design}
 Requirements: ${message}`;
 
-  // Demo: opens the device email application.
+  /* DEMO: OPENS DEVICE EMAIL APPLICATION */
   const mailUrl=
     "mailto:?subject="+encodeURIComponent("SHREE BOUTIQUE Order")+
     "&body="+encodeURIComponent(orderText);
 
   window.location.href=mailUrl;
-
 });
 
+/* INITIAL PRODUCT COUNT */
+filterProducts();
 </script>
 
 </body>
 </html>
+
 
