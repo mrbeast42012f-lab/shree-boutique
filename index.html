@@ -112,8 +112,6 @@ footer a{display:block}
 .modal-content p{color:var(--muted);font-size:13px;line-height:1.8}
 .close{position:absolute;right:12px;top:8px;background:none;border:0;color:white;font-size:27px}
 .modal-content .btn{margin-top:18px;width:100%}
-
-/* ADMIN */
 .admin-modal{z-index:1000}
 .admin-window{background:#091a35;border:1px solid var(--gold);width:100%;max-width:1150px;height:94vh;overflow:auto;position:relative;padding:22px;box-shadow:0 25px 90px #000b}
 .admin-head{display:flex;justify-content:space-between;align-items:center;gap:15px;border-bottom:1px solid #345275;padding-bottom:15px;margin-bottom:20px}
@@ -184,6 +182,7 @@ form{grid-template-columns:1fr}textarea,form button{grid-column:1}
 .admin-login{padding:20px;margin:20px auto}
 }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 <div class="topbar">✦ PREMIUM BOUTIQUE COLLECTION · CUSTOM STITCHING ✦</div>
@@ -253,7 +252,7 @@ form{grid-template-columns:1fr}textarea,form button{grid-column:1}
 <textarea id="customerMessage" placeholder="Measurements, fabric details or special requirements"></textarea>
 <button type="submit" class="btn">Submit Order Request ↗</button>
 </form>
-<p style="font-size:10px;margin-top:15px">Order enquiries are saved in this browser. Connect a backend for online multi-device order management.</p>
+<p style="font-size:10px;margin-top:15px">Your order enquiry is securely saved online.</p>
 </div>
 </section>
 </main>
@@ -276,28 +275,22 @@ form{grid-template-columns:1fr}textarea,form button{grid-column:1}
 
 <div class="modal admin-modal" id="adminModal">
 <div class="admin-window">
-<div class="admin-head"><div><h2>SHREE BOUTIQUE · ADMIN</h2><div class="admin-brand">BOUTIQUE MANAGEMENT CONSOLE</div></div><button class="admin-close" onclick="closeAdmin()">×</button></div>
+<div class="admin-head"><div><h2>SHREE BOUTIQUE · ADMIN</h2><div class="admin-brand">BOUTIQUE MANAGEMENT CONSOLE · CLOUD CONNECTED</div></div><button class="admin-close" onclick="closeAdmin()">×</button></div>
 
 <div class="admin-login" id="adminLogin">
 <div class="login-mark">✦</div>
-<h2 id="authTitle">Create Admin Account</h2>
-<p id="authDescription" style="color:var(--muted);font-size:12px;line-height:1.8;margin-bottom:18px">First-time setup: create your own admin username and password. Keep them private.</p>
-<div id="setupFields">
-<input id="newAdminUsername" placeholder="Create Username" autocomplete="username">
-<input id="newAdminPassword" type="password" placeholder="Create Password (minimum 8 characters)" autocomplete="new-password">
-<input id="confirmAdminPassword" type="password" placeholder="Confirm Password" autocomplete="new-password">
-<button class="admin-btn" onclick="createAdminAccount()">CREATE ADMIN ACCOUNT</button>
-</div>
-<div id="loginFields" style="display:none">
-<input id="adminUsername" placeholder="Username" autocomplete="username">
+<h2>Admin Login</h2>
+<p style="color:var(--muted);font-size:12px;line-height:1.8;margin-bottom:18px">Sign in using the email and password registered in Supabase Authentication.</p>
+<div id="loginFields">
+<input id="adminEmail" type="email" placeholder="Admin Email Address" autocomplete="username">
 <input id="adminPassword" type="password" placeholder="Password" autocomplete="current-password">
 <button class="admin-btn" onclick="loginAdmin()">LOGIN TO DASHBOARD</button>
 </div>
-<p class="password-hint" id="authHint">Your credentials are saved in this browser. This is a local-only website login, not a secure server account.</p>
+<p class="password-hint">Admin accounts are managed through Supabase Authentication. No password is stored in this website.</p>
 </div>
 
 <div class="admin-layout" id="adminLayout">
-<div class="admin-welcome"><div><span class="status-pill">● ADMIN SESSION ACTIVE</span><p class="admin-note">Manage your products, customer enquiries and website settings.</p></div><button class="admin-btn secondary" onclick="logoutAdmin()">LOG OUT</button></div>
+<div class="admin-welcome"><div><span class="status-pill">● CLOUD ADMIN SESSION ACTIVE</span><p class="admin-note" id="adminIdentity">Manage your products, customer enquiries and website settings.</p></div><button class="admin-btn secondary" onclick="logoutAdmin()">LOG OUT</button></div>
 <div class="admin-tabs">
 <button class="admin-tab active" onclick="showAdminPage('dashboard',this)">Dashboard</button>
 <button class="admin-tab" onclick="showAdminPage('products',this)">Products</button>
@@ -313,7 +306,7 @@ form{grid-template-columns:1fr}textarea,form button{grid-column:1}
 <div class="stat"><small>Total Orders</small><strong id="statOrders">0</strong></div>
 <div class="stat"><small>Pending Orders</small><strong id="statPending">0</strong></div>
 </div>
-<div class="admin-card"><h3>Welcome to SHREE BOUTIQUE</h3><p class="admin-note">Your boutique control centre. Use the tabs above to manage your online catalogue and customer enquiries. Remember to download regular backups.</p></div>
+<div class="admin-card"><h3>Welcome to SHREE BOUTIQUE</h3><p class="admin-note">Your boutique control centre. Changes are saved to your Supabase cloud database.</p></div>
 <div class="admin-card"><h3>Recent Enquiries</h3><div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Date</th><th>Customer</th><th>Phone</th><th>Service</th><th>Status</th></tr></thead><tbody id="recentOrderRows"></tbody></table></div></div>
 </div>
 
@@ -332,18 +325,18 @@ form{grid-template-columns:1fr}textarea,form button{grid-column:1}
 <button class="admin-btn" type="submit" id="saveProductBtn">SAVE PRODUCT</button>
 <button class="admin-btn secondary" type="button" onclick="clearProductForm()">CLEAR FORM</button>
 </form>
-<p class="admin-note">Image URL must be publicly accessible. You can use an image hosting link. Product data is saved in this browser.</p>
+<p class="admin-note">Image URL must be publicly accessible. Product data is saved online in Supabase.</p>
 </div>
 <div class="admin-card"><h3>All Products</h3><input id="adminProductSearch" placeholder="Search products by name, code or category..." oninput="renderAdminProducts()" style="margin-bottom:14px"><div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Image</th><th>Code</th><th>Name</th><th>Category</th><th>Price</th><th>Actions</th></tr></thead><tbody id="adminProductRows"></tbody></table></div></div>
 </div>
 
 <div class="admin-page" id="page-categories">
 <div class="admin-card"><h3>Add Category</h3><div class="admin-form"><input id="newCategory" placeholder="New category name"><button class="admin-btn" onclick="addCategory()">ADD CATEGORY</button></div></div>
-<div class="admin-card"><h3>Manage Categories</h3><div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Category</th><th>Products</th><th>Action</th></tr></thead><tbody id="adminCategoryRows"></tbody></table></div><p class="admin-note">Deleting a category does not delete its products. Products assigned to a deleted category remain in your catalogue until reassigned.</p></div>
+<div class="admin-card"><h3>Manage Categories</h3><div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Category</th><th>Products</th><th>Action</th></tr></thead><tbody id="adminCategoryRows"></tbody></table></div><p class="admin-note">Deleting a category does not delete its products. Products assigned to a deleted category remain in the database.</p></div>
 </div>
 
 <div class="admin-page" id="page-orders">
-<div class="admin-card"><h3>Customer Orders & Enquiries</h3><input id="adminOrderSearch" placeholder="Search customer, phone, design..." oninput="renderAdminOrders()" style="margin-bottom:14px"><div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Date</th><th>Customer</th><th>Phone</th><th>Service</th><th>Design</th><th>Status</th><th>Actions</th></tr></thead><tbody id="adminOrderRows"></tbody></table></div><p class="admin-note">Order enquiries are stored locally in this browser only.</p></div>
+<div class="admin-card"><h3>Customer Orders & Enquiries</h3><input id="adminOrderSearch" placeholder="Search customer, phone, design..." oninput="renderAdminOrders()" style="margin-bottom:14px"><div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Date</th><th>Customer</th><th>Phone</th><th>Service</th><th>Design</th><th>Status</th><th>Actions</th></tr></thead><tbody id="adminOrderRows"></tbody></table></div><p class="admin-note">All customer enquiries are stored in Supabase.</p></div>
 </div>
 
 <div class="admin-page" id="page-settings">
@@ -354,18 +347,12 @@ form{grid-template-columns:1fr}textarea,form button{grid-column:1}
 <textarea id="settingDescription" placeholder="Boutique description"></textarea>
 <button class="admin-btn" onclick="saveSettings()">SAVE WEBSITE SETTINGS</button>
 </div></div>
-<div class="admin-card"><h3>Change Admin Username / Password</h3>
-<input id="oldAdminPassword" type="password" placeholder="Current password" style="margin-bottom:10px">
-<input id="changeAdminUsername" placeholder="New username" style="margin-bottom:10px">
-<input id="changeAdminPassword" type="password" placeholder="New password (minimum 8 characters)" style="margin-bottom:10px">
-<input id="changeAdminPassword2" type="password" placeholder="Confirm new password">
-<button class="admin-btn" style="margin-top:12px" onclick="changeAdminCredentials()">UPDATE LOGIN DETAILS</button>
-<p class="admin-note">Changing your credentials updates the local browser account. Remember your new login details.</p></div>
+<div class="admin-card"><h3>Admin Account</h3><p class="admin-note">Change your admin email or password through Supabase Authentication → Users. The website does not store or manage passwords locally.</p></div>
 </div>
 
 <div class="admin-page" id="page-backup">
-<div class="admin-card"><h3>Backup & Restore</h3><p class="admin-note">Download a JSON backup of your products, categories, orders and settings. Store it safely and restore it whenever needed.</p><div class="admin-actions"><button class="admin-btn" onclick="exportBackup()">DOWNLOAD BACKUP</button><label class="admin-btn secondary" for="backupFile">IMPORT BACKUP</label><input id="backupFile" type="file" accept=".json,application/json" style="display:none" onchange="importBackup(event)"></div></div>
-<div class="admin-card"><h3>Data & Security Information</h3><p class="admin-note">This website currently uses browser local storage. Clearing browser data or switching devices may remove access to local data. Download backups regularly. For real secure authentication, online order collection and multi-device management, a backend server and database are required.</p></div>
+<div class="admin-card"><h3>Cloud Backup & Restore</h3><p class="admin-note">Download a JSON backup of products, categories, orders and settings. Restore a backup to upload its data to Supabase.</p><div class="admin-actions"><button class="admin-btn" onclick="exportBackup()">DOWNLOAD CLOUD BACKUP</button><label class="admin-btn secondary" for="backupFile">IMPORT BACKUP</label><input id="backupFile" type="file" accept=".json,application/json" style="display:none" onchange="importBackup(event)"></div></div>
+<div class="admin-card"><h3>Data & Security</h3><p class="admin-note">Supabase Authentication protects admin access. Row Level Security controls database access. Never place your Supabase Secret or service_role key in this HTML file.</p></div>
 </div>
 </div>
 </div>
@@ -373,8 +360,20 @@ form{grid-template-columns:1fr}textarea,form button{grid-column:1}
 <div class="toast" id="toast"></div>
 
 <script>
+/* =========================================
+   SHREE BOUTIQUE - SUPABASE CONFIGURATION
+========================================= */
+const SUPABASE_URL="https://ygoclazgenvkhyilbodw.supabase.co";
+const SUPABASE_ANON_KEY="sb_publishable_As7r5mH-8dmkDUV0pPNN1g_UPK7jRzQ";
+
+if(!window.supabase) {
+ alert("Supabase library could not load. Please check your internet connection.");
+}
+const sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY,{
+ auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}
+});
+
 const KEY="shree_boutique_master_v1";
-const AUTH_KEY="shree_boutique_admin_auth_v1";
 
 const DEFAULT_CATEGORIES=[
 "Blouse","Saree","Saree Fall & Pico","Lehenga","Salwar Suit","Kurti",
@@ -394,37 +393,135 @@ const DEFAULT_PRODUCTS=[
 {id:"8",code:"LC-001",name:"Lehenga Cutting",price:500,category:"Lehenga Cutting",image:"https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=700&q=80",tag:"",description:"Lehenga cutting service."}
 ];
 
-let db=loadDB();
+let db={products:[],categories:[],orders:[],settings:{}};
 let selectedCategory="All";
 let currentDesign={};
+let adminSession=false;
+let cloudReady=false;
+let categoryMap={};
 
-function loadDB(){
- try{
-  const saved=JSON.parse(localStorage.getItem(KEY));
-  if(saved&&Array.isArray(saved.products))return{
-   products:saved.products,
-   categories:Array.isArray(saved.categories)?saved.categories:[...DEFAULT_CATEGORIES],
-   orders:Array.isArray(saved.orders)?saved.orders:[],
-   settings:saved.settings||{}
-  };
- }catch(e){}
- return{products:DEFAULT_PRODUCTS.map(p=>({...p})),categories:[...DEFAULT_CATEGORIES],orders:[],settings:{}};
-}
-function saveDB(){
- try{localStorage.setItem(KEY,JSON.stringify(db));return true}
- catch(e){alert("Storage is full or unavailable. Please export a backup.");return false}
-}
 function escapeHTML(v){
  return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 }
 function showToast(msg){
  const t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");
- clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>t.classList.remove("show"),2600);
+ clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>t.classList.remove("show"),2800);
 }
 function toggleMenu(){document.getElementById("navlinks").classList.toggle("show")}
 document.querySelectorAll(".navlinks a").forEach(a=>a.addEventListener("click",()=>document.getElementById("navlinks").classList.remove("show")));
 function toggleCategories(){document.getElementById("categoryPanel").classList.toggle("open")}
 
+/* =========================================
+   CLOUD DATA LOADING
+========================================= */
+function slugify(text){
+ return String(text).toLowerCase().trim().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")||"category";
+}
+
+async function loadPublicData(){
+ try{
+  const [catRes,prodRes,settingsRes]=await Promise.all([
+   sb.from("categories").select("id,name,slug,is_active,sort_order").eq("is_active",true).order("sort_order"),
+   sb.from("products").select("id,code,name,description,price,image_url,tag,category_id,is_active,featured").eq("is_active",true).order("created_at",{ascending:false}),
+   sb.from("settings").select("boutique_name,phone,address,description").eq("id",1).maybeSingle()
+  ]);
+  if(catRes.error)throw catRes.error;
+  if(prodRes.error)throw prodRes.error;
+  if(settingsRes.error)throw settingsRes.error;
+
+  db.categories=(catRes.data||[]).map(c=>c.name);
+  categoryMap={};
+  (catRes.data||[]).forEach(c=>categoryMap[c.name]=c.id);
+
+  db.products=(prodRes.data||[]).map(p=>({
+   id:p.id,code:p.code,name:p.name,description:p.description||"",
+   price:Number(p.price||0),image:p.image_url||"",tag:p.tag||"",
+   category:(catRes.data||[]).find(c=>c.id===p.category_id)?.name||"Other",
+   featured:!!p.featured
+  }));
+  db.settings=settingsRes.data?{
+   name:settingsRes.data.boutique_name||"SHREE BOUTIQUE",
+   phone:settingsRes.data.phone||"",
+   address:settingsRes.data.address||"",
+   description:settingsRes.data.description||""
+  }:{};
+  cloudReady=true;
+  renderCategoryButtons();renderProducts();applySettings();
+ }catch(err){
+  console.error("Public cloud load error:",err);
+  cloudReady=false;
+  showToast("Could not load online catalogue. Check Supabase setup.");
+ }
+}
+
+async function loadAdminOrders(){
+ const {data,error}=await sb.from("orders").select("*").order("created_at",{ascending:false});
+ if(error)throw error;
+ db.orders=(data||[]).map(o=>({
+  id:o.order_no,name:o.customer_name,phone:o.phone,
+  service:o.service_type,design:o.design_code||"",
+  message:o.notes||"",date:o.created_at?new Date(o.created_at).toLocaleString():"",
+  status:o.status==="Processing"?"In Progress":o.status,
+  product_id:o.product_id||null
+ }));
+}
+
+async function loadAdminData(){
+ await loadPublicData();
+ await loadAdminOrders();
+ refreshAdmin();
+}
+
+/* =========================================
+   INITIAL CLOUD SEEDING
+   Adds the demo catalogue only if cloud tables
+   are empty. Existing cloud data is preserved.
+========================================= */
+async function seedDefaultsIfEmpty(){
+ const {count:catCount,error:catErr}=await sb.from("categories").select("*",{count:"exact",head:true});
+ if(catErr)throw catErr;
+ const {count:prodCount,error:prodErr}=await sb.from("products").select("*",{count:"exact",head:true});
+ if(prodErr)throw prodErr;
+
+ if((catCount||0)===0){
+  const categoryRows=DEFAULT_CATEGORIES.map((name,i)=>({
+   name,slug:slugify(name),is_active:true,sort_order:i+1
+  }));
+  const {error}=await sb.from("categories").upsert(categoryRows,{onConflict:"name"});
+  if(error)throw error;
+ }
+
+ const {data:cats,error:readErr}=await sb.from("categories").select("id,name");
+ if(readErr)throw readErr;
+ categoryMap={};
+ (cats||[]).forEach(c=>categoryMap[c.name]=c.id);
+
+ if((prodCount||0)===0){
+  const productRows=DEFAULT_PRODUCTS.map(p=>({
+   code:p.code,name:p.name,description:p.description,
+   price:p.price,image_url:p.image,tag:p.tag,
+   category_id:categoryMap[p.category]||null,
+   is_active:true,featured:!!p.tag
+  }));
+  const {error}=await sb.from("products").upsert(productRows,{onConflict:"code"});
+  if(error)throw error;
+ }
+
+ const {data:setting,error:settingErr}=await sb.from("settings").select("id").eq("id",1).maybeSingle();
+ if(settingErr)throw settingErr;
+ if(!setting){
+  const {error}=await sb.from("settings").upsert({
+   id:1,boutique_name:"SHREE BOUTIQUE",
+   phone:"",address:"",
+   description:"Premium boutique designs and custom tailoring."
+  });
+  if(error)throw error;
+ }
+}
+
+/* =========================================
+   CATALOGUE RENDERING
+========================================= */
 function renderCategoryButtons(){
  const list=document.getElementById("categoryList");list.innerHTML="";
  ["All",...db.categories].forEach(cat=>{
@@ -463,7 +560,7 @@ function renderProducts(){
  document.getElementById("resultCount").textContent=`Showing ${count} of ${db.products.length} designs`;
 }
 function details(id){
- const p=db.products.find(x=>x.id===id);if(!p)return;currentDesign=p;
+ const p=db.products.find(x=>String(x.id)===String(id));if(!p)return;currentDesign=p;
  document.getElementById("modalName").textContent=p.name;
  document.getElementById("modalCode").textContent="DESIGN NUMBER: "+p.code;
  document.getElementById("modalPrice").textContent="Starting Price: ₹"+Number(p.price).toLocaleString("en-IN");
@@ -473,7 +570,7 @@ function details(id){
 function closeModal(){document.getElementById("detailModal").classList.remove("active")}
 function modalOrder(){closeModal();order(currentDesign.id)}
 function order(id){
- const p=db.products.find(x=>x.id===id);if(!p)return;currentDesign=p;
+ const p=db.products.find(x=>String(x.id)===String(id));if(!p)return;currentDesign=p;
  document.getElementById("designNumber").value=p.code;
  const n=(p.name+" "+p.category).toLowerCase();let service="Custom Design";
  if(n.includes("saree"))service="Saree Fall & Pico";
@@ -485,87 +582,127 @@ function order(id){
  document.getElementById("booking").scrollIntoView({behavior:"smooth"});
 }
 
-document.getElementById("orderForm").addEventListener("submit",e=>{
+/* =========================================
+   PUBLIC ORDER SUBMISSION
+========================================= */
+document.getElementById("orderForm").addEventListener("submit",async e=>{
  e.preventDefault();
+ const button=e.target.querySelector('button[type="submit"]');
  const name=document.getElementById("customerName").value.trim();
  const phone=document.getElementById("customerPhone").value.trim();
  if(!/^[0-9]{10}$/.test(phone)){alert("Please enter a valid 10-digit mobile number.");return}
- const orderData={
-  id:"ORD-"+Date.now(),date:new Date().toLocaleString(),
-  name,phone,service:document.getElementById("customerService").value,
-  design:document.getElementById("designNumber").value,
-  message:document.getElementById("customerMessage").value,status:"Pending"
+ const design=document.getElementById("designNumber").value.trim();
+ const product=db.products.find(p=>p.code.toLowerCase()===design.toLowerCase());
+ const payload={
+  customer_name:name,
+  phone:phone,
+  address:"",
+  product_id:product?.id||null,
+  product_name:product?.name||"",
+  quantity:1,
+  service_type:document.getElementById("customerService").value,
+  design_code:design,
+  notes:document.getElementById("customerMessage").value.trim(),
+  status:"Pending"
  };
- db.orders.unshift(orderData);
- if(!saveDB())return;
- alert("Your enquiry has been saved. Thank you!");
- e.target.reset();
+ button.disabled=true;button.textContent="SENDING...";
+ try{
+  const {error}=await sb.from("orders").insert(payload);
+  if(error)throw error;
+  alert("Your order enquiry has been submitted successfully. Thank you!");
+  e.target.reset();
+  showToast("Order submitted successfully!");
+ }catch(err){
+  console.error(err);
+  alert("Order could not be submitted: "+(err.message||"Please try again."));
+ }finally{
+  button.disabled=false;button.textContent="Submit Order Request ↗";
+ }
 });
 
-/* FIRST-TIME ADMIN SETUP + LOGIN */
-function getAuth(){try{return JSON.parse(localStorage.getItem(AUTH_KEY))}catch(e){return null}}
-function setAuth(data){localStorage.setItem(AUTH_KEY,JSON.stringify(data))}
+/* =========================================
+   SUPABASE ADMIN AUTHENTICATION
+========================================= */
 function openAdmin(){
  document.getElementById("adminModal").classList.add("active");
- document.getElementById("adminLogin").style.display="block";
- document.getElementById("adminLayout").style.display="none";
- updateAuthScreen();
+ checkExistingSession();
 }
 function closeAdmin(){document.getElementById("adminModal").classList.remove("active")}
-function updateAuthScreen(){
- const auth=getAuth();const setup=!(auth&&auth.username&&auth.password);
- document.getElementById("setupFields").style.display=setup?"block":"none";
- document.getElementById("loginFields").style.display=setup?"none":"block";
- document.getElementById("authTitle").textContent=setup?"Create Your Admin Account":"Admin Login";
- document.getElementById("authDescription").textContent=setup?
- "First-time setup: choose your own username and password. You will use these details to access your dashboard.":
- "Welcome back. Enter your admin credentials to continue.";
- document.getElementById("authHint").textContent=setup?
- "Your login details are saved in this browser. Do not clear this browser's site data.":
- "Forgot your credentials? Your local account can only be reset by clearing this website's browser storage.";
+
+async function checkExistingSession(){
+ const {data:{session}}=await sb.auth.getSession();
+ if(session){
+  try{await enterAdmin(session.user)}
+  catch(err){
+   console.error(err);
+   await sb.auth.signOut();
+   showLogin();
+  }
+ }else showLogin();
 }
-function createAdminAccount(){
- const u=document.getElementById("newAdminUsername").value.trim();
- const p=document.getElementById("newAdminPassword").value;
- const c=document.getElementById("confirmAdminPassword").value;
- if(u.length<4)return alert("Username must contain at least 4 characters.");
- if(p.length<8)return alert("Password must contain at least 8 characters.");
- if(p!==c)return alert("Passwords do not match.");
- setAuth({username:u,password:p});
- document.getElementById("newAdminUsername").value="";
- document.getElementById("newAdminPassword").value="";
- document.getElementById("confirmAdminPassword").value="";
- updateAuthScreen();showToast("Admin account created. Please log in.");
+function showLogin(){
+ adminSession=false;
+ document.getElementById("adminLogin").style.display="block";
+ document.getElementById("adminLayout").style.display="none";
 }
-function loginAdmin(){
- const auth=getAuth();
- const u=document.getElementById("adminUsername").value.trim();
- const p=document.getElementById("adminPassword").value;
- if(!auth||u!==auth.username||p!==auth.password)return alert("Incorrect username or password.");
+async function loginAdmin(){
+ const email=document.getElementById("adminEmail").value.trim();
+ const password=document.getElementById("adminPassword").value;
+ if(!email||!password)return alert("Enter your admin email and password.");
+ const button=document.querySelector("#loginFields button");
+ button.disabled=true;button.textContent="SIGNING IN...";
+ try{
+  const {data,error}=await sb.auth.signInWithPassword({email,password});
+  if(error)throw error;
+  await enterAdmin(data.user);
+  document.getElementById("adminPassword").value="";
+ }catch(err){
+  console.error(err);
+  alert("Login failed: "+(err.message||"Check your email and password."));
+  await sb.auth.signOut();
+ }finally{
+  button.disabled=false;button.textContent="LOGIN TO DASHBOARD";
+ }
+}
+async function enterAdmin(user){
+ const {data:profile,error}=await sb.from("profiles").select("role").eq("id",user.id).maybeSingle();
+ if(error)throw error;
+ if(!profile||profile.role!=="admin"){
+  await sb.auth.signOut();
+  throw new Error("This account does not have admin permission. Check the profiles table.");
+ }
+ adminSession=true;
  document.getElementById("adminLogin").style.display="none";
  document.getElementById("adminLayout").style.display="block";
- document.getElementById("adminPassword").value="";
- refreshAdmin();
+ document.getElementById("adminIdentity").textContent="Signed in as "+user.email+". Cloud database connected.";
+ try{
+  await seedDefaultsIfEmpty();
+  await loadAdminData();
+  showToast("Cloud admin dashboard connected.");
+ }catch(err){
+  console.error("Admin data loading error:",err);
+  alert("Admin login succeeded, but cloud data could not load: "+err.message);
+ }
 }
-function logoutAdmin(){
- document.getElementById("adminLayout").style.display="none";
- document.getElementById("adminLogin").style.display="block";
+async function logoutAdmin(){
+ await sb.auth.signOut();
+ adminSession=false;
+ showLogin();
  document.getElementById("adminPassword").value="";
- updateAuthScreen();
+ showToast("Logged out.");
 }
-function changeAdminCredentials(){
- const auth=getAuth();
- const old=document.getElementById("oldAdminPassword").value;
- const u=document.getElementById("changeAdminUsername").value.trim();
- const p=document.getElementById("changeAdminPassword").value;
- const p2=document.getElementById("changeAdminPassword2").value;
- if(!auth||old!==auth.password)return alert("Current password is incorrect.");
- if(u.length<4)return alert("New username must contain at least 4 characters.");
- if(p.length<8)return alert("New password must contain at least 8 characters.");
- if(p!==p2)return alert("New passwords do not match.");
- setAuth({username:u,password:p});
- ["oldAdminPassword","changeAdminUsername","changeAdminPassword","changeAdminPassword2"].forEach(id=>document.getElementById(id).value="");
- showToast("Admin login details updated.");
+sb.auth.onAuthStateChange((event,session)=>{
+ if(event==="SIGNED_OUT"){
+  adminSession=false;
+  showLogin();
+ }
+});
+
+/* =========================================
+   ADMIN DASHBOARD
+========================================= */
+function requireAdmin(){
+ if(!adminSession)throw new Error("Please login as admin first.");
 }
 function showAdminPage(name,btn){
  document.querySelectorAll(".admin-page").forEach(p=>p.classList.remove("active"));
@@ -583,36 +720,46 @@ function refreshAdmin(){
  document.getElementById("statPending").textContent=db.orders.filter(o=>o.status==="Pending").length;
  renderProductCategorySelect();renderAdminProducts();renderAdminCategories();renderAdminOrders();renderRecentOrders();loadSettings();
 }
+
+/* =========================================
+   CATEGORY MANAGEMENT
+========================================= */
 function renderProductCategorySelect(){
  document.getElementById("pCategory").innerHTML='<option value="">Select Category</option>'+db.categories.map(c=>`<option value="${escapeHTML(c)}">${escapeHTML(c)}</option>`).join("");
 }
-function clearProductForm(){
- document.getElementById("adminProductForm").reset();
- document.getElementById("editProductId").value="";
- document.getElementById("productFormTitle").textContent="Add New Product";
- document.getElementById("saveProductBtn").textContent="SAVE PRODUCT";
+async function addCategory(){
+ try{
+  requireAdmin();
+  const input=document.getElementById("newCategory");const name=input.value.trim();
+  if(!name)return alert("Enter a category name.");
+  if(db.categories.some(c=>c.toLowerCase()===name.toLowerCase()))return alert("Category already exists.");
+  const {error}=await sb.from("categories").insert({
+   name,slug:slugify(name),is_active:true,sort_order:db.categories.length+1
+  });
+  if(error)throw error;
+  input.value="";
+  await loadPublicData();refreshAdmin();
+  showToast("Category added to cloud.");
+ }catch(err){console.error(err);alert("Could not add category: "+err.message)}
 }
-document.getElementById("adminProductForm").addEventListener("submit",e=>{
- e.preventDefault();
- const id=document.getElementById("editProductId").value;
- const product={
-  id:id||String(Date.now()),
-  code:document.getElementById("pCode").value.trim(),
-  name:document.getElementById("pName").value.trim(),
-  price:Number(document.getElementById("pPrice").value),
-  category:document.getElementById("pCategory").value,
-  image:document.getElementById("pImage").value.trim(),
-  tag:document.getElementById("pTag").value.trim(),
-  description:document.getElementById("pDescription").value.trim()
- };
- if(!product.code||!product.name||!product.category||!product.image||!Number.isFinite(product.price)||product.price<0)return alert("Please complete all required product fields.");
- if(!/^https?:\/\//i.test(product.image))return alert("Please enter a valid image URL starting with http:// or https://");
- const duplicate=db.products.find(p=>p.code.toLowerCase()===product.code.toLowerCase()&&p.id!==id);
- if(duplicate)return alert("This design number already exists.");
- if(id){const i=db.products.findIndex(p=>p.id===id);if(i>=0)db.products[i]=product}
- else db.products.unshift(product);
- saveDB();clearProductForm();refreshAdmin();renderProducts();showToast("Product saved successfully.");
-});
+function renderAdminCategories(){
+ document.getElementById("adminCategoryRows").innerHTML=db.categories.map(c=>`
+ <tr><td>${escapeHTML(c)}</td><td>${db.products.filter(p=>p.category===c).length}</td><td><button class="admin-btn danger" onclick="deleteCategory('${escapeHTML(c)}')">DELETE</button></td></tr>`).join("")||'<tr><td colspan="3">No categories.</td></tr>';
+}
+async function deleteCategory(name){
+ try{
+  requireAdmin();
+  if(db.products.some(p=>p.category===name)){
+   if(!confirm("Products currently use this category. Delete category anyway? The products will remain but may show under Other."))return;
+  }else if(!confirm("Remove this category?"))return;
+  const id=categoryMap[name];if(!id)throw new Error("Category ID not found.");
+  const {error:updateError}=await sb.from("products").update({category_id:null}).eq("category_id",id);
+  if(updateError)throw updateError;
+  const {error}=await sb.from("categories").delete().eq("id",id);
+  if(error)throw error;
+  await loadPublicData();refreshAdmin();showToast("Category deleted.");
+ }catch(err){console.error(err);alert("Could not delete category: "+err.message)}
+}
 function renderAdminProducts(){
  const q=(document.getElementById("adminProductSearch")?.value||"").toLowerCase();
  const rows=db.products.filter(p=>[p.code,p.name,p.category].join(" ").toLowerCase().includes(q));
@@ -620,8 +767,14 @@ function renderAdminProducts(){
  <tr><td><img class="admin-product-thumb" src="${escapeHTML(p.image)}" onerror="this.style.display='none'"></td><td>${escapeHTML(p.code)}</td><td>${escapeHTML(p.name)}</td><td>${escapeHTML(p.category)}</td><td>₹${Number(p.price).toLocaleString("en-IN")}</td>
  <td><button class="admin-btn secondary" onclick="editProduct('${escapeHTML(p.id)}')">EDIT</button><button class="admin-btn danger" onclick="deleteProduct('${escapeHTML(p.id)}')">DELETE</button></td></tr>`).join("")||'<tr><td colspan="6">No products found.</td></tr>';
 }
+function clearProductForm(){
+ document.getElementById("adminProductForm").reset();
+ document.getElementById("editProductId").value="";
+ document.getElementById("productFormTitle").textContent="Add New Product";
+ document.getElementById("saveProductBtn").textContent="SAVE PRODUCT";
+}
 function editProduct(id){
- const p=db.products.find(x=>x.id===id);if(!p)return;
+ const p=db.products.find(x=>String(x.id)===String(id));if(!p)return;
  renderProductCategorySelect();
  document.getElementById("editProductId").value=p.id;
  document.getElementById("pCode").value=p.code;
@@ -635,26 +788,47 @@ function editProduct(id){
  document.getElementById("saveProductBtn").textContent="UPDATE PRODUCT";
  document.getElementById("page-products").scrollIntoView({behavior:"smooth"});
 }
-function deleteProduct(id){
- if(!confirm("Delete this product?"))return;
- db.products=db.products.filter(p=>p.id!==id);saveDB();refreshAdmin();renderProducts();showToast("Product deleted.");
+document.getElementById("adminProductForm").addEventListener("submit",async e=>{
+ e.preventDefault();
+ try{
+  requireAdmin();
+  const id=document.getElementById("editProductId").value;
+  const code=document.getElementById("pCode").value.trim();
+  const name=document.getElementById("pName").value.trim();
+  const price=Number(document.getElementById("pPrice").value);
+  const category=document.getElementById("pCategory").value;
+  const image=document.getElementById("pImage").value.trim();
+  const tag=document.getElementById("pTag").value.trim();
+  const description=document.getElementById("pDescription").value.trim();
+  if(!code||!name||!category||!image||!Number.isFinite(price)||price<0)return alert("Please complete all required product fields.");
+  if(!/^https?:\/\//i.test(image))return alert("Please enter a valid image URL starting with http:// or https://");
+  const categoryId=categoryMap[category];if(!categoryId)throw new Error("Selected category not found in cloud.");
+  const payload={
+   code,name,price,category_id:categoryId,image_url:image,
+   tag,description,is_active:true
+  };
+  let query;
+  if(id)query=sb.from("products").update(payload).eq("id",id);
+  else query=sb.from("products").insert(payload);
+  const {error}=await query;
+  if(error)throw error;
+  clearProductForm();await loadPublicData();refreshAdmin();
+  showToast("Product saved to cloud.");
+ }catch(err){console.error(err);alert("Product could not be saved: "+err.message)}
+});
+async function deleteProduct(id){
+ try{
+  requireAdmin();
+  if(!confirm("Delete this product permanently?"))return;
+  const {error}=await sb.from("products").delete().eq("id",id);
+  if(error)throw error;
+  await loadPublicData();refreshAdmin();showToast("Product deleted.");
+ }catch(err){console.error(err);alert("Could not delete product: "+err.message)}
 }
-function addCategory(){
- const input=document.getElementById("newCategory");const name=input.value.trim();
- if(!name)return alert("Enter a category name.");
- if(db.categories.some(c=>c.toLowerCase()===name.toLowerCase()))return alert("Category already exists.");
- db.categories.push(name);saveDB();input.value="";refreshAdmin();renderCategoryButtons();showToast("Category added.");
-}
-function renderAdminCategories(){
- document.getElementById("adminCategoryRows").innerHTML=db.categories.map(c=>`
- <tr><td>${escapeHTML(c)}</td><td>${db.products.filter(p=>p.category===c).length}</td><td><button class="admin-btn danger" onclick="deleteCategory('${escapeHTML(c)}')">DELETE</button></td></tr>`).join("")||'<tr><td colspan="3">No categories.</td></tr>';
-}
-function deleteCategory(name){
- if(db.products.some(p=>p.category===name)){
-  if(!confirm("Products currently use this category. Delete category anyway? The products will remain but won't match a category filter."))return;
- }else if(!confirm("Remove this category?"))return;
- db.categories=db.categories.filter(c=>c!==name);saveDB();refreshAdmin();renderCategoryButtons();renderProducts();
-}
+
+/* =========================================
+   ORDER MANAGEMENT
+========================================= */
 function renderAdminOrders(){
  const q=(document.getElementById("adminOrderSearch")?.value||"").toLowerCase();
  const rows=db.orders.filter(o=>[o.name,o.phone,o.service,o.design,o.id].join(" ").toLowerCase().includes(q));
@@ -667,18 +841,32 @@ function renderRecentOrders(){
  document.getElementById("recentOrderRows").innerHTML=db.orders.slice(0,5).map(o=>`
  <tr><td>${escapeHTML(o.date)}</td><td>${escapeHTML(o.name)}</td><td>${escapeHTML(o.phone)}</td><td>${escapeHTML(o.service)}</td><td>${escapeHTML(o.status)}</td></tr>`).join("")||'<tr><td colspan="5">No enquiries received yet.</td></tr>';
 }
-function updateOrderStatus(id,status){
- const o=db.orders.find(x=>x.id===id);if(o)o.status=status;
- saveDB();refreshAdmin();showToast("Order status updated.");
+async function updateOrderStatus(id,status){
+ try{
+  requireAdmin();
+  const dbStatus=status==="In Progress"?"Processing":status;
+  const {error}=await sb.from("orders").update({status:dbStatus}).eq("order_no",id);
+  if(error)throw error;
+  await loadAdminOrders();refreshAdmin();showToast("Order status updated.");
+ }catch(err){console.error(err);alert("Could not update order: "+err.message)}
 }
 function viewOrder(id){
  const o=db.orders.find(x=>x.id===id);if(!o)return;
  alert(`ORDER DETAILS\n\nOrder ID: ${o.id}\nCustomer: ${o.name}\nPhone: ${o.phone}\nService: ${o.service}\nDesign: ${o.design}\nRequirements: ${o.message||"None"}\nDate: ${o.date}\nStatus: ${o.status}`);
 }
-function deleteOrder(id){
- if(!confirm("Delete this order?"))return;
- db.orders=db.orders.filter(o=>o.id!==id);saveDB();refreshAdmin();showToast("Order deleted.");
+async function deleteOrder(id){
+ try{
+  requireAdmin();
+  if(!confirm("Delete this order permanently?"))return;
+  const {error}=await sb.from("orders").delete().eq("order_no",id);
+  if(error)throw error;
+  await loadAdminOrders();refreshAdmin();showToast("Order deleted.");
+ }catch(err){console.error(err);alert("Could not delete order: "+err.message)}
 }
+
+/* =========================================
+   WEBSITE SETTINGS
+========================================= */
 function loadSettings(){
  const s=db.settings||{};
  document.getElementById("settingName").value=s.name||"SHREE BOUTIQUE";
@@ -686,14 +874,20 @@ function loadSettings(){
  document.getElementById("settingAddress").value=s.address||"";
  document.getElementById("settingDescription").value=s.description||"Premium boutique designs and custom tailoring.";
 }
-function saveSettings(){
- db.settings={
-  name:document.getElementById("settingName").value.trim(),
-  phone:document.getElementById("settingPhone").value.trim(),
-  address:document.getElementById("settingAddress").value.trim(),
-  description:document.getElementById("settingDescription").value.trim()
- };
- saveDB();applySettings();showToast("Website settings saved.");
+async function saveSettings(){
+ try{
+  requireAdmin();
+  const settings={
+   boutique_name:document.getElementById("settingName").value.trim()||"SHREE BOUTIQUE",
+   phone:document.getElementById("settingPhone").value.trim(),
+   address:document.getElementById("settingAddress").value.trim(),
+   description:document.getElementById("settingDescription").value.trim()
+  };
+  const {error}=await sb.from("settings").upsert({id:1,...settings},{onConflict:"id"});
+  if(error)throw error;
+  db.settings={name:settings.boutique_name,phone:settings.phone,address:settings.address,description:settings.description};
+  applySettings();showToast("Website settings saved online.");
+ }catch(err){console.error(err);alert("Settings could not be saved: "+err.message)}
 }
 function applySettings(){
  const s=db.settings||{};
@@ -702,37 +896,85 @@ function applySettings(){
  document.getElementById("footerAddress").textContent="Address: "+(s.address||"Add your shop address");
  document.getElementById("footerDescription").textContent=s.description||"Premium boutique designs and custom tailoring.";
 }
-function exportBackup(){
- const blob=new Blob([JSON.stringify(db,null,2)],{type:"application/json"});
- const url=URL.createObjectURL(blob);const a=document.createElement("a");
- a.href=url;a.download="SHREE-BOUTIQUE-BACKUP-"+new Date().toISOString().slice(0,10)+".json";a.click();
- URL.revokeObjectURL(url);
+
+/* =========================================
+   CLOUD BACKUP & RESTORE
+========================================= */
+async function exportBackup(){
+ try{
+  requireAdmin();
+  await loadPublicData();await loadAdminOrders();
+  const backup={format:"SHREE-BOUTIQUE-CLOUD",version:2,exportedAt:new Date().toISOString(),products:db.products,categories:db.categories,orders:db.orders,settings:db.settings};
+  const blob=new Blob([JSON.stringify(backup,null,2)],{type:"application/json"});
+  const url=URL.createObjectURL(blob);const a=document.createElement("a");
+  a.href=url;a.download="SHREE-BOUTIQUE-CLOUD-BACKUP-"+new Date().toISOString().slice(0,10)+".json";a.click();
+  URL.revokeObjectURL(url);showToast("Cloud backup downloaded.");
+ }catch(err){console.error(err);alert("Backup failed: "+err.message)}
 }
-function importBackup(event){
+async function importBackup(event){
  const file=event.target.files[0];if(!file)return;
- const reader=new FileReader();
- reader.onload=()=>{
-  try{
-   const data=JSON.parse(reader.result);
-   if(!Array.isArray(data.products)||!Array.isArray(data.categories)||!Array.isArray(data.orders))throw new Error("Invalid backup");
-   if(!confirm("Import this backup? Current local data will be replaced."))return;
-   db={products:data.products,categories:data.categories,orders:data.orders,settings:data.settings||{}};
-   saveDB();refreshAdmin();renderCategoryButtons();renderProducts();applySettings();showToast("Backup restored.");
-  }catch(e){alert("Invalid backup file.")}
-  event.target.value="";
- };
- reader.readAsText(file);
+ try{
+  requireAdmin();
+  const data=JSON.parse(await file.text());
+  if(!Array.isArray(data.products)||!Array.isArray(data.categories)||!Array.isArray(data.orders))throw new Error("Invalid backup");
+  if(!confirm("Import this backup into Supabase? Existing matching products will be updated. Continue?"))return;
+
+  const categoryRows=data.categories.map((name,i)=>({
+   name,slug:slugify(name),is_active:true,sort_order:i+1
+  }));
+  if(categoryRows.length){
+   const {error}=await sb.from("categories").upsert(categoryRows,{onConflict:"name"});
+   if(error)throw error;
+  }
+  const {data:cats,error:catError}=await sb.from("categories").select("id,name");
+  if(catError)throw catError;
+  const ids={};(cats||[]).forEach(c=>ids[c.name]=c.id);
+
+  const products=data.products.map(p=>({
+   code:p.code,name:p.name,description:p.description||"",
+   price:Number(p.price||0),image_url:p.image||p.image_url||"",
+   tag:p.tag||"",category_id:ids[p.category]||null,is_active:true
+  }));
+  if(products.length){
+   const {error}=await sb.from("products").upsert(products,{onConflict:"code"});
+   if(error)throw error;
+  }
+
+  if(data.settings){
+   const s=data.settings;
+   const {error}=await sb.from("settings").upsert({
+    id:1,boutique_name:s.name||s.boutique_name||"SHREE BOUTIQUE",
+    phone:s.phone||"",address:s.address||"",
+    description:s.description||""
+   },{onConflict:"id"});
+   if(error)throw error;
+  }
+
+  await loadPublicData();await loadAdminOrders();refreshAdmin();renderCategoryButtons();renderProducts();
+  showToast("Products, categories and settings restored to cloud. Orders were not imported.");
+ }catch(err){console.error(err);alert("Backup import failed: "+err.message)}
+ finally{event.target.value=""}
 }
 
-/* INITIALIZE */
-renderCategoryButtons();
-renderProducts();
-applySettings();
-
+/* =========================================
+   STARTUP
+========================================= */
+async function initialize(){
+ renderCategoryButtons();renderProducts();applySettings();
+ await loadPublicData();
+ const {data:{session}}=await sb.auth.getSession();
+ if(session){
+  try{await enterAdmin(session.user)}
+  catch(err){console.warn("Existing session not admin:",err);await sb.auth.signOut()}
+ }
+}
 document.addEventListener("keydown",e=>{
  if(e.key==="Escape"){closeModal();closeAdmin()}
 });
+initialize();
 </script>
 </body>
 </html>
+
+
 
