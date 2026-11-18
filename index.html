@@ -7,8 +7,9 @@
 <meta name="theme-color" content="#07152e">
 <title>SHREE BOUTIQUE | Premium Fashion & Tailoring</title>
 <style>
-:root{--dark:#07152e;--navy:#0b1f40;--blue:#164b91;--royal:#2474d2;--gold:#d8b66a;--muted:#aabbd3}
+:root{--dark:#07152e;--navy:#0b1f40;--blue:#164b91;--royal:#2474d2;--gold:#d8b66a;--muted:#aabbd3;--line:#29466c;--panel:#102342}
 *{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{background:var(--dark);color:#fff;font-family:Arial,sans-serif}
 a{text-decoration:none;color:inherit}button{cursor:pointer;font-family:inherit}
 .topbar{background:#030c1c;color:var(--gold);text-align:center;padding:10px;font-size:11px;letter-spacing:2px}
@@ -53,7 +54,7 @@ header{background:#091a35;border-bottom:1px solid #25436a;position:sticky;top:0;
 .catalog-tools{background:#0c2040;border:1px solid #29466c;padding:20px;margin-bottom:25px}
 .catalog-tools h3{font:normal 22px Georgia;color:var(--gold);margin-bottom:15px}
 .search-row{display:grid;grid-template-columns:1fr auto;gap:10px}
-input,select,textarea{background:#07152e;border:1px solid #345275;color:white;padding:13px;width:100%;outline:none;font-size:12px}
+input,select,textarea{background:#07152e;border:1px solid #345275;color:white;padding:13px;width:100%;outline:none;font-size:12px;border-radius:2px}
 input:focus,select:focus,textarea:focus{border-color:var(--gold)}
 select option{background:#07152e}
 .category-toggle{background:var(--gold);color:#07152e;border:0;padding:0 18px;font-weight:bold;font-size:11px}
@@ -68,8 +69,9 @@ select option{background:#07152e}
 .product{background:#0c2040;border:1px solid #263f64;overflow:hidden;transition:.25s}
 .product:hover{border-color:var(--gold);transform:translateY(-4px)}
 .product-image{height:280px;position:relative;overflow:hidden}
-.product-image img{width:100%;height:100%;object-fit:cover}
-.tag{position:absolute;top:12px;left:12px;background:var(--gold);color:#07152e;padding:7px;font-size:9px}
+.product-image img{width:100%;height:100%;object-fit:cover;transition:.4s}
+.product:hover .product-image img{transform:scale(1.04)}
+.tag{position:absolute;top:12px;left:12px;background:var(--gold);color:#07152e;padding:7px;font-size:9px;z-index:2}
 .product-info{padding:16px}
 .product-code{color:var(--gold);font-size:10px;letter-spacing:2px}
 .product-info h3{font:normal 18px Georgia;margin:10px 0}
@@ -103,7 +105,7 @@ footer h4{color:var(--gold);letter-spacing:2px;font-size:11px;margin-bottom:15px
 footer p,footer a{color:#9fb1cb;font-size:12px;line-height:2}
 footer a{display:block}
 .copyright{text-align:center;border-top:1px solid #263c5a;padding-top:18px;margin:30px auto 0;color:#7185a2;font-size:10px}
-.modal{display:none;position:fixed;inset:0;background:#000c;z-index:500;align-items:center;justify-content:center;padding:15px}
+.modal{display:none;position:fixed;inset:0;background:#000d;z-index:500;align-items:center;justify-content:center;padding:15px;backdrop-filter:blur(5px)}
 .modal.active{display:flex}
 .modal-content{background:#0c2040;border:1px solid var(--gold);padding:28px;width:100%;max-width:450px;max-height:90vh;overflow:auto;position:relative}
 .modal-content h2{font:normal 26px Georgia;margin:15px 0}
@@ -111,41 +113,52 @@ footer a{display:block}
 .close{position:absolute;right:12px;top:8px;background:none;border:0;color:white;font-size:27px}
 .modal-content .btn{margin-top:18px;width:100%}
 
-/* ADMIN PANEL */
+/* ADMIN */
 .admin-modal{z-index:1000}
-.admin-window{background:#091a35;border:1px solid var(--gold);width:100%;max-width:1100px;height:92vh;overflow:auto;position:relative;padding:22px}
+.admin-window{background:#091a35;border:1px solid var(--gold);width:100%;max-width:1150px;height:94vh;overflow:auto;position:relative;padding:22px;box-shadow:0 25px 90px #000b}
 .admin-head{display:flex;justify-content:space-between;align-items:center;gap:15px;border-bottom:1px solid #345275;padding-bottom:15px;margin-bottom:20px}
 .admin-head h2{font:normal 27px Georgia;color:var(--gold)}
 .admin-close{background:none;color:white;border:0;font-size:28px}
-.admin-login{max-width:400px;margin:45px auto;text-align:center}
+.admin-brand{font-size:10px;letter-spacing:2px;color:var(--muted);margin-top:5px}
+.admin-login{max-width:430px;margin:35px auto;text-align:center;background:#102342;border:1px solid #345275;padding:28px}
 .admin-login h2{font:30px Georgia;color:var(--gold);margin-bottom:12px}
 .admin-login input{margin:8px 0}
 .admin-login button{width:100%;margin-top:10px}
+.admin-login .login-mark{font-size:32px;color:var(--gold);margin-bottom:10px}
 .admin-layout{display:none}
-.admin-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.admin-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;border-bottom:1px solid #345275;padding-bottom:15px}
 .admin-tab{padding:11px 15px;background:#102b50;border:1px solid #345275;color:white;font-size:11px}
 .admin-tab.active,.admin-tab:hover{background:var(--gold);color:#07152e}
 .admin-page{display:none}
 .admin-page.active{display:block}
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
-.stat{background:#102b50;border:1px solid #345275;padding:18px}
+.stat{background:linear-gradient(145deg,#102b50,#0b1d38);border:1px solid #345275;padding:20px}
 .stat small{color:var(--muted);font-size:11px}
-.stat strong{display:block;font:28px Georgia;color:var(--gold);margin-top:10px}
+.stat strong{display:block;font:30px Georgia;color:var(--gold);margin-top:10px}
 .admin-card{background:#102342;border:1px solid #345275;padding:18px;margin-bottom:15px}
 .admin-card h3{font:normal 21px Georgia;color:var(--gold);margin-bottom:15px}
 .admin-form{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .admin-form textarea{grid-column:1/-1}
 .admin-form button{grid-column:1/-1}
 .admin-btn{padding:11px 15px;background:var(--gold);border:1px solid var(--gold);color:#07152e;font-weight:bold;font-size:11px}
+.admin-btn:hover{filter:brightness(1.1)}
 .admin-btn.secondary{background:transparent;color:var(--gold)}
 .admin-btn.danger{background:#8c2636;color:white;border-color:#8c2636}
 .admin-table-wrap{overflow:auto}
-.admin-table{width:100%;border-collapse:collapse;min-width:600px;font-size:12px}
-.admin-table th,.admin-table td{padding:12px;border-bottom:1px solid #345275;text-align:left}
-.admin-table th{color:var(--gold)}
+.admin-table{width:100%;border-collapse:collapse;min-width:650px;font-size:12px}
+.admin-table th,.admin-table td{padding:12px;border-bottom:1px solid #345275;text-align:left;vertical-align:middle}
+.admin-table th{color:var(--gold);font-weight:normal;letter-spacing:1px}
+.admin-table tr:hover td{background:#ffffff08}
 .admin-table td button{margin:2px}
 .admin-note{font-size:11px;color:var(--muted);line-height:1.7;margin-top:12px}
 .admin-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.admin-welcome{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;align-items:center;margin-bottom:15px}
+.status-pill{display:inline-block;padding:5px 9px;background:#173d35;color:#9ee5c1;font-size:10px;border-radius:20px}
+.admin-product-thumb{width:42px;height:48px;object-fit:cover;border:1px solid #345275}
+.order-message{max-width:220px;white-space:normal;overflow-wrap:anywhere}
+.password-hint{font-size:11px;color:var(--muted);line-height:1.7;margin-top:12px}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--gold);color:#07152e;padding:13px 20px;font-size:12px;font-weight:bold;z-index:2000;display:none;box-shadow:0 5px 25px #0008}
+.toast.show{display:block}
 @media(max-width:900px){
 .navlinks{display:none;position:absolute;top:65px;left:0;right:0;background:#091a35;padding:22px;flex-direction:column}
 .navlinks.show{display:flex}.menu-btn{display:block}
@@ -168,11 +181,11 @@ form{grid-template-columns:1fr}textarea,form button{grid-column:1}
 .stats{grid-template-columns:repeat(2,1fr)}.admin-form{grid-template-columns:1fr}
 .admin-form textarea,.admin-form button{grid-column:1}
 .admin-window{padding:12px}.admin-head h2{font-size:21px}
+.admin-login{padding:20px;margin:20px auto}
 }
 </style>
 </head>
 <body>
-
 <div class="topbar">✦ PREMIUM BOUTIQUE COLLECTION · CUSTOM STITCHING ✦</div>
 <header>
 <nav class="nav">
@@ -195,11 +208,9 @@ form{grid-template-columns:1fr}textarea,form button{grid-column:1}
 </div>
 <div class="hero-image"></div>
 </section>
-
 <section class="features">
 <div class="feature"><strong>✦</strong>Premium Designs</div><div class="feature"><strong>♧</strong>Custom Stitching</div><div class="feature"><strong>♡</strong>Perfect Fitting</div><div class="feature"><strong>✧</strong>Elegant Finishing</div>
 </section>
-
 <section class="section" id="collections">
 <div class="section-title"><small>DISCOVER SHREE BOUTIQUE</small><h2>Explore Our Collections</h2><p>Beautiful fashion for every special occasion.</p></div>
 <div class="categories">
@@ -209,7 +220,6 @@ form{grid-template-columns:1fr}textarea,form button{grid-column:1}
 <a class="category" href="#designs" onclick="selectCategory('Gown')"><img src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=700&q=80"><div class="category-info"><h3>Designer Gown</h3><small>EXPLORE COLLECTION ↗</small></div></a>
 </div>
 </section>
-
 <section class="section" id="designs">
 <div class="section-title"><small>HANDPICKED FOR YOU</small><h2>Our Signature Designs</h2><p>Choose your favourite design and book your order.</p></div>
 <div class="catalog-tools">
@@ -221,11 +231,9 @@ form{grid-template-columns:1fr}textarea,form button{grid-column:1}
 <div class="products" id="productGrid"></div>
 <p style="text-align:center;color:#9fb1cb;font-size:11px;margin-top:25px">* All prices are demo starting prices. Actual charges depend on design, fabric and work.</p>
 </section>
-
 <section class="custom-banner">
 <div class="banner-image"></div><div class="banner-content"><div class="eyebrow">YOUR DREAM · OUR CRAFT</div><h2>Create Your Own<br><span style="color:#d8b66a">Signature Style</span></h2><p>Have a special design in mind? Share your favourite reference image and get your own custom blouse, lehenga or gown stitched.</p><a href="#booking" class="btn" style="align-self:flex-start">CUSTOM ORDER ↗</a></div>
 </section>
-
 <section class="section" id="services">
 <div class="section-title"><small>WHAT WE OFFER</small><h2>Our Boutique Services</h2><p>Every detail matters. Every stitch tells a story.</p></div>
 <div class="services">
@@ -234,7 +242,6 @@ form{grid-template-columns:1fr}textarea,form button{grid-column:1}
 <div class="service"><div class="number">03 / DESIGNER</div><h3>Lehenga & Gown</h3><p>Custom lehenga, gown cutting, stitching and occasion wear.</p></div>
 </div>
 </section>
-
 <section class="booking" id="booking">
 <div class="booking-inner">
 <div class="eyebrow">LET'S MAKE SOMETHING BEAUTIFUL</div><h2>Book Your Order</h2><p>Select your service and send your order enquiry to SHREE BOUTIQUE.</p>
@@ -260,28 +267,37 @@ form{grid-template-columns:1fr}textarea,form button{grid-column:1}
 <div class="copyright">© 2026 SHREE BOUTIQUE. ALL RIGHTS RESERVED.</div>
 </footer>
 
-<!-- PRODUCT DETAILS -->
 <div class="modal" id="detailModal"><div class="modal-content">
 <button class="close" onclick="closeModal()">×</button><div class="eyebrow">SHREE BOUTIQUE</div>
 <h2 id="modalName"></h2><p id="modalCode"></p><p id="modalPrice" style="color:#d8b66a;font-size:19px;margin-top:15px"></p>
-<p style="margin-top:15px">Custom measurements and additional work may change the final price. Contact us to confirm your order.</p>
+<p id="modalDescription" style="margin-top:15px"></p>
 <button class="btn" onclick="modalOrder()">ORDER THIS DESIGN</button>
 </div></div>
 
-<!-- ADMIN PANEL -->
 <div class="modal admin-modal" id="adminModal">
 <div class="admin-window">
-<div class="admin-head"><h2>SHREE BOUTIQUE · ADMIN</h2><button class="admin-close" onclick="closeAdmin()">×</button></div>
+<div class="admin-head"><div><h2>SHREE BOUTIQUE · ADMIN</h2><div class="admin-brand">BOUTIQUE MANAGEMENT CONSOLE</div></div><button class="admin-close" onclick="closeAdmin()">×</button></div>
 
 <div class="admin-login" id="adminLogin">
-<h2>Admin Login</h2><p style="color:var(--muted);font-size:12px;margin-bottom:18px">Sign in to manage your boutique website.</p>
+<div class="login-mark">✦</div>
+<h2 id="authTitle">Create Admin Account</h2>
+<p id="authDescription" style="color:var(--muted);font-size:12px;line-height:1.8;margin-bottom:18px">First-time setup: create your own admin username and password. Keep them private.</p>
+<div id="setupFields">
+<input id="newAdminUsername" placeholder="Create Username" autocomplete="username">
+<input id="newAdminPassword" type="password" placeholder="Create Password (minimum 8 characters)" autocomplete="new-password">
+<input id="confirmAdminPassword" type="password" placeholder="Confirm Password" autocomplete="new-password">
+<button class="admin-btn" onclick="createAdminAccount()">CREATE ADMIN ACCOUNT</button>
+</div>
+<div id="loginFields" style="display:none">
 <input id="adminUsername" placeholder="Username" autocomplete="username">
 <input id="adminPassword" type="password" placeholder="Password" autocomplete="current-password">
 <button class="admin-btn" onclick="loginAdmin()">LOGIN TO DASHBOARD</button>
-<p class="admin-note">Initial login: admin / 1234. Change these credentials in the code before publishing.</p>
+</div>
+<p class="password-hint" id="authHint">Your credentials are saved in this browser. This is a local-only website login, not a secure server account.</p>
 </div>
 
 <div class="admin-layout" id="adminLayout">
+<div class="admin-welcome"><div><span class="status-pill">● ADMIN SESSION ACTIVE</span><p class="admin-note">Manage your products, customer enquiries and website settings.</p></div><button class="admin-btn secondary" onclick="logoutAdmin()">LOG OUT</button></div>
 <div class="admin-tabs">
 <button class="admin-tab active" onclick="showAdminPage('dashboard',this)">Dashboard</button>
 <button class="admin-tab" onclick="showAdminPage('products',this)">Products</button>
@@ -289,9 +305,7 @@ form{grid-template-columns:1fr}textarea,form button{grid-column:1}
 <button class="admin-tab" onclick="showAdminPage('orders',this)">Orders</button>
 <button class="admin-tab" onclick="showAdminPage('settings',this)">Settings</button>
 <button class="admin-tab" onclick="showAdminPage('backup',this)">Backup</button>
-<button class="admin-tab" onclick="logoutAdmin()">Logout</button>
 </div>
-
 <div class="admin-page active" id="page-dashboard">
 <div class="stats">
 <div class="stat"><small>Total Products</small><strong id="statProducts">0</strong></div>
@@ -299,7 +313,8 @@ form{grid-template-columns:1fr}textarea,form button{grid-column:1}
 <div class="stat"><small>Total Orders</small><strong id="statOrders">0</strong></div>
 <div class="stat"><small>Pending Orders</small><strong id="statPending">0</strong></div>
 </div>
-<div class="admin-card"><h3>Welcome to your Admin Dashboard</h3><p class="admin-note">Manage your boutique designs, categories, customer enquiries, contact details and backups from this panel.</p></div>
+<div class="admin-card"><h3>Welcome to SHREE BOUTIQUE</h3><p class="admin-note">Your boutique control centre. Use the tabs above to manage your online catalogue and customer enquiries. Remember to download regular backups.</p></div>
+<div class="admin-card"><h3>Recent Enquiries</h3><div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Date</th><th>Customer</th><th>Phone</th><th>Service</th><th>Status</th></tr></thead><tbody id="recentOrderRows"></tbody></table></div></div>
 </div>
 
 <div class="admin-page" id="page-products">
@@ -309,7 +324,7 @@ form{grid-template-columns:1fr}textarea,form button{grid-column:1}
 <input type="hidden" id="editProductId">
 <input id="pCode" placeholder="Design Number (e.g. BL-003)" required>
 <input id="pName" placeholder="Product Name" required>
-<input id="pPrice" type="number" min="0" placeholder="Price in ₹" required>
+<input id="pPrice" type="number" min="0" step="1" placeholder="Price in ₹" required>
 <select id="pCategory" required></select>
 <input id="pImage" placeholder="Image URL (https://...)" required>
 <input id="pTag" placeholder="Tag (e.g. NEW / BESTSELLER)">
@@ -317,64 +332,58 @@ form{grid-template-columns:1fr}textarea,form button{grid-column:1}
 <button class="admin-btn" type="submit" id="saveProductBtn">SAVE PRODUCT</button>
 <button class="admin-btn secondary" type="button" onclick="clearProductForm()">CLEAR FORM</button>
 </form>
-<p class="admin-note">Use a publicly accessible image URL. Product data is saved in this browser.</p>
+<p class="admin-note">Image URL must be publicly accessible. You can use an image hosting link. Product data is saved in this browser.</p>
 </div>
-<div class="admin-card"><h3>All Products</h3><div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Code</th><th>Name</th><th>Category</th><th>Price</th><th>Actions</th></tr></thead><tbody id="adminProductRows"></tbody></table></div></div>
+<div class="admin-card"><h3>All Products</h3><input id="adminProductSearch" placeholder="Search products by name, code or category..." oninput="renderAdminProducts()" style="margin-bottom:14px"><div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Image</th><th>Code</th><th>Name</th><th>Category</th><th>Price</th><th>Actions</th></tr></thead><tbody id="adminProductRows"></tbody></table></div></div>
 </div>
 
 <div class="admin-page" id="page-categories">
-<div class="admin-card"><h3>Add Category</h3>
-<div class="admin-form"><input id="newCategory" placeholder="New category name"><button class="admin-btn" onclick="addCategory()">ADD CATEGORY</button></div>
-</div>
-<div class="admin-card"><h3>Manage Categories</h3><div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Category</th><th>Action</th></tr></thead><tbody id="adminCategoryRows"></tbody></table></div>
-<p class="admin-note">Deleting a category does not delete its products. Assign those products to another category if needed.</p></div>
+<div class="admin-card"><h3>Add Category</h3><div class="admin-form"><input id="newCategory" placeholder="New category name"><button class="admin-btn" onclick="addCategory()">ADD CATEGORY</button></div></div>
+<div class="admin-card"><h3>Manage Categories</h3><div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Category</th><th>Products</th><th>Action</th></tr></thead><tbody id="adminCategoryRows"></tbody></table></div><p class="admin-note">Deleting a category does not delete its products. Products assigned to a deleted category remain in your catalogue until reassigned.</p></div>
 </div>
 
 <div class="admin-page" id="page-orders">
-<div class="admin-card"><h3>Customer Orders & Enquiries</h3><div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Date</th><th>Customer</th><th>Phone</th><th>Service</th><th>Design</th><th>Status</th><th>Actions</th></tr></thead><tbody id="adminOrderRows"></tbody></table></div><p class="admin-note">Orders are stored only in this browser until a real backend is connected.</p></div>
+<div class="admin-card"><h3>Customer Orders & Enquiries</h3><input id="adminOrderSearch" placeholder="Search customer, phone, design..." oninput="renderAdminOrders()" style="margin-bottom:14px"><div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Date</th><th>Customer</th><th>Phone</th><th>Service</th><th>Design</th><th>Status</th><th>Actions</th></tr></thead><tbody id="adminOrderRows"></tbody></table></div><p class="admin-note">Order enquiries are stored locally in this browser only.</p></div>
 </div>
 
 <div class="admin-page" id="page-settings">
-<div class="admin-card"><h3>Website Settings</h3>
-<div class="admin-form">
+<div class="admin-card"><h3>Website Settings</h3><div class="admin-form">
 <input id="settingName" placeholder="Boutique name">
 <input id="settingPhone" placeholder="Phone number">
 <input id="settingAddress" placeholder="Shop address">
 <textarea id="settingDescription" placeholder="Boutique description"></textarea>
-<button class="admin-btn" onclick="saveSettings()">SAVE SETTINGS</button>
+<button class="admin-btn" onclick="saveSettings()">SAVE WEBSITE SETTINGS</button>
 </div></div>
-<div class="admin-card"><h3>Admin Login Credentials</h3>
-<p class="admin-note">To change the demo username/password, edit ADMIN_USER and ADMIN_PASS in the JavaScript section of this HTML file. This front-end login is not secure enough for a public production admin system.</p></div>
+<div class="admin-card"><h3>Change Admin Username / Password</h3>
+<input id="oldAdminPassword" type="password" placeholder="Current password" style="margin-bottom:10px">
+<input id="changeAdminUsername" placeholder="New username" style="margin-bottom:10px">
+<input id="changeAdminPassword" type="password" placeholder="New password (minimum 8 characters)" style="margin-bottom:10px">
+<input id="changeAdminPassword2" type="password" placeholder="Confirm new password">
+<button class="admin-btn" style="margin-top:12px" onclick="changeAdminCredentials()">UPDATE LOGIN DETAILS</button>
+<p class="admin-note">Changing your credentials updates the local browser account. Remember your new login details.</p></div>
 </div>
 
 <div class="admin-page" id="page-backup">
-<div class="admin-card"><h3>Backup & Restore</h3>
-<p class="admin-note">Download a JSON backup of your products, categories, orders and settings. Keep the file safely. Restore it later using the Import button.</p>
-<div class="admin-actions">
-<button class="admin-btn" onclick="exportBackup()">DOWNLOAD BACKUP</button>
-<label class="admin-btn secondary" for="backupFile">IMPORT BACKUP</label>
-<input id="backupFile" type="file" accept=".json,application/json" style="display:none" onchange="importBackup(event)">
-</div></div>
-<div class="admin-card"><h3>Important</h3><p class="admin-note">Clearing browser data or switching devices may remove access to locally stored data. Download backups regularly. For secure accounts and shared online data, connect a server/database.</p></div>
-</div>
-
+<div class="admin-card"><h3>Backup & Restore</h3><p class="admin-note">Download a JSON backup of your products, categories, orders and settings. Store it safely and restore it whenever needed.</p><div class="admin-actions"><button class="admin-btn" onclick="exportBackup()">DOWNLOAD BACKUP</button><label class="admin-btn secondary" for="backupFile">IMPORT BACKUP</label><input id="backupFile" type="file" accept=".json,application/json" style="display:none" onchange="importBackup(event)"></div></div>
+<div class="admin-card"><h3>Data & Security Information</h3><p class="admin-note">This website currently uses browser local storage. Clearing browser data or switching devices may remove access to local data. Download backups regularly. For real secure authentication, online order collection and multi-device management, a backend server and database are required.</p></div>
 </div>
 </div>
 </div>
+</div>
+<div class="toast" id="toast"></div>
 
 <script>
-/* CHANGE THESE BEFORE PUBLISHING */
-const ADMIN_USER = "admin";
-const ADMIN_PASS = "1234";
+const KEY="shree_boutique_master_v1";
+const AUTH_KEY="shree_boutique_admin_auth_v1";
 
-const DEFAULT_CATEGORIES = [
+const DEFAULT_CATEGORIES=[
 "Blouse","Saree","Saree Fall & Pico","Lehenga","Salwar Suit","Kurti",
 "Gown","Party Wear Dress","Wedding Dress","Anarkali","Nighty","Petticoat",
 "Skirt","Top","Palazzo","Ladies Fashion","Blouse Cutting","Lehenga Cutting",
 "Gown Stitching","Custom Design","Other"
 ];
 
-const DEFAULT_PRODUCTS = [
+const DEFAULT_PRODUCTS=[
 {id:"1",code:"BL-001",name:"Classic Bridal Blouse",price:650,category:"Blouse",image:"https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=700&q=80",tag:"BESTSELLER",description:"Classic bridal blouse design."},
 {id:"2",code:"BL-002",name:"Designer Party Blouse",price:450,category:"Blouse",image:"https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=700&q=80",tag:"",description:"Designer party blouse."},
 {id:"3",code:"SF-001",name:"Saree Fall & Pico",price:150,category:"Saree Fall & Pico",image:"https://images.unsplash.com/photo-1583391733956-6c78276477e3?auto=format&fit=crop&w=700&q=80",tag:"POPULAR",description:"Professional fall and pico."},
@@ -385,7 +394,6 @@ const DEFAULT_PRODUCTS = [
 {id:"8",code:"LC-001",name:"Lehenga Cutting",price:500,category:"Lehenga Cutting",image:"https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=700&q=80",tag:"",description:"Lehenga cutting service."}
 ];
 
-const KEY="shree_boutique_master_v1";
 let db=loadDB();
 let selectedCategory="All";
 let currentDesign={};
@@ -393,58 +401,56 @@ let currentDesign={};
 function loadDB(){
  try{
   const saved=JSON.parse(localStorage.getItem(KEY));
-  if(saved && Array.isArray(saved.products)) return {
+  if(saved&&Array.isArray(saved.products))return{
    products:saved.products,
-   categories:Array.isArray(saved.categories)?saved.categories:DEFAULT_CATEGORIES,
+   categories:Array.isArray(saved.categories)?saved.categories:[...DEFAULT_CATEGORIES],
    orders:Array.isArray(saved.orders)?saved.orders:[],
    settings:saved.settings||{}
   };
  }catch(e){}
- return {products:DEFAULT_PRODUCTS.map(p=>({...p})),categories:[...DEFAULT_CATEGORIES],orders:[],settings:{}};
+ return{products:DEFAULT_PRODUCTS.map(p=>({...p})),categories:[...DEFAULT_CATEGORIES],orders:[],settings:{}};
 }
-function saveDB(){localStorage.setItem(KEY,JSON.stringify(db));}
-function escapeHTML(value){
- return String(value??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function saveDB(){
+ try{localStorage.setItem(KEY,JSON.stringify(db));return true}
+ catch(e){alert("Storage is full or unavailable. Please export a backup.");return false}
+}
+function escapeHTML(v){
+ return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+function showToast(msg){
+ const t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");
+ clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>t.classList.remove("show"),2600);
 }
 function toggleMenu(){document.getElementById("navlinks").classList.toggle("show")}
 document.querySelectorAll(".navlinks a").forEach(a=>a.addEventListener("click",()=>document.getElementById("navlinks").classList.remove("show")));
-
 function toggleCategories(){document.getElementById("categoryPanel").classList.toggle("open")}
+
 function renderCategoryButtons(){
- const list=document.getElementById("categoryList");
- list.innerHTML="";
+ const list=document.getElementById("categoryList");list.innerHTML="";
  ["All",...db.categories].forEach(cat=>{
   const b=document.createElement("button");
   b.className="category-option"+(selectedCategory===cat?" active":"");
   b.textContent=cat==="All"?"✦ All Categories":cat;
-  b.onclick=()=>selectCategory(cat);
-  list.appendChild(b);
+  b.onclick=()=>selectCategory(cat);list.appendChild(b);
  });
 }
 function selectCategory(cat){
- selectedCategory=cat;
- renderCategoryButtons();
- renderProducts();
+ selectedCategory=cat;renderCategoryButtons();renderProducts();
  document.getElementById("categoryPanel").classList.remove("open");
 }
 function resetFilters(){
- selectedCategory="All";
- document.getElementById("designSearch").value="";
- renderCategoryButtons();
- renderProducts();
+ selectedCategory="All";document.getElementById("designSearch").value="";
+ renderCategoryButtons();renderProducts();
 }
 function renderProducts(){
  const q=document.getElementById("designSearch").value.trim().toLowerCase();
- const grid=document.getElementById("productGrid");
- grid.innerHTML="";
+ const grid=document.getElementById("productGrid");grid.innerHTML="";
  let count=0;
  db.products.forEach(p=>{
   const searchable=[p.name,p.code,p.category,p.description].join(" ").toLowerCase();
-  const catMatch=selectedCategory==="All"||p.category===selectedCategory;
-  if(!catMatch||!searchable.includes(q))return;
+  if((selectedCategory!=="All"&&p.category!==selectedCategory)||!searchable.includes(q))return;
   count++;
-  const card=document.createElement("div");
-  card.className="product";
+  const card=document.createElement("div");card.className="product";
   card.innerHTML=`
    <div class="product-image">${p.tag?`<span class="tag">${escapeHTML(p.tag)}</span>`:""}
    <img src="${escapeHTML(p.image)}" alt="${escapeHTML(p.name)}" loading="lazy" onerror="this.src='https://placehold.co/600x700/0b1f40/d8b66a?text=SHREE+BOUTIQUE'"></div>
@@ -457,21 +463,19 @@ function renderProducts(){
  document.getElementById("resultCount").textContent=`Showing ${count} of ${db.products.length} designs`;
 }
 function details(id){
- const p=db.products.find(x=>x.id===id);if(!p)return;
- currentDesign=p;
+ const p=db.products.find(x=>x.id===id);if(!p)return;currentDesign=p;
  document.getElementById("modalName").textContent=p.name;
  document.getElementById("modalCode").textContent="DESIGN NUMBER: "+p.code;
  document.getElementById("modalPrice").textContent="Starting Price: ₹"+Number(p.price).toLocaleString("en-IN");
+ document.getElementById("modalDescription").textContent=p.description||"Custom measurements and additional work may change the final price.";
  document.getElementById("detailModal").classList.add("active");
 }
 function closeModal(){document.getElementById("detailModal").classList.remove("active")}
 function modalOrder(){closeModal();order(currentDesign.id)}
 function order(id){
- const p=db.products.find(x=>x.id===id);if(!p)return;
- currentDesign=p;
+ const p=db.products.find(x=>x.id===id);if(!p)return;currentDesign=p;
  document.getElementById("designNumber").value=p.code;
- const n=(p.name+" "+p.category).toLowerCase();
- let service="Custom Design";
+ const n=(p.name+" "+p.category).toLowerCase();let service="Custom Design";
  if(n.includes("saree"))service="Saree Fall & Pico";
  else if(n.includes("lehenga"))service="Lehenga Cutting / Stitching";
  else if(n.includes("gown"))service="Gown Cutting / Stitching";
@@ -486,45 +490,87 @@ document.getElementById("orderForm").addEventListener("submit",e=>{
  const name=document.getElementById("customerName").value.trim();
  const phone=document.getElementById("customerPhone").value.trim();
  if(!/^[0-9]{10}$/.test(phone)){alert("Please enter a valid 10-digit mobile number.");return}
- const order={
+ const orderData={
   id:"ORD-"+Date.now(),date:new Date().toLocaleString(),
   name,phone,service:document.getElementById("customerService").value,
   design:document.getElementById("designNumber").value,
-  message:document.getElementById("customerMessage").value,
-  status:"Pending"
+  message:document.getElementById("customerMessage").value,status:"Pending"
  };
- db.orders.unshift(order);saveDB();
- alert("Your enquiry has been saved in this browser. We will contact you.");
+ db.orders.unshift(orderData);
+ if(!saveDB())return;
+ alert("Your enquiry has been saved. Thank you!");
  e.target.reset();
- const mailBody=`SHREE BOUTIQUE ORDER REQUEST\n\nName: ${name}\nPhone: ${phone}\nService: ${order.service}\nDesign: ${order.design}\nRequirements: ${order.message}`;
- window.location.href="mailto:?subject="+encodeURIComponent("SHREE BOUTIQUE Order")+"&body="+encodeURIComponent(mailBody);
 });
 
-/* ADMIN AUTHENTICATION */
+/* FIRST-TIME ADMIN SETUP + LOGIN */
+function getAuth(){try{return JSON.parse(localStorage.getItem(AUTH_KEY))}catch(e){return null}}
+function setAuth(data){localStorage.setItem(AUTH_KEY,JSON.stringify(data))}
 function openAdmin(){
  document.getElementById("adminModal").classList.add("active");
  document.getElementById("adminLogin").style.display="block";
  document.getElementById("adminLayout").style.display="none";
+ updateAuthScreen();
 }
 function closeAdmin(){document.getElementById("adminModal").classList.remove("active")}
+function updateAuthScreen(){
+ const auth=getAuth();const setup=!(auth&&auth.username&&auth.password);
+ document.getElementById("setupFields").style.display=setup?"block":"none";
+ document.getElementById("loginFields").style.display=setup?"none":"block";
+ document.getElementById("authTitle").textContent=setup?"Create Your Admin Account":"Admin Login";
+ document.getElementById("authDescription").textContent=setup?
+ "First-time setup: choose your own username and password. You will use these details to access your dashboard.":
+ "Welcome back. Enter your admin credentials to continue.";
+ document.getElementById("authHint").textContent=setup?
+ "Your login details are saved in this browser. Do not clear this browser's site data.":
+ "Forgot your credentials? Your local account can only be reset by clearing this website's browser storage.";
+}
+function createAdminAccount(){
+ const u=document.getElementById("newAdminUsername").value.trim();
+ const p=document.getElementById("newAdminPassword").value;
+ const c=document.getElementById("confirmAdminPassword").value;
+ if(u.length<4)return alert("Username must contain at least 4 characters.");
+ if(p.length<8)return alert("Password must contain at least 8 characters.");
+ if(p!==c)return alert("Passwords do not match.");
+ setAuth({username:u,password:p});
+ document.getElementById("newAdminUsername").value="";
+ document.getElementById("newAdminPassword").value="";
+ document.getElementById("confirmAdminPassword").value="";
+ updateAuthScreen();showToast("Admin account created. Please log in.");
+}
 function loginAdmin(){
- const u=document.getElementById("adminUsername").value;
+ const auth=getAuth();
+ const u=document.getElementById("adminUsername").value.trim();
  const p=document.getElementById("adminPassword").value;
- if(u!==ADMIN_USER||p!==ADMIN_PASS){alert("Incorrect username or password.");return}
+ if(!auth||u!==auth.username||p!==auth.password)return alert("Incorrect username or password.");
  document.getElementById("adminLogin").style.display="none";
  document.getElementById("adminLayout").style.display="block";
+ document.getElementById("adminPassword").value="";
  refreshAdmin();
 }
 function logoutAdmin(){
  document.getElementById("adminLayout").style.display="none";
  document.getElementById("adminLogin").style.display="block";
  document.getElementById("adminPassword").value="";
+ updateAuthScreen();
+}
+function changeAdminCredentials(){
+ const auth=getAuth();
+ const old=document.getElementById("oldAdminPassword").value;
+ const u=document.getElementById("changeAdminUsername").value.trim();
+ const p=document.getElementById("changeAdminPassword").value;
+ const p2=document.getElementById("changeAdminPassword2").value;
+ if(!auth||old!==auth.password)return alert("Current password is incorrect.");
+ if(u.length<4)return alert("New username must contain at least 4 characters.");
+ if(p.length<8)return alert("New password must contain at least 8 characters.");
+ if(p!==p2)return alert("New passwords do not match.");
+ setAuth({username:u,password:p});
+ ["oldAdminPassword","changeAdminUsername","changeAdminPassword","changeAdminPassword2"].forEach(id=>document.getElementById(id).value="");
+ showToast("Admin login details updated.");
 }
 function showAdminPage(name,btn){
  document.querySelectorAll(".admin-page").forEach(p=>p.classList.remove("active"));
  document.querySelectorAll(".admin-tab").forEach(b=>b.classList.remove("active"));
- document.getElementById("page-"+name).classList.add("active");
- btn.classList.add("active");
+ document.getElementById("page-"+name).classList.add("active");btn.classList.add("active");
  if(name==="products")renderAdminProducts();
  if(name==="categories")renderAdminCategories();
  if(name==="orders")renderAdminOrders();
@@ -535,12 +581,10 @@ function refreshAdmin(){
  document.getElementById("statCategories").textContent=db.categories.length;
  document.getElementById("statOrders").textContent=db.orders.length;
  document.getElementById("statPending").textContent=db.orders.filter(o=>o.status==="Pending").length;
- renderProductCategorySelect();
- renderAdminProducts();renderAdminCategories();renderAdminOrders();loadSettings();
+ renderProductCategorySelect();renderAdminProducts();renderAdminCategories();renderAdminOrders();renderRecentOrders();loadSettings();
 }
 function renderProductCategorySelect(){
- const s=document.getElementById("pCategory");
- s.innerHTML='<option value="">Select Category</option>'+db.categories.map(c=>`<option value="${escapeHTML(c)}">${escapeHTML(c)}</option>`).join("");
+ document.getElementById("pCategory").innerHTML='<option value="">Select Category</option>'+db.categories.map(c=>`<option value="${escapeHTML(c)}">${escapeHTML(c)}</option>`).join("");
 }
 function clearProductForm(){
  document.getElementById("adminProductForm").reset();
@@ -561,18 +605,20 @@ document.getElementById("adminProductForm").addEventListener("submit",e=>{
   tag:document.getElementById("pTag").value.trim(),
   description:document.getElementById("pDescription").value.trim()
  };
- if(!product.code||!product.name||!product.category||!product.image||product.price<0){alert("Please complete the required product fields.");return}
+ if(!product.code||!product.name||!product.category||!product.image||!Number.isFinite(product.price)||product.price<0)return alert("Please complete all required product fields.");
+ if(!/^https?:\/\//i.test(product.image))return alert("Please enter a valid image URL starting with http:// or https://");
  const duplicate=db.products.find(p=>p.code.toLowerCase()===product.code.toLowerCase()&&p.id!==id);
- if(duplicate){alert("This design number already exists.");return}
+ if(duplicate)return alert("This design number already exists.");
  if(id){const i=db.products.findIndex(p=>p.id===id);if(i>=0)db.products[i]=product}
  else db.products.unshift(product);
- saveDB();clearProductForm();refreshAdmin();renderProducts();
- alert("Product saved successfully.");
+ saveDB();clearProductForm();refreshAdmin();renderProducts();showToast("Product saved successfully.");
 });
 function renderAdminProducts(){
- document.getElementById("adminProductRows").innerHTML=db.products.map(p=>`
- <tr><td>${escapeHTML(p.code)}</td><td>${escapeHTML(p.name)}</td><td>${escapeHTML(p.category)}</td><td>₹${Number(p.price).toLocaleString("en-IN")}</td>
- <td><button class="admin-btn secondary" onclick="editProduct('${escapeHTML(p.id)}')">EDIT</button><button class="admin-btn danger" onclick="deleteProduct('${escapeHTML(p.id)}')">DELETE</button></td></tr>`).join("")||'<tr><td colspan="5">No products yet.</td></tr>';
+ const q=(document.getElementById("adminProductSearch")?.value||"").toLowerCase();
+ const rows=db.products.filter(p=>[p.code,p.name,p.category].join(" ").toLowerCase().includes(q));
+ document.getElementById("adminProductRows").innerHTML=rows.map(p=>`
+ <tr><td><img class="admin-product-thumb" src="${escapeHTML(p.image)}" onerror="this.style.display='none'"></td><td>${escapeHTML(p.code)}</td><td>${escapeHTML(p.name)}</td><td>${escapeHTML(p.category)}</td><td>₹${Number(p.price).toLocaleString("en-IN")}</td>
+ <td><button class="admin-btn secondary" onclick="editProduct('${escapeHTML(p.id)}')">EDIT</button><button class="admin-btn danger" onclick="deleteProduct('${escapeHTML(p.id)}')">DELETE</button></td></tr>`).join("")||'<tr><td colspan="6">No products found.</td></tr>';
 }
 function editProduct(id){
  const p=db.products.find(x=>x.id===id);if(!p)return;
@@ -591,40 +637,47 @@ function editProduct(id){
 }
 function deleteProduct(id){
  if(!confirm("Delete this product?"))return;
- db.products=db.products.filter(p=>p.id!==id);saveDB();refreshAdmin();renderProducts();
+ db.products=db.products.filter(p=>p.id!==id);saveDB();refreshAdmin();renderProducts();showToast("Product deleted.");
 }
 function addCategory(){
- const input=document.getElementById("newCategory");
- const name=input.value.trim();
+ const input=document.getElementById("newCategory");const name=input.value.trim();
  if(!name)return alert("Enter a category name.");
  if(db.categories.some(c=>c.toLowerCase()===name.toLowerCase()))return alert("Category already exists.");
- db.categories.push(name);saveDB();input.value="";refreshAdmin();renderCategoryButtons();alert("Category added.");
+ db.categories.push(name);saveDB();input.value="";refreshAdmin();renderCategoryButtons();showToast("Category added.");
 }
 function renderAdminCategories(){
  document.getElementById("adminCategoryRows").innerHTML=db.categories.map(c=>`
- <tr><td>${escapeHTML(c)}</td><td><button class="admin-btn danger" onclick="deleteCategory('${escapeHTML(c)}')">DELETE</button></td></tr>`).join("");
+ <tr><td>${escapeHTML(c)}</td><td>${db.products.filter(p=>p.category===c).length}</td><td><button class="admin-btn danger" onclick="deleteCategory('${escapeHTML(c)}')">DELETE</button></td></tr>`).join("")||'<tr><td colspan="3">No categories.</td></tr>';
 }
 function deleteCategory(name){
- if(!confirm("Remove this category from the category list? Products assigned to it will remain."))return;
+ if(db.products.some(p=>p.category===name)){
+  if(!confirm("Products currently use this category. Delete category anyway? The products will remain but won't match a category filter."))return;
+ }else if(!confirm("Remove this category?"))return;
  db.categories=db.categories.filter(c=>c!==name);saveDB();refreshAdmin();renderCategoryButtons();renderProducts();
 }
 function renderAdminOrders(){
- document.getElementById("adminOrderRows").innerHTML=db.orders.map(o=>`
+ const q=(document.getElementById("adminOrderSearch")?.value||"").toLowerCase();
+ const rows=db.orders.filter(o=>[o.name,o.phone,o.service,o.design,o.id].join(" ").toLowerCase().includes(q));
+ document.getElementById("adminOrderRows").innerHTML=rows.map(o=>`
  <tr><td>${escapeHTML(o.date)}</td><td>${escapeHTML(o.name)}</td><td>${escapeHTML(o.phone)}</td><td>${escapeHTML(o.service)}</td><td>${escapeHTML(o.design)}</td>
- <td><select onchange="updateOrderStatus('${escapeHTML(o.id)}',this.value)">${["Pending","Confirmed","In Progress","Completed","Cancelled"].map(s=>`<option ${o.status===s?"selected":""}>${s}</option>`).join("")}</select></td>
- <td><button class="admin-btn secondary" onclick="viewOrder('${escapeHTML(o.id)}')">VIEW</button><button class="admin-btn danger" onclick="deleteOrder('${escapeHTML(o.id)}')">DELETE</button></td></tr>`).join("")||'<tr><td colspan="7">No orders received yet.</td></tr>';
+ <td><select onchange="updateOrderStatus('${escapeHTML(o.id)}',this.value)">${["Pending","Confirmed","In Progress","Completed","Cancelled"].map(s=>`<option value="${s}" ${o.status===s?"selected":""}>${s}</option>`).join("")}</select></td>
+ <td><button class="admin-btn secondary" onclick="viewOrder('${escapeHTML(o.id)}')">VIEW</button><button class="admin-btn danger" onclick="deleteOrder('${escapeHTML(o.id)}')">DELETE</button></td></tr>`).join("")||'<tr><td colspan="7">No orders found.</td></tr>';
+}
+function renderRecentOrders(){
+ document.getElementById("recentOrderRows").innerHTML=db.orders.slice(0,5).map(o=>`
+ <tr><td>${escapeHTML(o.date)}</td><td>${escapeHTML(o.name)}</td><td>${escapeHTML(o.phone)}</td><td>${escapeHTML(o.service)}</td><td>${escapeHTML(o.status)}</td></tr>`).join("")||'<tr><td colspan="5">No enquiries received yet.</td></tr>';
 }
 function updateOrderStatus(id,status){
  const o=db.orders.find(x=>x.id===id);if(o)o.status=status;
- saveDB();refreshAdmin();
+ saveDB();refreshAdmin();showToast("Order status updated.");
 }
 function viewOrder(id){
  const o=db.orders.find(x=>x.id===id);if(!o)return;
- alert(`ORDER DETAILS\n\nCustomer: ${o.name}\nPhone: ${o.phone}\nService: ${o.service}\nDesign: ${o.design}\nRequirements: ${o.message||"None"}\nDate: ${o.date}\nStatus: ${o.status}`);
+ alert(`ORDER DETAILS\n\nOrder ID: ${o.id}\nCustomer: ${o.name}\nPhone: ${o.phone}\nService: ${o.service}\nDesign: ${o.design}\nRequirements: ${o.message||"None"}\nDate: ${o.date}\nStatus: ${o.status}`);
 }
 function deleteOrder(id){
  if(!confirm("Delete this order?"))return;
- db.orders=db.orders.filter(o=>o.id!==id);saveDB();refreshAdmin();
+ db.orders=db.orders.filter(o=>o.id!==id);saveDB();refreshAdmin();showToast("Order deleted.");
 }
 function loadSettings(){
  const s=db.settings||{};
@@ -640,7 +693,7 @@ function saveSettings(){
   address:document.getElementById("settingAddress").value.trim(),
   description:document.getElementById("settingDescription").value.trim()
  };
- saveDB();applySettings();alert("Website settings saved.");
+ saveDB();applySettings();showToast("Website settings saved.");
 }
 function applySettings(){
  const s=db.settings||{};
@@ -651,8 +704,8 @@ function applySettings(){
 }
 function exportBackup(){
  const blob=new Blob([JSON.stringify(db,null,2)],{type:"application/json"});
- const url=URL.createObjectURL(blob);
- const a=document.createElement("a");a.href=url;a.download="SHREE-BOUTIQUE-BACKUP-"+new Date().toISOString().slice(0,10)+".json";a.click();
+ const url=URL.createObjectURL(blob);const a=document.createElement("a");
+ a.href=url;a.download="SHREE-BOUTIQUE-BACKUP-"+new Date().toISOString().slice(0,10)+".json";a.click();
  URL.revokeObjectURL(url);
 }
 function importBackup(event){
@@ -664,21 +717,22 @@ function importBackup(event){
    if(!Array.isArray(data.products)||!Array.isArray(data.categories)||!Array.isArray(data.orders))throw new Error("Invalid backup");
    if(!confirm("Import this backup? Current local data will be replaced."))return;
    db={products:data.products,categories:data.categories,orders:data.orders,settings:data.settings||{}};
-   saveDB();refreshAdmin();renderCategoryButtons();renderProducts();applySettings();
-   alert("Backup restored successfully.");
+   saveDB();refreshAdmin();renderCategoryButtons();renderProducts();applySettings();showToast("Backup restored.");
   }catch(e){alert("Invalid backup file.")}
   event.target.value="";
  };
  reader.readAsText(file);
 }
 
-/* INIT */
+/* INITIALIZE */
 renderCategoryButtons();
 renderProducts();
 applySettings();
+
+document.addEventListener("keydown",e=>{
+ if(e.key==="Escape"){closeModal();closeAdmin()}
+});
 </script>
 </body>
 </html>
-
-
 
