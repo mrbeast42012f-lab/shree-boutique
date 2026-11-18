@@ -3,935 +3,682 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#07152e">
 <title>SHREE BOUTIQUE | Premium Fashion & Tailoring</title>
-
 <style>
-:root{
-  --dark:#07152e;
-  --navy:#0b1f40;
-  --blue:#164b91;
-  --royal:#2474d2;
-  --gold:#d8b66a;
-  --light:#edf3fc;
-  --white:#ffffff;
-  --muted:#aabbd3;
-}
-
+:root{--dark:#07152e;--navy:#0b1f40;--blue:#164b91;--royal:#2474d2;--gold:#d8b66a;--muted:#aabbd3}
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{background:var(--dark);color:white;font-family:Arial,Helvetica,sans-serif}
-a{text-decoration:none;color:inherit}
-button{cursor:pointer;font-family:inherit}
-
-.topbar{
-  background:#030c1c;color:var(--gold);text-align:center;
-  padding:10px;font-size:11px;letter-spacing:2px;
-}
-
-header{
-  background:#091a35;border-bottom:1px solid #25436a;
-  position:sticky;top:0;z-index:100;
-}
-
-.nav{
-  max-width:1250px;margin:auto;padding:17px 22px;
-  display:flex;justify-content:space-between;align-items:center;
-}
-
-.logo{
-  font-family:Georgia,serif;font-size:25px;font-weight:bold;
-  letter-spacing:3px;color:white;
-}
+body{background:var(--dark);color:#fff;font-family:Arial,sans-serif}
+a{text-decoration:none;color:inherit}button{cursor:pointer;font-family:inherit}
+.topbar{background:#030c1c;color:var(--gold);text-align:center;padding:10px;font-size:11px;letter-spacing:2px}
+header{background:#091a35;border-bottom:1px solid #25436a;position:sticky;top:0;z-index:100}
+.nav{max-width:1250px;margin:auto;padding:15px 22px;display:flex;justify-content:space-between;align-items:center;gap:15px}
+.logo{font-family:Georgia,serif;font-size:23px;font-weight:bold;letter-spacing:3px}
 .logo span{color:var(--gold)}
-.logo small{
-  display:block;text-align:center;font-size:9px;
-  letter-spacing:4px;color:var(--gold);margin-top:5px;
-}
-
-.navlinks{display:flex;gap:25px;align-items:center}
-.navlinks a{
-  font-size:11px;letter-spacing:1px;color:#d9e5f7;text-transform:uppercase;
-}
+.logo small{display:block;text-align:center;font-size:9px;letter-spacing:4px;color:var(--gold);margin-top:5px}
+.navlinks{display:flex;gap:22px;align-items:center}
+.navlinks a{font-size:11px;letter-spacing:1px;color:#d9e5f7;text-transform:uppercase}
 .navlinks a:hover{color:var(--gold)}
-
-.menu-btn{
-  display:none;background:none;border:0;color:white;font-size:25px;
-}
-
-.hero{
-  min-height:570px;display:grid;grid-template-columns:1fr 1fr;
-  background:linear-gradient(120deg,#07152e,#10386d);
-}
-.hero-content{
-  display:flex;flex-direction:column;justify-content:center;padding:65px 9%;
-}
-.eyebrow{
-  color:var(--gold);font-size:11px;letter-spacing:4px;text-transform:uppercase;
-}
-.hero h1{
-  font-family:Georgia,serif;font-size:clamp(43px,5.5vw,76px);
-  line-height:1.1;margin:25px 0;
-}
+.menu-btn{display:none;background:none;border:0;color:white;font-size:25px}
+.admin-open{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:10px 13px;font-size:10px;letter-spacing:1px}
+.admin-open:hover{background:var(--gold);color:var(--dark)}
+.hero{min-height:550px;display:grid;grid-template-columns:1fr 1fr;background:linear-gradient(120deg,#07152e,#10386d)}
+.hero-content{display:flex;flex-direction:column;justify-content:center;padding:60px 9%}
+.eyebrow{color:var(--gold);font-size:11px;letter-spacing:4px;text-transform:uppercase}
+.hero h1{font-family:Georgia,serif;font-size:clamp(43px,5.5vw,76px);line-height:1.1;margin:25px 0}
 .hero h1 span{color:var(--gold);font-style:italic}
-.hero p{
-  color:#bdcce1;font-size:14px;line-height:1.9;max-width:450px;
-}
+.hero p{color:#bdcce1;font-size:14px;line-height:1.9;max-width:450px}
 .buttons{display:flex;gap:13px;flex-wrap:wrap;margin-top:30px}
-.btn{
-  border:1px solid var(--gold);background:var(--gold);color:#07152e;
-  padding:15px 23px;font-size:11px;font-weight:bold;
-  letter-spacing:1px;text-transform:uppercase;display:inline-block;transition:.3s;
-}
+.btn{border:1px solid var(--gold);background:var(--gold);color:#07152e;padding:14px 22px;font-size:11px;font-weight:bold;letter-spacing:1px;text-transform:uppercase;display:inline-block}
 .btn:hover{background:transparent;color:var(--gold)}
 .btn-outline{background:transparent;color:white;border-color:#829dc3}
-.btn-outline:hover{background:var(--blue);color:white}
-
-.hero-image{
-  min-height:570px;
-  background:linear-gradient(#07152e22,#07152e55),
-  url("https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1400&q=85") center/cover;
-}
-
-.features{
-  display:grid;grid-template-columns:repeat(4,1fr);background:#0c2244;
-  border-top:1px solid #29466c;border-bottom:1px solid #29466c;padding:25px 15px;
-}
-.feature{text-align:center;color:#dce7f6;font-size:11px;letter-spacing:1px}
-.feature strong{
-  display:block;font-family:Georgia,serif;color:var(--gold);
-  font-size:23px;margin-bottom:7px;
-}
-
-.section{max-width:1250px;margin:auto;padding:85px 22px}
-.section-title{text-align:center;margin-bottom:45px}
+.hero-image{min-height:550px;background:linear-gradient(#07152e22,#07152e55),url("https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1400&q=85") center/cover}
+.features{display:grid;grid-template-columns:repeat(4,1fr);background:#0c2244;padding:25px 15px;border-block:1px solid #29466c}
+.feature{text-align:center;color:#dce7f6;font-size:11px}
+.feature strong{display:block;color:var(--gold);font:23px Georgia;margin-bottom:7px}
+.section{max-width:1250px;margin:auto;padding:75px 22px}
+.section-title{text-align:center;margin-bottom:35px}
 .section-title small{color:var(--gold);letter-spacing:4px;font-size:10px}
-.section-title h2{
-  font-family:Georgia,serif;font-size:clamp(30px,4vw,46px);
-  font-weight:normal;margin:15px 0;
-}
+.section-title h2{font:normal clamp(30px,4vw,46px) Georgia;margin:15px 0}
 .section-title p{color:var(--muted);font-size:13px;line-height:1.8}
-
 .categories{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.category{position:relative;height:330px;overflow:hidden;border:1px solid #28466f}
-.category img{width:100%;height:100%;object-fit:cover;transition:.5s}
+.category{position:relative;height:300px;overflow:hidden;border:1px solid #28466f}
+.category img{width:100%;height:100%;object-fit:cover;transition:.4s}
 .category:hover img{transform:scale(1.08)}
-.category:after{
-  content:"";position:absolute;inset:30% 0 0;
-  background:linear-gradient(transparent,#06142e);
-}
+.category:after{content:"";position:absolute;inset:30% 0 0;background:linear-gradient(transparent,#06142e)}
 .category-info{position:absolute;bottom:20px;left:18px;z-index:2}
-.category-info h3{font-family:Georgia,serif;font-size:23px;font-weight:normal}
-.category-info small{
-  display:block;color:var(--gold);font-size:9px;
-  letter-spacing:2px;margin-top:8px;
-}
-
-/* NEW CATEGORY MENU AND SEARCH */
-.catalog-tools{
-  background:#0c2040;border:1px solid #29466c;
-  padding:22px;margin-bottom:28px;
-}
-.catalog-tools h3{
-  font-family:Georgia,serif;font-size:22px;font-weight:normal;
-  color:var(--gold);margin-bottom:15px;
-}
-.search-row{
-  display:grid;grid-template-columns:1fr auto;gap:10px;
-}
-.search-box{position:relative}
-.search-box input{
-  width:100%;height:48px;background:#07152e;
-  border:1px solid #345275;color:white;padding:0 15px;
-  font-size:13px;outline:none;
-}
-.search-box input:focus{border-color:var(--gold)}
-.category-toggle{
-  height:48px;padding:0 20px;background:var(--gold);
-  color:#07152e;border:1px solid var(--gold);
-  font-size:11px;font-weight:bold;letter-spacing:1px;
-}
-.category-toggle:hover{background:var(--royal);color:white;border-color:var(--royal)}
-
-.category-panel{
-  display:none;margin-top:18px;padding-top:18px;
-  border-top:1px solid #29466c;
-}
-.category-panel.open{display:block}
-.category-list{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:9px;
-}
-.category-option{
-  background:#102b50;color:#dce7f6;border:1px solid #345275;
-  padding:12px 10px;text-align:left;font-size:11px;
-  transition:.2s;
-}
-.category-option:hover,.category-option.active{
-  background:var(--gold);color:#07152e;border-color:var(--gold);
-}
-.category-option.active{font-weight:bold}
-.catalog-status{
-  display:flex;justify-content:space-between;align-items:center;
-  flex-wrap:wrap;gap:10px;margin-top:17px;
-  color:var(--muted);font-size:11px;
-}
-.clear-filter{
-  border:0;background:transparent;color:var(--gold);
-  text-decoration:underline;font-size:11px;
-}
-.no-results{
-  display:none;text-align:center;padding:45px 15px;
-  border:1px dashed #526b8d;color:var(--muted);
-  grid-column:1/-1;
-}
-.no-results strong{
-  display:block;font-family:Georgia,serif;
-  color:var(--gold);font-size:24px;margin-bottom:10px;
-}
-
-.products{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.product{
-  background:#0c2040;border:1px solid #263f64;
-  transition:.3s;overflow:hidden;
-}
-.product:hover{border-color:var(--gold);transform:translateY(-5px)}
-.product-image{height:300px;position:relative;overflow:hidden}
-.product-image img{width:100%;height:100%;object-fit:cover;transition:.5s}
-.product:hover .product-image img{transform:scale(1.06)}
-.tag{
-  position:absolute;top:12px;left:12px;background:var(--gold);
-  color:#07152e;padding:7px 11px;font-size:9px;font-weight:bold;letter-spacing:1px;
-}
-.product-info{padding:17px}
-.product-code{color:var(--gold);font-size:10px;letter-spacing:2px}
-.product-info h3{
-  font-family:Georgia,serif;font-size:18px;font-weight:normal;margin:10px 0;
-}
-.price{color:#d7e5fa;font-size:13px}
-.price strong{color:var(--gold);font-size:19px}
-.product-buttons{display:flex;gap:8px;margin-top:17px}
-.product-buttons button{
-  flex:1;padding:11px 5px;font-size:9px;letter-spacing:1px;
-  text-transform:uppercase;background:var(--gold);color:#07152e;
-  border:1px solid var(--gold);font-weight:bold;
-}
-.product-buttons button:last-child{background:transparent;color:var(--gold)}
-.product-buttons button:hover{
-  background:var(--royal);color:white;border-color:var(--royal);
-}
-
-.custom-banner{
-  display:grid;grid-template-columns:1fr 1fr;background:#0c2346;
-  border-top:1px solid #29466c;border-bottom:1px solid #29466c;
-}
-.banner-image{
-  min-height:370px;
-  background:url("https://images.unsplash.com/photo-1583391733956-6c78276477e3?auto=format&fit=crop&w=1100&q=85") center/cover;
-}
-.banner-content{
-  display:flex;flex-direction:column;justify-content:center;padding:50px 10%;
-}
-.banner-content h2{
-  font-family:Georgia,serif;font-size:42px;font-weight:normal;margin:20px 0;
-}
-.banner-content p{
-  color:var(--muted);line-height:1.9;font-size:13px;margin-bottom:25px;
-}
-
-.services{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.service{
-  padding:35px 22px;background:#0d2140;border:1px solid #29466c;text-align:center;
-}
-.service .number{color:var(--gold);font-size:12px;letter-spacing:3px}
-.service h3{
-  font-family:Georgia,serif;font-size:22px;font-weight:normal;margin:17px 0;
-}
-.service p{color:var(--muted);font-size:12px;line-height:1.9}
-
-.booking{
-  background:#0c2040;border-top:1px solid #29466c;padding:75px 20px;
-}
-.booking-inner{max-width:800px;margin:auto;text-align:center}
-.booking h2{
-  font-family:Georgia,serif;font-size:40px;font-weight:normal;margin:15px 0;
-}
-.booking p{color:var(--muted);font-size:13px;line-height:1.8}
-form{
-  display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-top:30px;
-}
-input,select,textarea{
-  background:#07152e;border:1px solid #345275;color:white;
-  padding:15px;width:100%;outline:none;font-size:12px;
-}
+.category-info h3{font:normal 22px Georgia}
+.category-info small{display:block;color:var(--gold);font-size:9px;letter-spacing:2px;margin-top:8px}
+.catalog-tools{background:#0c2040;border:1px solid #29466c;padding:20px;margin-bottom:25px}
+.catalog-tools h3{font:normal 22px Georgia;color:var(--gold);margin-bottom:15px}
+.search-row{display:grid;grid-template-columns:1fr auto;gap:10px}
+input,select,textarea{background:#07152e;border:1px solid #345275;color:white;padding:13px;width:100%;outline:none;font-size:12px}
 input:focus,select:focus,textarea:focus{border-color:var(--gold)}
 select option{background:#07152e}
+.category-toggle{background:var(--gold);color:#07152e;border:0;padding:0 18px;font-weight:bold;font-size:11px}
+.category-panel{display:none;margin-top:15px;border-top:1px solid #29466c;padding-top:15px}
+.category-panel.open{display:block}
+.category-list{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.category-option{background:#102b50;color:#dce7f6;border:1px solid #345275;padding:11px;text-align:left;font-size:11px}
+.category-option.active,.category-option:hover{background:var(--gold);color:#07152e}
+.catalog-status{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;color:var(--muted);font-size:11px;margin-top:15px}
+.clear-filter{background:none;border:0;color:var(--gold);text-decoration:underline}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.product{background:#0c2040;border:1px solid #263f64;overflow:hidden;transition:.25s}
+.product:hover{border-color:var(--gold);transform:translateY(-4px)}
+.product-image{height:280px;position:relative;overflow:hidden}
+.product-image img{width:100%;height:100%;object-fit:cover}
+.tag{position:absolute;top:12px;left:12px;background:var(--gold);color:#07152e;padding:7px;font-size:9px}
+.product-info{padding:16px}
+.product-code{color:var(--gold);font-size:10px;letter-spacing:2px}
+.product-info h3{font:normal 18px Georgia;margin:10px 0}
+.price{color:#d7e5fa;font-size:13px}
+.price strong{color:var(--gold);font-size:19px}
+.product-buttons{display:flex;gap:8px;margin-top:15px}
+.product-buttons button{flex:1;padding:10px 5px;font-size:9px;background:var(--gold);color:#07152e;border:1px solid var(--gold);font-weight:bold}
+.product-buttons button:last-child{background:transparent;color:var(--gold)}
+.no-results{display:none;grid-column:1/-1;text-align:center;padding:40px;color:var(--muted)}
+.no-results strong{display:block;color:var(--gold);font:24px Georgia;margin-bottom:10px}
+.custom-banner{display:grid;grid-template-columns:1fr 1fr;background:#0c2346;border-block:1px solid #29466c}
+.banner-image{min-height:350px;background:url("https://images.unsplash.com/photo-1583391733956-6c78276477e3?auto=format&fit=crop&w=1100&q=85") center/cover}
+.banner-content{display:flex;flex-direction:column;justify-content:center;padding:45px 10%}
+.banner-content h2{font:normal 40px Georgia;margin:20px 0}
+.banner-content p{color:var(--muted);font-size:13px;line-height:1.9;margin-bottom:22px}
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.service{padding:32px 20px;background:#0d2140;border:1px solid #29466c;text-align:center}
+.service .number{color:var(--gold);font-size:12px;letter-spacing:3px}
+.service h3{font:normal 22px Georgia;margin:16px 0}
+.service p{color:var(--muted);font-size:12px;line-height:1.9}
+.booking{background:#0c2040;border-top:1px solid #29466c;padding:70px 20px}
+.booking-inner{max-width:800px;margin:auto;text-align:center}
+.booking h2{font:normal 40px Georgia;margin:15px 0}
+.booking p{color:var(--muted);font-size:13px;line-height:1.8}
+form{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-top:25px}
 textarea{grid-column:1/-1;min-height:100px;resize:vertical}
 form button{grid-column:1/-1;justify-self:center;min-width:220px}
-
-footer{
-  background:#030b19;padding:55px 22px 22px;border-top:1px solid #29466c;
-}
-.footer-inner{
-  max-width:1200px;margin:auto;display:grid;
-  grid-template-columns:2fr 1fr 1fr;gap:35px;
-}
-footer h4{color:var(--gold);letter-spacing:2px;font-size:11px;margin-bottom:18px}
+footer{background:#030b19;padding:50px 22px 20px;border-top:1px solid #29466c}
+.footer-inner{max-width:1200px;margin:auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px}
+footer h4{color:var(--gold);letter-spacing:2px;font-size:11px;margin-bottom:15px}
 footer p,footer a{color:#9fb1cb;font-size:12px;line-height:2}
 footer a{display:block}
-.copyright{
-  max-width:1200px;margin:35px auto 0;border-top:1px solid #263c5a;
-  padding-top:20px;text-align:center;color:#7185a2;font-size:10px;letter-spacing:1px;
-}
-
-.modal{
-  display:none;position:fixed;inset:0;background:#000b;z-index:500;
-  align-items:center;justify-content:center;padding:20px;
-}
+.copyright{text-align:center;border-top:1px solid #263c5a;padding-top:18px;margin:30px auto 0;color:#7185a2;font-size:10px}
+.modal{display:none;position:fixed;inset:0;background:#000c;z-index:500;align-items:center;justify-content:center;padding:15px}
 .modal.active{display:flex}
-.modal-content{
-  background:#0c2040;border:1px solid var(--gold);padding:30px;
-  width:100%;max-width:430px;position:relative;
-}
-.modal-content h2{font-family:Georgia,serif;font-weight:normal;margin:15px 0}
+.modal-content{background:#0c2040;border:1px solid var(--gold);padding:28px;width:100%;max-width:450px;max-height:90vh;overflow:auto;position:relative}
+.modal-content h2{font:normal 26px Georgia;margin:15px 0}
 .modal-content p{color:var(--muted);font-size:13px;line-height:1.8}
-.close{
-  position:absolute;right:15px;top:10px;background:none;
-  border:0;color:white;font-size:25px;
-}
-.modal-content .btn{margin-top:20px;width:100%}
+.close{position:absolute;right:12px;top:8px;background:none;border:0;color:white;font-size:27px}
+.modal-content .btn{margin-top:18px;width:100%}
 
+/* ADMIN PANEL */
+.admin-modal{z-index:1000}
+.admin-window{background:#091a35;border:1px solid var(--gold);width:100%;max-width:1100px;height:92vh;overflow:auto;position:relative;padding:22px}
+.admin-head{display:flex;justify-content:space-between;align-items:center;gap:15px;border-bottom:1px solid #345275;padding-bottom:15px;margin-bottom:20px}
+.admin-head h2{font:normal 27px Georgia;color:var(--gold)}
+.admin-close{background:none;color:white;border:0;font-size:28px}
+.admin-login{max-width:400px;margin:45px auto;text-align:center}
+.admin-login h2{font:30px Georgia;color:var(--gold);margin-bottom:12px}
+.admin-login input{margin:8px 0}
+.admin-login button{width:100%;margin-top:10px}
+.admin-layout{display:none}
+.admin-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.admin-tab{padding:11px 15px;background:#102b50;border:1px solid #345275;color:white;font-size:11px}
+.admin-tab.active,.admin-tab:hover{background:var(--gold);color:#07152e}
+.admin-page{display:none}
+.admin-page.active{display:block}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+.stat{background:#102b50;border:1px solid #345275;padding:18px}
+.stat small{color:var(--muted);font-size:11px}
+.stat strong{display:block;font:28px Georgia;color:var(--gold);margin-top:10px}
+.admin-card{background:#102342;border:1px solid #345275;padding:18px;margin-bottom:15px}
+.admin-card h3{font:normal 21px Georgia;color:var(--gold);margin-bottom:15px}
+.admin-form{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.admin-form textarea{grid-column:1/-1}
+.admin-form button{grid-column:1/-1}
+.admin-btn{padding:11px 15px;background:var(--gold);border:1px solid var(--gold);color:#07152e;font-weight:bold;font-size:11px}
+.admin-btn.secondary{background:transparent;color:var(--gold)}
+.admin-btn.danger{background:#8c2636;color:white;border-color:#8c2636}
+.admin-table-wrap{overflow:auto}
+.admin-table{width:100%;border-collapse:collapse;min-width:600px;font-size:12px}
+.admin-table th,.admin-table td{padding:12px;border-bottom:1px solid #345275;text-align:left}
+.admin-table th{color:var(--gold)}
+.admin-table td button{margin:2px}
+.admin-note{font-size:11px;color:var(--muted);line-height:1.7;margin-top:12px}
+.admin-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
 @media(max-width:900px){
-  .navlinks{
-    display:none;position:absolute;top:70px;left:0;right:0;
-    background:#091a35;padding:25px;flex-direction:column;
-  }
-  .navlinks.show{display:flex}
-  .menu-btn{display:block}
-  .hero{grid-template-columns:1fr}
-  .hero-image{min-height:400px;grid-row:1}
-  .categories,.products{grid-template-columns:repeat(2,1fr)}
-  .custom-banner{grid-template-columns:1fr}
-  .banner-image{min-height:300px}
-  .category-list{grid-template-columns:repeat(3,1fr)}
+.navlinks{display:none;position:absolute;top:65px;left:0;right:0;background:#091a35;padding:22px;flex-direction:column}
+.navlinks.show{display:flex}.menu-btn{display:block}
+.hero{grid-template-columns:1fr}.hero-image{min-height:350px;grid-row:1}
+.categories,.products{grid-template-columns:repeat(2,1fr)}
+.custom-banner{grid-template-columns:1fr}.banner-image{min-height:280px}
+.category-list{grid-template-columns:repeat(3,1fr)}
 }
-
 @media(max-width:550px){
-  .logo{font-size:19px}
-  .hero-content{padding:50px 23px}
-  .hero h1{font-size:48px}
-  .hero-image{min-height:320px}
-  .features{grid-template-columns:repeat(2,1fr);gap:25px}
-  .section{padding:60px 14px}
-  .categories{gap:10px}
-  .category{height:230px}
-  .category-info h3{font-size:18px}
-  .products{gap:10px}
-  .product-image{height:210px}
-  .product-info{padding:12px}
-  .product-info h3{font-size:15px}
-  .product-buttons{flex-direction:column}
-  .services{grid-template-columns:1fr}
-  .banner-content{padding:40px 25px}
-  .banner-content h2{font-size:34px}
-  form{grid-template-columns:1fr}
-  textarea,form button{grid-column:1}
-  .footer-inner{grid-template-columns:1fr}
-  .search-row{grid-template-columns:1fr}
-  .category-toggle{width:100%}
-  .category-list{grid-template-columns:repeat(2,1fr)}
-  .catalog-tools{padding:15px}
+.nav{padding:12px}.logo{font-size:17px}.admin-open{font-size:9px;padding:9px}
+.hero-content{padding:45px 22px}.hero h1{font-size:47px}.hero-image{min-height:290px}
+.features{grid-template-columns:repeat(2,1fr);gap:20px}
+.section{padding:55px 13px}.categories{gap:9px}.category{height:210px}
+.category-info h3{font-size:17px}.products{gap:10px}.product-image{height:190px}
+.product-info{padding:10px}.product-info h3{font-size:15px}.product-buttons{flex-direction:column}
+.services{grid-template-columns:1fr}.banner-content{padding:35px 22px}
+form{grid-template-columns:1fr}textarea,form button{grid-column:1}
+.footer-inner{grid-template-columns:1fr}.search-row{grid-template-columns:1fr}
+.category-toggle{padding:14px}.category-list{grid-template-columns:repeat(2,1fr)}
+.stats{grid-template-columns:repeat(2,1fr)}.admin-form{grid-template-columns:1fr}
+.admin-form textarea,.admin-form button{grid-column:1}
+.admin-window{padding:12px}.admin-head h2{font-size:21px}
 }
 </style>
 </head>
-
 <body>
 
-<div class="topbar">
-  ✦ PREMIUM BOUTIQUE COLLECTION · CUSTOM STITCHING ✦
-</div>
-
+<div class="topbar">✦ PREMIUM BOUTIQUE COLLECTION · CUSTOM STITCHING ✦</div>
 <header>
 <nav class="nav">
 <button class="menu-btn" onclick="toggleMenu()">☰</button>
-
-<a href="#" class="logo">
-SHREE <span>BOUTIQUE</span>
-<small>THE ART OF ELEGANCE</small>
-</a>
-
+<a href="#" class="logo">SHREE <span>BOUTIQUE</span><small>THE ART OF ELEGANCE</small></a>
 <div class="navlinks" id="navlinks">
-<a href="#home">Home</a>
-<a href="#collections">Collections</a>
-<a href="#designs">Designs</a>
-<a href="#services">Services</a>
-<a href="#booking">Order Now</a>
+<a href="#home">Home</a><a href="#collections">Collections</a><a href="#designs">Designs</a><a href="#services">Services</a><a href="#booking">Order Now</a>
 </div>
+<button class="admin-open" onclick="openAdmin()">ADMIN LOGIN</button>
 </nav>
 </header>
 
 <main>
-
 <section class="hero" id="home">
 <div class="hero-content">
 <div class="eyebrow">Luxury Fashion · Custom Tailoring</div>
 <h1>Your Style.<br>Your <span>Elegance.</span></h1>
-<p>
-Discover beautiful designer blouse, saree, lehenga and gown collections.
-We bring your dream fashion designs to life with beautiful finishing and custom stitching.
-</p>
-<div class="buttons">
-<a class="btn" href="#designs">Explore Collection ↗</a>
-<a class="btn btn-outline" href="#booking">Book Your Design</a>
-</div>
+<p>Discover beautiful designer blouse, saree, lehenga and gown collections. We bring your dream fashion designs to life with beautiful finishing and custom stitching.</p>
+<div class="buttons"><a class="btn" href="#designs">Explore Collection ↗</a><a class="btn btn-outline" href="#booking">Book Your Design</a></div>
 </div>
 <div class="hero-image"></div>
 </section>
 
 <section class="features">
-<div class="feature"><strong>✦</strong>Premium Designs</div>
-<div class="feature"><strong>♧</strong>Custom Stitching</div>
-<div class="feature"><strong>♡</strong>Perfect Fitting</div>
-<div class="feature"><strong>✧</strong>Elegant Finishing</div>
+<div class="feature"><strong>✦</strong>Premium Designs</div><div class="feature"><strong>♧</strong>Custom Stitching</div><div class="feature"><strong>♡</strong>Perfect Fitting</div><div class="feature"><strong>✧</strong>Elegant Finishing</div>
 </section>
 
 <section class="section" id="collections">
-<div class="section-title">
-<small>DISCOVER SHREE BOUTIQUE</small>
-<h2>Explore Our Collections</h2>
-<p>Beautiful fashion for every special occasion.</p>
-</div>
-
+<div class="section-title"><small>DISCOVER SHREE BOUTIQUE</small><h2>Explore Our Collections</h2><p>Beautiful fashion for every special occasion.</p></div>
 <div class="categories">
-<a class="category" href="#designs" onclick="selectCategory('Blouse')">
-<img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=700&q=80" alt="Blouse">
-<div class="category-info"><h3>Blouse Designs</h3><small>EXPLORE COLLECTION ↗</small></div>
-</a>
-
-<a class="category" href="#designs" onclick="selectCategory('Saree Fall & Pico')">
-<img src="https://images.unsplash.com/photo-1583391733956-6c78276477e3?auto=format&fit=crop&w=700&q=80" alt="Saree">
-<div class="category-info"><h3>Saree Fall & Pico</h3><small>OUR SERVICES ↗</small></div>
-</a>
-
-<a class="category" href="#designs" onclick="selectCategory('Lehenga')">
-<img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=700&q=80" alt="Lehenga">
-<div class="category-info"><h3>Lehenga</h3><small>EXPLORE COLLECTION ↗</small></div>
-</a>
-
-<a class="category" href="#designs" onclick="selectCategory('Gown')">
-<img src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=700&q=80" alt="Gown">
-<div class="category-info"><h3>Designer Gown</h3><small>EXPLORE COLLECTION ↗</small></div>
-</a>
+<a class="category" href="#designs" onclick="selectCategory('Blouse')"><img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=700&q=80"><div class="category-info"><h3>Blouse Designs</h3><small>EXPLORE COLLECTION ↗</small></div></a>
+<a class="category" href="#designs" onclick="selectCategory('Saree Fall & Pico')"><img src="https://images.unsplash.com/photo-1583391733956-6c78276477e3?auto=format&fit=crop&w=700&q=80"><div class="category-info"><h3>Saree Fall & Pico</h3><small>OUR SERVICES ↗</small></div></a>
+<a class="category" href="#designs" onclick="selectCategory('Lehenga')"><img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=700&q=80"><div class="category-info"><h3>Lehenga</h3><small>EXPLORE COLLECTION ↗</small></div></a>
+<a class="category" href="#designs" onclick="selectCategory('Gown')"><img src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=700&q=80"><div class="category-info"><h3>Designer Gown</h3><small>EXPLORE COLLECTION ↗</small></div></a>
 </div>
 </section>
 
 <section class="section" id="designs">
-
-<div class="section-title">
-<small>HANDPICKED FOR YOU</small>
-<h2>Our Signature Designs</h2>
-<p>Choose your favourite design and book your order.</p>
-</div>
-
-<!-- NEW SEARCH AND CATEGORY MENU -->
+<div class="section-title"><small>HANDPICKED FOR YOU</small><h2>Our Signature Designs</h2><p>Choose your favourite design and book your order.</p></div>
 <div class="catalog-tools">
-
 <h3>Find Your Favourite Design</h3>
-
-<div class="search-row">
-<div class="search-box">
-<input
-type="search"
-id="designSearch"
-placeholder="Search blouse, saree, lehenga, gown, design number..."
-oninput="filterProducts()"
-aria-label="Search designs">
+<div class="search-row"><input id="designSearch" type="search" placeholder="Search blouse, saree, lehenga, design number..." oninput="renderProducts()"><button class="category-toggle" onclick="toggleCategories()">☰ ALL CATEGORIES</button></div>
+<div class="category-panel" id="categoryPanel"><div class="category-list" id="categoryList"></div></div>
+<div class="catalog-status"><span id="resultCount"></span><button class="clear-filter" onclick="resetFilters()">Clear Search & Filter ×</button></div>
 </div>
-
-<button class="category-toggle" type="button" onclick="toggleCategories()">
-☰ ALL CATEGORIES
-</button>
-</div>
-
-<div class="category-panel" id="categoryPanel">
-<div class="category-list" id="categoryList">
-
-<button class="category-option active" onclick="selectCategory('All')">✦ All Categories</button>
-<button class="category-option" onclick="selectCategory('Blouse')">Blouse</button>
-<button class="category-option" onclick="selectCategory('Saree')">Saree</button>
-<button class="category-option" onclick="selectCategory('Saree Fall & Pico')">Saree Fall & Pico</button>
-<button class="category-option" onclick="selectCategory('Lehenga')">Lehenga</button>
-<button class="category-option" onclick="selectCategory('Salwar Suit')">Salwar Suit</button>
-<button class="category-option" onclick="selectCategory('Kurti')">Kurti</button>
-<button class="category-option" onclick="selectCategory('Gown')">Gown</button>
-<button class="category-option" onclick="selectCategory('Party Wear Dress')">Party Wear Dress</button>
-<button class="category-option" onclick="selectCategory('Wedding Dress')">Wedding Dress</button>
-<button class="category-option" onclick="selectCategory('Anarkali')">Anarkali</button>
-<button class="category-option" onclick="selectCategory('Nighty')">Nighty</button>
-<button class="category-option" onclick="selectCategory('Petticoat')">Petticoat</button>
-<button class="category-option" onclick="selectCategory('Skirt')">Skirt</button>
-<button class="category-option" onclick="selectCategory('Top')">Top</button>
-<button class="category-option" onclick="selectCategory('Palazzo')">Palazzo</button>
-<button class="category-option" onclick="selectCategory('Ladies Fashion')">Ladies Fashion</button>
-<button class="category-option" onclick="selectCategory('Blouse Cutting')">Blouse Cutting</button>
-<button class="category-option" onclick="selectCategory('Lehenga Cutting')">Lehenga Cutting</button>
-<button class="category-option" onclick="selectCategory('Gown Stitching')">Gown Stitching</button>
-<button class="category-option" onclick="selectCategory('Custom Design')">Custom Design</button>
-<button class="category-option" onclick="selectCategory('Other')">Other</button>
-
-</div>
-</div>
-
-<div class="catalog-status">
-<span id="resultCount">Showing all designs</span>
-<button class="clear-filter" type="button" onclick="resetFilters()">Clear Search & Filter ×</button>
-</div>
-
-</div>
-
-<div class="products" id="productGrid">
-
-<!-- PRODUCT 1 -->
-<div class="product" data-category="Blouse Wedding Dress Ladies Fashion">
-<div class="product-image">
-<span class="tag">BESTSELLER</span>
-<img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=700&q=80" alt="Blouse Design">
-</div>
-<div class="product-info">
-<div class="product-code">BL-001</div>
-<h3>Classic Bridal Blouse</h3>
-<div class="price">Starting <strong>₹650</strong></div>
-<div class="product-buttons">
-<button onclick="order('BL-001','Classic Bridal Blouse','650')">Order Now</button>
-<button onclick="details('Classic Bridal Blouse','BL-001','₹650')">Details</button>
-</div>
-</div>
-</div>
-
-<!-- PRODUCT 2 -->
-<div class="product" data-category="Blouse Party Wear Dress Ladies Fashion">
-<div class="product-image">
-<img src="https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=700&q=80" alt="Designer Blouse">
-</div>
-<div class="product-info">
-<div class="product-code">BL-002</div>
-<h3>Designer Party Blouse</h3>
-<div class="price">Starting <strong>₹450</strong></div>
-<div class="product-buttons">
-<button onclick="order('BL-002','Designer Party Blouse','450')">Order Now</button>
-<button onclick="details('Designer Party Blouse','BL-002','₹450')">Details</button>
-</div>
-</div>
-</div>
-
-<!-- PRODUCT 3 -->
-<div class="product" data-category="Saree Saree Fall & Pico">
-<div class="product-image">
-<span class="tag">POPULAR</span>
-<img src="https://images.unsplash.com/photo-1583391733956-6c78276477e3?auto=format&fit=crop&w=700&q=80" alt="Saree">
-</div>
-<div class="product-info">
-<div class="product-code">SF-001</div>
-<h3>Saree Fall & Pico</h3>
-<div class="price">Starting <strong>₹150</strong></div>
-<div class="product-buttons">
-<button onclick="order('SF-001','Saree Fall & Pico','150')">Book Now</button>
-<button onclick="details('Saree Fall & Pico','SF-001','₹150')">Details</button>
-</div>
-</div>
-</div>
-
-<!-- PRODUCT 4 -->
-<div class="product" data-category="Lehenga Wedding Dress Ladies Fashion">
-<div class="product-image">
-<img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=700&q=80" alt="Lehenga">
-</div>
-<div class="product-info">
-<div class="product-code">LH-001</div>
-<h3>Royal Lehenga</h3>
-<div class="price">Starting <strong>₹1,200</strong></div>
-<div class="product-buttons">
-<button onclick="order('LH-001','Royal Lehenga','1200')">Order Now</button>
-<button onclick="details('Royal Lehenga','LH-001','₹1,200')">Details</button>
-</div>
-</div>
-</div>
-
-<!-- PRODUCT 5 -->
-<div class="product" data-category="Gown Anarkali Wedding Dress Ladies Fashion">
-<div class="product-image">
-<img src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=700&q=80" alt="Gown">
-</div>
-<div class="product-info">
-<div class="product-code">GW-001</div>
-<h3>Anarkali Designer Gown</h3>
-<div class="price">Starting <strong>₹850</strong></div>
-<div class="product-buttons">
-<button onclick="order('GW-001','Anarkali Designer Gown','850')">Order Now</button>
-<button onclick="details('Anarkali Designer Gown','GW-001','₹850')">Details</button>
-</div>
-</div>
-</div>
-
-<!-- PRODUCT 6 -->
-<div class="product" data-category="Gown Party Wear Dress Ladies Fashion">
-<div class="product-image">
-<img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=700&q=80" alt="Party Gown">
-</div>
-<div class="product-info">
-<div class="product-code">GW-002</div>
-<h3>Party Wear Gown</h3>
-<div class="price">Starting <strong>₹1,000</strong></div>
-<div class="product-buttons">
-<button onclick="order('GW-002','Party Wear Gown','1000')">Order Now</button>
-<button onclick="details('Party Wear Gown','GW-002','₹1,000')">Details</button>
-</div>
-</div>
-</div>
-
-<!-- PRODUCT 7 -->
-<div class="product" data-category="Blouse Blouse Cutting">
-<div class="product-image">
-<img src="https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=700&q=80" alt="Blouse Cutting">
-</div>
-<div class="product-info">
-<div class="product-code">BC-001</div>
-<h3>Blouse Cutting</h3>
-<div class="price">Starting <strong>₹200</strong></div>
-<div class="product-buttons">
-<button onclick="order('BC-001','Blouse Cutting','200')">Book Now</button>
-<button onclick="details('Blouse Cutting','BC-001','₹200')">Details</button>
-</div>
-</div>
-</div>
-
-<!-- PRODUCT 8 -->
-<div class="product" data-category="Lehenga Lehenga Cutting">
-<div class="product-image">
-<img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=700&q=80" alt="Lehenga Cutting">
-</div>
-<div class="product-info">
-<div class="product-code">LC-001</div>
-<h3>Lehenga Cutting</h3>
-<div class="price">Starting <strong>₹500</strong></div>
-<div class="product-buttons">
-<button onclick="order('LC-001','Lehenga Cutting','500')">Book Now</button>
-<button onclick="details('Lehenga Cutting','LC-001','₹500')">Details</button>
-</div>
-</div>
-</div>
-
-<div class="no-results" id="noResults">
-<strong>No Designs Found</strong>
-Try another design name or choose a different category.
-</div>
-
-</div>
-
-<p style="text-align:center;color:#9fb1cb;font-size:11px;margin-top:25px">
-* All prices are demo starting prices. Actual charges depend on design, fabric and work.
-</p>
-
+<div class="products" id="productGrid"></div>
+<p style="text-align:center;color:#9fb1cb;font-size:11px;margin-top:25px">* All prices are demo starting prices. Actual charges depend on design, fabric and work.</p>
 </section>
 
 <section class="custom-banner">
-<div class="banner-image"></div>
-<div class="banner-content">
-<div class="eyebrow">YOUR DREAM · OUR CRAFT</div>
-<h2>Create Your Own<br><span style="color:#d8b66a">Signature Style</span></h2>
-<p>
-Have a special design in mind?
-Share your favourite reference image and get your own custom blouse, lehenga or gown stitched.
-</p>
-<a href="#booking" class="btn" style="align-self:flex-start">CUSTOM ORDER ↗</a>
-</div>
+<div class="banner-image"></div><div class="banner-content"><div class="eyebrow">YOUR DREAM · OUR CRAFT</div><h2>Create Your Own<br><span style="color:#d8b66a">Signature Style</span></h2><p>Have a special design in mind? Share your favourite reference image and get your own custom blouse, lehenga or gown stitched.</p><a href="#booking" class="btn" style="align-self:flex-start">CUSTOM ORDER ↗</a></div>
 </section>
 
 <section class="section" id="services">
-<div class="section-title">
-<small>WHAT WE OFFER</small>
-<h2>Our Boutique Services</h2>
-<p>Every detail matters. Every stitch tells a story.</p>
-</div>
-
+<div class="section-title"><small>WHAT WE OFFER</small><h2>Our Boutique Services</h2><p>Every detail matters. Every stitch tells a story.</p></div>
 <div class="services">
-<div class="service">
-<div class="number">01 / BLOUSE</div>
-<h3>Blouse Cutting & Stitching</h3>
-<p>Designer blouse, bridal blouse, padded blouse, party wear and custom fitting.</p>
-</div>
-
-<div class="service">
-<div class="number">02 / SAREE</div>
-<h3>Saree Fall & Pico</h3>
-<p>Professional fall attachment, pico and beautiful finishing.</p>
-</div>
-
-<div class="service">
-<div class="number">03 / DESIGNER</div>
-<h3>Lehenga & Gown</h3>
-<p>Custom lehenga, gown cutting, stitching and occasion wear.</p>
-</div>
+<div class="service"><div class="number">01 / BLOUSE</div><h3>Blouse Cutting & Stitching</h3><p>Designer blouse, bridal blouse, padded blouse, party wear and custom fitting.</p></div>
+<div class="service"><div class="number">02 / SAREE</div><h3>Saree Fall & Pico</h3><p>Professional fall attachment, pico and beautiful finishing.</p></div>
+<div class="service"><div class="number">03 / DESIGNER</div><h3>Lehenga & Gown</h3><p>Custom lehenga, gown cutting, stitching and occasion wear.</p></div>
 </div>
 </section>
 
 <section class="booking" id="booking">
 <div class="booking-inner">
-<div class="eyebrow">LET'S MAKE SOMETHING BEAUTIFUL</div>
-<h2>Book Your Order</h2>
-<p>Select your service and send your order enquiry to SHREE BOUTIQUE.</p>
-
+<div class="eyebrow">LET'S MAKE SOMETHING BEAUTIFUL</div><h2>Book Your Order</h2><p>Select your service and send your order enquiry to SHREE BOUTIQUE.</p>
 <form id="orderForm">
-<input type="text" id="customerName" placeholder="Your Full Name" required>
-<input type="tel" id="customerPhone" placeholder="Mobile Number" required>
-
-<select id="customerService" required>
-<option value="">Select Service</option>
-<option>Blouse Design / Stitching</option>
-<option>Saree Fall & Pico</option>
-<option>Blouse Cutting</option>
-<option>Lehenga Cutting / Stitching</option>
-<option>Gown Cutting / Stitching</option>
-<option>Custom Design</option>
-</select>
-
-<input type="text" id="designNumber" placeholder="Design Number">
+<input id="customerName" placeholder="Your Full Name" required>
+<input id="customerPhone" type="tel" placeholder="Mobile Number" required>
+<select id="customerService" required><option value="">Select Service</option><option>Blouse Design / Stitching</option><option>Saree Fall & Pico</option><option>Blouse Cutting</option><option>Lehenga Cutting / Stitching</option><option>Gown Cutting / Stitching</option><option>Custom Design</option></select>
+<input id="designNumber" placeholder="Design Number">
 <textarea id="customerMessage" placeholder="Measurements, fabric details or special requirements"></textarea>
 <button type="submit" class="btn">Submit Order Request ↗</button>
 </form>
-
-<p style="font-size:10px;margin-top:15px">
-Demo form: connect your real WhatsApp number or backend before publishing.
-</p>
+<p style="font-size:10px;margin-top:15px">Order enquiries are saved in this browser. Connect a backend for online multi-device order management.</p>
 </div>
 </section>
-
 </main>
 
 <footer>
 <div class="footer-inner">
-<div>
-<div class="logo">SHREE <span>BOUTIQUE</span></div>
-<p style="margin-top:20px">
-Premium boutique designs and custom tailoring.
-Making every occasion more beautiful with elegant designs and perfect finishing.
-</p>
+<div><div class="logo">SHREE <span>BOUTIQUE</span></div><p id="footerDescription" style="margin-top:18px">Premium boutique designs and custom tailoring. Making every occasion more beautiful with elegant designs and perfect finishing.</p></div>
+<div><h4>QUICK LINKS</h4><a href="#home">Home</a><a href="#collections">Collections</a><a href="#designs">Design Gallery</a><a href="#services">Services</a></div>
+<div><h4>CONTACT</h4><p id="footerName">SHREE BOUTIQUE</p><p id="footerPhone">Phone: Add your number</p><p id="footerAddress">Address: Add your shop address</p></div>
 </div>
-
-<div>
-<h4>QUICK LINKS</h4>
-<a href="#home">Home</a>
-<a href="#collections">Collections</a>
-<a href="#designs">Design Gallery</a>
-<a href="#services">Services</a>
-</div>
-
-<div>
-<h4>CONTACT</h4>
-<p>SHREE BOUTIQUE</p>
-<p>Phone: Add your number</p>
-<p>Address: Add your shop address</p>
-</div>
-</div>
-
-<div class="copyright">
-© 2026 SHREE BOUTIQUE. ALL RIGHTS RESERVED.
-</div>
+<div class="copyright">© 2026 SHREE BOUTIQUE. ALL RIGHTS RESERVED.</div>
 </footer>
 
-<!-- DESIGN DETAILS POPUP -->
-<div class="modal" id="detailModal">
-<div class="modal-content">
-<button class="close" onclick="closeModal()">×</button>
-<div class="eyebrow">SHREE BOUTIQUE</div>
-<h2 id="modalName"></h2>
-<p id="modalCode"></p>
-<p id="modalPrice" style="color:#d8b66a;font-size:19px;margin-top:15px"></p>
-<p style="margin-top:15px">
-Custom measurements and additional work may change the final price.
-Contact us to confirm your order.
-</p>
+<!-- PRODUCT DETAILS -->
+<div class="modal" id="detailModal"><div class="modal-content">
+<button class="close" onclick="closeModal()">×</button><div class="eyebrow">SHREE BOUTIQUE</div>
+<h2 id="modalName"></h2><p id="modalCode"></p><p id="modalPrice" style="color:#d8b66a;font-size:19px;margin-top:15px"></p>
+<p style="margin-top:15px">Custom measurements and additional work may change the final price. Contact us to confirm your order.</p>
 <button class="btn" onclick="modalOrder()">ORDER THIS DESIGN</button>
+</div></div>
+
+<!-- ADMIN PANEL -->
+<div class="modal admin-modal" id="adminModal">
+<div class="admin-window">
+<div class="admin-head"><h2>SHREE BOUTIQUE · ADMIN</h2><button class="admin-close" onclick="closeAdmin()">×</button></div>
+
+<div class="admin-login" id="adminLogin">
+<h2>Admin Login</h2><p style="color:var(--muted);font-size:12px;margin-bottom:18px">Sign in to manage your boutique website.</p>
+<input id="adminUsername" placeholder="Username" autocomplete="username">
+<input id="adminPassword" type="password" placeholder="Password" autocomplete="current-password">
+<button class="admin-btn" onclick="loginAdmin()">LOGIN TO DASHBOARD</button>
+<p class="admin-note">Initial login: admin / 1234. Change these credentials in the code before publishing.</p>
+</div>
+
+<div class="admin-layout" id="adminLayout">
+<div class="admin-tabs">
+<button class="admin-tab active" onclick="showAdminPage('dashboard',this)">Dashboard</button>
+<button class="admin-tab" onclick="showAdminPage('products',this)">Products</button>
+<button class="admin-tab" onclick="showAdminPage('categories',this)">Categories</button>
+<button class="admin-tab" onclick="showAdminPage('orders',this)">Orders</button>
+<button class="admin-tab" onclick="showAdminPage('settings',this)">Settings</button>
+<button class="admin-tab" onclick="showAdminPage('backup',this)">Backup</button>
+<button class="admin-tab" onclick="logoutAdmin()">Logout</button>
+</div>
+
+<div class="admin-page active" id="page-dashboard">
+<div class="stats">
+<div class="stat"><small>Total Products</small><strong id="statProducts">0</strong></div>
+<div class="stat"><small>Categories</small><strong id="statCategories">0</strong></div>
+<div class="stat"><small>Total Orders</small><strong id="statOrders">0</strong></div>
+<div class="stat"><small>Pending Orders</small><strong id="statPending">0</strong></div>
+</div>
+<div class="admin-card"><h3>Welcome to your Admin Dashboard</h3><p class="admin-note">Manage your boutique designs, categories, customer enquiries, contact details and backups from this panel.</p></div>
+</div>
+
+<div class="admin-page" id="page-products">
+<div class="admin-card">
+<h3 id="productFormTitle">Add New Product</h3>
+<form class="admin-form" id="adminProductForm">
+<input type="hidden" id="editProductId">
+<input id="pCode" placeholder="Design Number (e.g. BL-003)" required>
+<input id="pName" placeholder="Product Name" required>
+<input id="pPrice" type="number" min="0" placeholder="Price in ₹" required>
+<select id="pCategory" required></select>
+<input id="pImage" placeholder="Image URL (https://...)" required>
+<input id="pTag" placeholder="Tag (e.g. NEW / BESTSELLER)">
+<textarea id="pDescription" placeholder="Product description (optional)"></textarea>
+<button class="admin-btn" type="submit" id="saveProductBtn">SAVE PRODUCT</button>
+<button class="admin-btn secondary" type="button" onclick="clearProductForm()">CLEAR FORM</button>
+</form>
+<p class="admin-note">Use a publicly accessible image URL. Product data is saved in this browser.</p>
+</div>
+<div class="admin-card"><h3>All Products</h3><div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Code</th><th>Name</th><th>Category</th><th>Price</th><th>Actions</th></tr></thead><tbody id="adminProductRows"></tbody></table></div></div>
+</div>
+
+<div class="admin-page" id="page-categories">
+<div class="admin-card"><h3>Add Category</h3>
+<div class="admin-form"><input id="newCategory" placeholder="New category name"><button class="admin-btn" onclick="addCategory()">ADD CATEGORY</button></div>
+</div>
+<div class="admin-card"><h3>Manage Categories</h3><div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Category</th><th>Action</th></tr></thead><tbody id="adminCategoryRows"></tbody></table></div>
+<p class="admin-note">Deleting a category does not delete its products. Assign those products to another category if needed.</p></div>
+</div>
+
+<div class="admin-page" id="page-orders">
+<div class="admin-card"><h3>Customer Orders & Enquiries</h3><div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Date</th><th>Customer</th><th>Phone</th><th>Service</th><th>Design</th><th>Status</th><th>Actions</th></tr></thead><tbody id="adminOrderRows"></tbody></table></div><p class="admin-note">Orders are stored only in this browser until a real backend is connected.</p></div>
+</div>
+
+<div class="admin-page" id="page-settings">
+<div class="admin-card"><h3>Website Settings</h3>
+<div class="admin-form">
+<input id="settingName" placeholder="Boutique name">
+<input id="settingPhone" placeholder="Phone number">
+<input id="settingAddress" placeholder="Shop address">
+<textarea id="settingDescription" placeholder="Boutique description"></textarea>
+<button class="admin-btn" onclick="saveSettings()">SAVE SETTINGS</button>
+</div></div>
+<div class="admin-card"><h3>Admin Login Credentials</h3>
+<p class="admin-note">To change the demo username/password, edit ADMIN_USER and ADMIN_PASS in the JavaScript section of this HTML file. This front-end login is not secure enough for a public production admin system.</p></div>
+</div>
+
+<div class="admin-page" id="page-backup">
+<div class="admin-card"><h3>Backup & Restore</h3>
+<p class="admin-note">Download a JSON backup of your products, categories, orders and settings. Keep the file safely. Restore it later using the Import button.</p>
+<div class="admin-actions">
+<button class="admin-btn" onclick="exportBackup()">DOWNLOAD BACKUP</button>
+<label class="admin-btn secondary" for="backupFile">IMPORT BACKUP</label>
+<input id="backupFile" type="file" accept=".json,application/json" style="display:none" onchange="importBackup(event)">
+</div></div>
+<div class="admin-card"><h3>Important</h3><p class="admin-note">Clearing browser data or switching devices may remove access to locally stored data. Download backups regularly. For secure accounts and shared online data, connect a server/database.</p></div>
+</div>
+
+</div>
 </div>
 </div>
 
 <script>
-let currentDesign = {};
-let selectedCategory = "All";
+/* CHANGE THESE BEFORE PUBLISHING */
+const ADMIN_USER = "admin";
+const ADMIN_PASS = "1234";
 
-function toggleMenu(){
-  document.getElementById("navlinks").classList.toggle("show");
+const DEFAULT_CATEGORIES = [
+"Blouse","Saree","Saree Fall & Pico","Lehenga","Salwar Suit","Kurti",
+"Gown","Party Wear Dress","Wedding Dress","Anarkali","Nighty","Petticoat",
+"Skirt","Top","Palazzo","Ladies Fashion","Blouse Cutting","Lehenga Cutting",
+"Gown Stitching","Custom Design","Other"
+];
+
+const DEFAULT_PRODUCTS = [
+{id:"1",code:"BL-001",name:"Classic Bridal Blouse",price:650,category:"Blouse",image:"https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=700&q=80",tag:"BESTSELLER",description:"Classic bridal blouse design."},
+{id:"2",code:"BL-002",name:"Designer Party Blouse",price:450,category:"Blouse",image:"https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=700&q=80",tag:"",description:"Designer party blouse."},
+{id:"3",code:"SF-001",name:"Saree Fall & Pico",price:150,category:"Saree Fall & Pico",image:"https://images.unsplash.com/photo-1583391733956-6c78276477e3?auto=format&fit=crop&w=700&q=80",tag:"POPULAR",description:"Professional fall and pico."},
+{id:"4",code:"LH-001",name:"Royal Lehenga",price:1200,category:"Lehenga",image:"https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=700&q=80",tag:"",description:"Royal lehenga design."},
+{id:"5",code:"GW-001",name:"Anarkali Designer Gown",price:850,category:"Gown",image:"https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=700&q=80",tag:"",description:"Anarkali designer gown."},
+{id:"6",code:"GW-002",name:"Party Wear Gown",price:1000,category:"Gown",image:"https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=700&q=80",tag:"",description:"Party wear gown."},
+{id:"7",code:"BC-001",name:"Blouse Cutting",price:200,category:"Blouse Cutting",image:"https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=700&q=80",tag:"",description:"Blouse cutting service."},
+{id:"8",code:"LC-001",name:"Lehenga Cutting",price:500,category:"Lehenga Cutting",image:"https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=700&q=80",tag:"",description:"Lehenga cutting service."}
+];
+
+const KEY="shree_boutique_master_v1";
+let db=loadDB();
+let selectedCategory="All";
+let currentDesign={};
+
+function loadDB(){
+ try{
+  const saved=JSON.parse(localStorage.getItem(KEY));
+  if(saved && Array.isArray(saved.products)) return {
+   products:saved.products,
+   categories:Array.isArray(saved.categories)?saved.categories:DEFAULT_CATEGORIES,
+   orders:Array.isArray(saved.orders)?saved.orders:[],
+   settings:saved.settings||{}
+  };
+ }catch(e){}
+ return {products:DEFAULT_PRODUCTS.map(p=>({...p})),categories:[...DEFAULT_CATEGORIES],orders:[],settings:{}};
 }
-
-document.querySelectorAll(".navlinks a").forEach(link=>{
-  link.addEventListener("click",()=>{
-    document.getElementById("navlinks").classList.remove("show");
-  });
-});
-
-/* CATEGORY DROPDOWN */
-function toggleCategories(){
-  document.getElementById("categoryPanel").classList.toggle("open");
+function saveDB(){localStorage.setItem(KEY,JSON.stringify(db));}
+function escapeHTML(value){
+ return String(value??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 }
+function toggleMenu(){document.getElementById("navlinks").classList.toggle("show")}
+document.querySelectorAll(".navlinks a").forEach(a=>a.addEventListener("click",()=>document.getElementById("navlinks").classList.remove("show")));
 
-/* CATEGORY SELECTION */
-function selectCategory(category){
-  selectedCategory = category;
-
-  document.querySelectorAll(".category-option").forEach(button=>{
-    button.classList.toggle(
-      "active",
-      button.textContent.trim().toLowerCase() === category.toLowerCase() ||
-      (category === "All" && button.textContent.includes("All Categories"))
-    );
-  });
-
-  filterProducts();
-
-  document.getElementById("categoryPanel").classList.remove("open");
+function toggleCategories(){document.getElementById("categoryPanel").classList.toggle("open")}
+function renderCategoryButtons(){
+ const list=document.getElementById("categoryList");
+ list.innerHTML="";
+ ["All",...db.categories].forEach(cat=>{
+  const b=document.createElement("button");
+  b.className="category-option"+(selectedCategory===cat?" active":"");
+  b.textContent=cat==="All"?"✦ All Categories":cat;
+  b.onclick=()=>selectCategory(cat);
+  list.appendChild(b);
+ });
 }
-
-/* SEARCH + CATEGORY FILTER */
-function filterProducts(){
-  const search = document.getElementById("designSearch").value
-    .trim().toLowerCase();
-
-  const products = document.querySelectorAll(".product");
-  let visibleCount = 0;
-
-  products.forEach(product=>{
-    const category = (product.dataset.category || "").toLowerCase();
-    const text = product.innerText.toLowerCase();
-
-    const categoryMatch =
-      selectedCategory === "All" ||
-      category.includes(selectedCategory.toLowerCase());
-
-    const searchMatch =
-      search === "" || text.includes(search) || category.includes(search);
-
-    const show = categoryMatch && searchMatch;
-
-    product.style.display = show ? "" : "none";
-
-    if(show) visibleCount++;
-  });
-
-  document.getElementById("noResults").style.display =
-    visibleCount === 0 ? "block" : "none";
-
-  document.getElementById("resultCount").textContent =
-    "Showing " + visibleCount + " of " + products.length + " designs";
+function selectCategory(cat){
+ selectedCategory=cat;
+ renderCategoryButtons();
+ renderProducts();
+ document.getElementById("categoryPanel").classList.remove("open");
 }
-
-/* CLEAR FILTERS */
 function resetFilters(){
-  selectedCategory = "All";
-  document.getElementById("designSearch").value = "";
-
-  document.querySelectorAll(".category-option").forEach(button=>{
-    button.classList.remove("active");
-  });
-
-  document.querySelector(".category-option").classList.add("active");
-
-  filterProducts();
+ selectedCategory="All";
+ document.getElementById("designSearch").value="";
+ renderCategoryButtons();
+ renderProducts();
+}
+function renderProducts(){
+ const q=document.getElementById("designSearch").value.trim().toLowerCase();
+ const grid=document.getElementById("productGrid");
+ grid.innerHTML="";
+ let count=0;
+ db.products.forEach(p=>{
+  const searchable=[p.name,p.code,p.category,p.description].join(" ").toLowerCase();
+  const catMatch=selectedCategory==="All"||p.category===selectedCategory;
+  if(!catMatch||!searchable.includes(q))return;
+  count++;
+  const card=document.createElement("div");
+  card.className="product";
+  card.innerHTML=`
+   <div class="product-image">${p.tag?`<span class="tag">${escapeHTML(p.tag)}</span>`:""}
+   <img src="${escapeHTML(p.image)}" alt="${escapeHTML(p.name)}" loading="lazy" onerror="this.src='https://placehold.co/600x700/0b1f40/d8b66a?text=SHREE+BOUTIQUE'"></div>
+   <div class="product-info"><div class="product-code">${escapeHTML(p.code)}</div>
+   <h3>${escapeHTML(p.name)}</h3><div class="price">Starting <strong>₹${Number(p.price).toLocaleString("en-IN")}</strong></div>
+   <div class="product-buttons"><button onclick="order('${escapeHTML(p.id)}')">Order Now</button><button onclick="details('${escapeHTML(p.id)}')">Details</button></div></div>`;
+  grid.appendChild(card);
+ });
+ if(!count)grid.innerHTML='<div class="no-results" style="display:block"><strong>No Designs Found</strong>Try another search or choose a different category.</div>';
+ document.getElementById("resultCount").textContent=`Showing ${count} of ${db.products.length} designs`;
+}
+function details(id){
+ const p=db.products.find(x=>x.id===id);if(!p)return;
+ currentDesign=p;
+ document.getElementById("modalName").textContent=p.name;
+ document.getElementById("modalCode").textContent="DESIGN NUMBER: "+p.code;
+ document.getElementById("modalPrice").textContent="Starting Price: ₹"+Number(p.price).toLocaleString("en-IN");
+ document.getElementById("detailModal").classList.add("active");
+}
+function closeModal(){document.getElementById("detailModal").classList.remove("active")}
+function modalOrder(){closeModal();order(currentDesign.id)}
+function order(id){
+ const p=db.products.find(x=>x.id===id);if(!p)return;
+ currentDesign=p;
+ document.getElementById("designNumber").value=p.code;
+ const n=(p.name+" "+p.category).toLowerCase();
+ let service="Custom Design";
+ if(n.includes("saree"))service="Saree Fall & Pico";
+ else if(n.includes("lehenga"))service="Lehenga Cutting / Stitching";
+ else if(n.includes("gown"))service="Gown Cutting / Stitching";
+ else if(n.includes("blouse")&&n.includes("cutting"))service="Blouse Cutting";
+ else if(n.includes("blouse"))service="Blouse Design / Stitching";
+ document.getElementById("customerService").value=service;
+ document.getElementById("booking").scrollIntoView({behavior:"smooth"});
 }
 
-/* ORDER FUNCTION */
-function order(code,name,price){
-  currentDesign={code,name,price};
-
-  document.getElementById("designNumber").value=code;
-
-  if(name.includes("Saree")){
-    document.getElementById("customerService").value="Saree Fall & Pico";
-  }
-  else if(name.includes("Lehenga")){
-    document.getElementById("customerService").value="Lehenga Cutting / Stitching";
-  }
-  else if(name.includes("Gown")){
-    document.getElementById("customerService").value="Gown Cutting / Stitching";
-  }
-  else if(name.includes("Cutting")){
-    document.getElementById("customerService").value="Blouse Cutting";
-  }
-  else{
-    document.getElementById("customerService").value="Blouse Design / Stitching";
-  }
-
-  document.getElementById("booking").scrollIntoView({
-    behavior:"smooth"
-  });
-}
-
-/* DESIGN DETAILS */
-function details(name,code,price){
-  currentDesign={name,code,price};
-
-  document.getElementById("modalName").textContent=name;
-  document.getElementById("modalCode").textContent="DESIGN NUMBER: "+code;
-  document.getElementById("modalPrice").textContent="Starting Price: "+price;
-
-  document.getElementById("detailModal").classList.add("active");
-}
-
-function closeModal(){
-  document.getElementById("detailModal").classList.remove("active");
-}
-
-function modalOrder(){
-  closeModal();
-
-  order(
-    currentDesign.code,
-    currentDesign.name,
-    currentDesign.price
-  );
-}
-
-/* CLOSE POPUP WHEN BACKGROUND IS CLICKED */
-document.getElementById("detailModal").addEventListener("click",function(e){
-  if(e.target === this) closeModal();
+document.getElementById("orderForm").addEventListener("submit",e=>{
+ e.preventDefault();
+ const name=document.getElementById("customerName").value.trim();
+ const phone=document.getElementById("customerPhone").value.trim();
+ if(!/^[0-9]{10}$/.test(phone)){alert("Please enter a valid 10-digit mobile number.");return}
+ const order={
+  id:"ORD-"+Date.now(),date:new Date().toLocaleString(),
+  name,phone,service:document.getElementById("customerService").value,
+  design:document.getElementById("designNumber").value,
+  message:document.getElementById("customerMessage").value,
+  status:"Pending"
+ };
+ db.orders.unshift(order);saveDB();
+ alert("Your enquiry has been saved in this browser. We will contact you.");
+ e.target.reset();
+ const mailBody=`SHREE BOUTIQUE ORDER REQUEST\n\nName: ${name}\nPhone: ${phone}\nService: ${order.service}\nDesign: ${order.design}\nRequirements: ${order.message}`;
+ window.location.href="mailto:?subject="+encodeURIComponent("SHREE BOUTIQUE Order")+"&body="+encodeURIComponent(mailBody);
 });
 
-/* ORDER FORM */
-document.getElementById("orderForm").addEventListener("submit",function(e){
-  e.preventDefault();
-
-  const name=document.getElementById("customerName").value.trim();
-  const phone=document.getElementById("customerPhone").value.trim();
-  const service=document.getElementById("customerService").value;
-  const design=document.getElementById("designNumber").value;
-  const message=document.getElementById("customerMessage").value;
-
-  if(!/^[0-9]{10}$/.test(phone)){
-    alert("Please enter a valid 10-digit mobile number.");
-    return;
-  }
-
-  const orderText=
-`SHREE BOUTIQUE ORDER REQUEST
-
-Name: ${name}
-Phone: ${phone}
-Service: ${service}
-Design Number: ${design}
-Requirements: ${message}`;
-
-  /* DEMO: OPENS DEVICE EMAIL APPLICATION */
-  const mailUrl=
-    "mailto:?subject="+encodeURIComponent("SHREE BOUTIQUE Order")+
-    "&body="+encodeURIComponent(orderText);
-
-  window.location.href=mailUrl;
+/* ADMIN AUTHENTICATION */
+function openAdmin(){
+ document.getElementById("adminModal").classList.add("active");
+ document.getElementById("adminLogin").style.display="block";
+ document.getElementById("adminLayout").style.display="none";
+}
+function closeAdmin(){document.getElementById("adminModal").classList.remove("active")}
+function loginAdmin(){
+ const u=document.getElementById("adminUsername").value;
+ const p=document.getElementById("adminPassword").value;
+ if(u!==ADMIN_USER||p!==ADMIN_PASS){alert("Incorrect username or password.");return}
+ document.getElementById("adminLogin").style.display="none";
+ document.getElementById("adminLayout").style.display="block";
+ refreshAdmin();
+}
+function logoutAdmin(){
+ document.getElementById("adminLayout").style.display="none";
+ document.getElementById("adminLogin").style.display="block";
+ document.getElementById("adminPassword").value="";
+}
+function showAdminPage(name,btn){
+ document.querySelectorAll(".admin-page").forEach(p=>p.classList.remove("active"));
+ document.querySelectorAll(".admin-tab").forEach(b=>b.classList.remove("active"));
+ document.getElementById("page-"+name).classList.add("active");
+ btn.classList.add("active");
+ if(name==="products")renderAdminProducts();
+ if(name==="categories")renderAdminCategories();
+ if(name==="orders")renderAdminOrders();
+ if(name==="settings")loadSettings();
+}
+function refreshAdmin(){
+ document.getElementById("statProducts").textContent=db.products.length;
+ document.getElementById("statCategories").textContent=db.categories.length;
+ document.getElementById("statOrders").textContent=db.orders.length;
+ document.getElementById("statPending").textContent=db.orders.filter(o=>o.status==="Pending").length;
+ renderProductCategorySelect();
+ renderAdminProducts();renderAdminCategories();renderAdminOrders();loadSettings();
+}
+function renderProductCategorySelect(){
+ const s=document.getElementById("pCategory");
+ s.innerHTML='<option value="">Select Category</option>'+db.categories.map(c=>`<option value="${escapeHTML(c)}">${escapeHTML(c)}</option>`).join("");
+}
+function clearProductForm(){
+ document.getElementById("adminProductForm").reset();
+ document.getElementById("editProductId").value="";
+ document.getElementById("productFormTitle").textContent="Add New Product";
+ document.getElementById("saveProductBtn").textContent="SAVE PRODUCT";
+}
+document.getElementById("adminProductForm").addEventListener("submit",e=>{
+ e.preventDefault();
+ const id=document.getElementById("editProductId").value;
+ const product={
+  id:id||String(Date.now()),
+  code:document.getElementById("pCode").value.trim(),
+  name:document.getElementById("pName").value.trim(),
+  price:Number(document.getElementById("pPrice").value),
+  category:document.getElementById("pCategory").value,
+  image:document.getElementById("pImage").value.trim(),
+  tag:document.getElementById("pTag").value.trim(),
+  description:document.getElementById("pDescription").value.trim()
+ };
+ if(!product.code||!product.name||!product.category||!product.image||product.price<0){alert("Please complete the required product fields.");return}
+ const duplicate=db.products.find(p=>p.code.toLowerCase()===product.code.toLowerCase()&&p.id!==id);
+ if(duplicate){alert("This design number already exists.");return}
+ if(id){const i=db.products.findIndex(p=>p.id===id);if(i>=0)db.products[i]=product}
+ else db.products.unshift(product);
+ saveDB();clearProductForm();refreshAdmin();renderProducts();
+ alert("Product saved successfully.");
 });
+function renderAdminProducts(){
+ document.getElementById("adminProductRows").innerHTML=db.products.map(p=>`
+ <tr><td>${escapeHTML(p.code)}</td><td>${escapeHTML(p.name)}</td><td>${escapeHTML(p.category)}</td><td>₹${Number(p.price).toLocaleString("en-IN")}</td>
+ <td><button class="admin-btn secondary" onclick="editProduct('${escapeHTML(p.id)}')">EDIT</button><button class="admin-btn danger" onclick="deleteProduct('${escapeHTML(p.id)}')">DELETE</button></td></tr>`).join("")||'<tr><td colspan="5">No products yet.</td></tr>';
+}
+function editProduct(id){
+ const p=db.products.find(x=>x.id===id);if(!p)return;
+ renderProductCategorySelect();
+ document.getElementById("editProductId").value=p.id;
+ document.getElementById("pCode").value=p.code;
+ document.getElementById("pName").value=p.name;
+ document.getElementById("pPrice").value=p.price;
+ document.getElementById("pCategory").value=p.category;
+ document.getElementById("pImage").value=p.image;
+ document.getElementById("pTag").value=p.tag||"";
+ document.getElementById("pDescription").value=p.description||"";
+ document.getElementById("productFormTitle").textContent="Edit Product";
+ document.getElementById("saveProductBtn").textContent="UPDATE PRODUCT";
+ document.getElementById("page-products").scrollIntoView({behavior:"smooth"});
+}
+function deleteProduct(id){
+ if(!confirm("Delete this product?"))return;
+ db.products=db.products.filter(p=>p.id!==id);saveDB();refreshAdmin();renderProducts();
+}
+function addCategory(){
+ const input=document.getElementById("newCategory");
+ const name=input.value.trim();
+ if(!name)return alert("Enter a category name.");
+ if(db.categories.some(c=>c.toLowerCase()===name.toLowerCase()))return alert("Category already exists.");
+ db.categories.push(name);saveDB();input.value="";refreshAdmin();renderCategoryButtons();alert("Category added.");
+}
+function renderAdminCategories(){
+ document.getElementById("adminCategoryRows").innerHTML=db.categories.map(c=>`
+ <tr><td>${escapeHTML(c)}</td><td><button class="admin-btn danger" onclick="deleteCategory('${escapeHTML(c)}')">DELETE</button></td></tr>`).join("");
+}
+function deleteCategory(name){
+ if(!confirm("Remove this category from the category list? Products assigned to it will remain."))return;
+ db.categories=db.categories.filter(c=>c!==name);saveDB();refreshAdmin();renderCategoryButtons();renderProducts();
+}
+function renderAdminOrders(){
+ document.getElementById("adminOrderRows").innerHTML=db.orders.map(o=>`
+ <tr><td>${escapeHTML(o.date)}</td><td>${escapeHTML(o.name)}</td><td>${escapeHTML(o.phone)}</td><td>${escapeHTML(o.service)}</td><td>${escapeHTML(o.design)}</td>
+ <td><select onchange="updateOrderStatus('${escapeHTML(o.id)}',this.value)">${["Pending","Confirmed","In Progress","Completed","Cancelled"].map(s=>`<option ${o.status===s?"selected":""}>${s}</option>`).join("")}</select></td>
+ <td><button class="admin-btn secondary" onclick="viewOrder('${escapeHTML(o.id)}')">VIEW</button><button class="admin-btn danger" onclick="deleteOrder('${escapeHTML(o.id)}')">DELETE</button></td></tr>`).join("")||'<tr><td colspan="7">No orders received yet.</td></tr>';
+}
+function updateOrderStatus(id,status){
+ const o=db.orders.find(x=>x.id===id);if(o)o.status=status;
+ saveDB();refreshAdmin();
+}
+function viewOrder(id){
+ const o=db.orders.find(x=>x.id===id);if(!o)return;
+ alert(`ORDER DETAILS\n\nCustomer: ${o.name}\nPhone: ${o.phone}\nService: ${o.service}\nDesign: ${o.design}\nRequirements: ${o.message||"None"}\nDate: ${o.date}\nStatus: ${o.status}`);
+}
+function deleteOrder(id){
+ if(!confirm("Delete this order?"))return;
+ db.orders=db.orders.filter(o=>o.id!==id);saveDB();refreshAdmin();
+}
+function loadSettings(){
+ const s=db.settings||{};
+ document.getElementById("settingName").value=s.name||"SHREE BOUTIQUE";
+ document.getElementById("settingPhone").value=s.phone||"";
+ document.getElementById("settingAddress").value=s.address||"";
+ document.getElementById("settingDescription").value=s.description||"Premium boutique designs and custom tailoring.";
+}
+function saveSettings(){
+ db.settings={
+  name:document.getElementById("settingName").value.trim(),
+  phone:document.getElementById("settingPhone").value.trim(),
+  address:document.getElementById("settingAddress").value.trim(),
+  description:document.getElementById("settingDescription").value.trim()
+ };
+ saveDB();applySettings();alert("Website settings saved.");
+}
+function applySettings(){
+ const s=db.settings||{};
+ document.getElementById("footerName").textContent=s.name||"SHREE BOUTIQUE";
+ document.getElementById("footerPhone").textContent="Phone: "+(s.phone||"Add your number");
+ document.getElementById("footerAddress").textContent="Address: "+(s.address||"Add your shop address");
+ document.getElementById("footerDescription").textContent=s.description||"Premium boutique designs and custom tailoring.";
+}
+function exportBackup(){
+ const blob=new Blob([JSON.stringify(db,null,2)],{type:"application/json"});
+ const url=URL.createObjectURL(blob);
+ const a=document.createElement("a");a.href=url;a.download="SHREE-BOUTIQUE-BACKUP-"+new Date().toISOString().slice(0,10)+".json";a.click();
+ URL.revokeObjectURL(url);
+}
+function importBackup(event){
+ const file=event.target.files[0];if(!file)return;
+ const reader=new FileReader();
+ reader.onload=()=>{
+  try{
+   const data=JSON.parse(reader.result);
+   if(!Array.isArray(data.products)||!Array.isArray(data.categories)||!Array.isArray(data.orders))throw new Error("Invalid backup");
+   if(!confirm("Import this backup? Current local data will be replaced."))return;
+   db={products:data.products,categories:data.categories,orders:data.orders,settings:data.settings||{}};
+   saveDB();refreshAdmin();renderCategoryButtons();renderProducts();applySettings();
+   alert("Backup restored successfully.");
+  }catch(e){alert("Invalid backup file.")}
+  event.target.value="";
+ };
+ reader.readAsText(file);
+}
 
-/* INITIAL PRODUCT COUNT */
-filterProducts();
+/* INIT */
+renderCategoryButtons();
+renderProducts();
+applySettings();
 </script>
-
 </body>
 </html>
+
 
 
